@@ -11,10 +11,10 @@ public class AudioManager : MonoBehaviour
     [Range(0f, 1f)] public float musicVolume = 0.5f;
     [Range(0f, 1f)] public float sfxVolume = 0.5f;
     
-    // 存储每个AudioSource的原始音量
+    // Store original volume of each AudioSource
     private Dictionary<AudioSource, float> originalVolumes = new Dictionary<AudioSource, float>();
     
-    // 音频源的标签
+    // Audio source tags
     private const string MUSIC_TAG = "Music";
     private const string SFX_TAG = "SFX";
     
@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(transform.root.gameObject); // 保持整个根对象
+            DontDestroyOnLoad(transform.root.gameObject); // Keep entire root object
             LoadVolumeSettings();
         }
         else
@@ -35,20 +35,20 @@ public class AudioManager : MonoBehaviour
     
     void Start()
     {
-        // 订阅场景加载事件
+        // Subscribe to scene load event
         SceneManager.sceneLoaded += OnSceneLoaded;
         
-        // 应用音量到当前场景
+        // Apply volume to current scene
         ApplyVolumeToAllAudioSources();
     }
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 新场景加载后，重新应用音量设置
+        // After new scene loads, reapply volume settings
         ApplyVolumeToAllAudioSources();
     }
     
-    // 设置总音量
+    // Set master volume
     public void SetMasterVolume(float volume)
     {
         masterVolume = Mathf.Clamp01(volume);
@@ -56,7 +56,7 @@ public class AudioManager : MonoBehaviour
         ApplyVolumeToAllAudioSources();
     }
     
-    // 设置音乐音量
+    // Set music volume
     public void SetMusicVolume(float volume)
     {
         musicVolume = Mathf.Clamp01(volume);
@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour
         ApplyVolumeToAllAudioSources();
     }
     
-    // 设置音效音量
+    // Set SFX volume
     public void SetSFXVolume(float volume)
     {
         sfxVolume = Mathf.Clamp01(volume);
@@ -72,20 +72,20 @@ public class AudioManager : MonoBehaviour
         ApplyVolumeToAllAudioSources();
     }
     
-    // 应用音量到所有AudioSource
+    // Apply volume to all AudioSources
     private void ApplyVolumeToAllAudioSources()
     {
         AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
         
         foreach (AudioSource audioSource in allAudioSources)
         {
-            // 记录原始音量（如果还没记录）
+            // Record original volume (if not recorded yet)
             if (!originalVolumes.ContainsKey(audioSource))
             {
                 originalVolumes[audioSource] = audioSource.volume;
             }
             
-            // 根据Tag应用不同的音量
+            // Apply different volumes based on Tag
             if (audioSource.CompareTag(MUSIC_TAG))
             {
                 audioSource.volume = originalVolumes[audioSource] * musicVolume * masterVolume;
@@ -96,24 +96,24 @@ public class AudioManager : MonoBehaviour
             }
             else
             {
-                // 如果没有标签，默认作为SFX处理
+                // If no tag, treat as SFX by default
                 audioSource.volume = originalVolumes[audioSource] * sfxVolume * masterVolume;
             }
         }
     }
     
-    // 为新创建的AudioSource应用音量
+    // Apply volume for newly created AudioSource
     public void RegisterAudioSource(AudioSource audioSource, bool isMusic = false)
     {
         if (audioSource == null) return;
         
-        // 记录原始音量
+        // Record original volume
         if (!originalVolumes.ContainsKey(audioSource))
         {
             originalVolumes[audioSource] = audioSource.volume;
         }
         
-        // 应用音量
+        // Apply volume
         if (isMusic)
         {
             audioSource.volume = originalVolumes[audioSource] * musicVolume * masterVolume;
@@ -124,7 +124,7 @@ public class AudioManager : MonoBehaviour
         }
     }
     
-    // 保存音量设置到PlayerPrefs
+    // Save volume settings to PlayerPrefs
     private void SaveVolumeSettings()
     {
         PlayerPrefs.SetFloat("MasterVolume", masterVolume);
@@ -133,7 +133,7 @@ public class AudioManager : MonoBehaviour
         PlayerPrefs.Save();
     }
     
-    // 从PlayerPrefs加载音量设置
+    // Load volume settings from PlayerPrefs
     private void LoadVolumeSettings()
     {
         masterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
@@ -141,7 +141,7 @@ public class AudioManager : MonoBehaviour
         sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
     }
     
-    // 清理字典中已销毁的AudioSource
+    // Clean up destroyed AudioSources from dictionary
     private void CleanupDestroyedAudioSources()
     {
         List<AudioSource> toRemove = new List<AudioSource>();
@@ -164,10 +164,10 @@ public class AudioManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     
-    // 定期清理（可选）
+    // Periodic cleanup (optional)
     void Update()
     {
-        // 每5秒清理一次
+        // Clean up every 5 seconds
         if (Time.frameCount % 300 == 0)
         {
             CleanupDestroyedAudioSources();

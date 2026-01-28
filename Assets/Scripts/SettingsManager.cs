@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
-using TMPro; // 添加TextMeshPro命名空间
+using TMPro;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -23,12 +23,12 @@ public class SettingsManager : MonoBehaviour
     public TextMeshProUGUI sfxVolumeText;
     
     [Header("Canvas Settings")]
-    [Tooltip("确保Canvas的Sort Order最高")]
+    [Tooltip("Ensure Canvas has the highest Sort Order")]
     public Canvas settingsCanvas;
     public int topSortOrder = 999;
     
     [Header("Scene Settings")]
-    [Tooltip("在这些场景中禁用设置菜单")]
+    [Tooltip("Disable settings menu in these scenes")]
     public List<string> disabledScenes = new List<string>();
     
     private bool isSettingsOpen = false;
@@ -36,11 +36,11 @@ public class SettingsManager : MonoBehaviour
     
     void Awake()
     {
-        // 单例模式 - 确保只有一个实例存在
+        // Singleton pattern - ensure only one instance exists
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // 场景切换时不销毁
+            DontDestroyOnLoad(gameObject); // Don't destroy on scene load
         }
         else
         {
@@ -51,29 +51,52 @@ public class SettingsManager : MonoBehaviour
     
     void Start()
     {
-        // 初始化 - 隐藏设置面板
+        // Initialize - hide settings panel
         if (settingsPanel != null)
         {
             settingsPanel.SetActive(false);
         }
         
-        // 绑定返回按钮事件
+        // Bind back button event
         if (backButton != null)
         {
             backButton.onClick.AddListener(CloseSettings);
         }
         
-        // 绑定音量滑块事件
+        // Bind volume slider events
         SetupVolumeSliders();
         
-        // 设置Canvas的Sort Order确保在最上层
+        // Setup Canvas Sort Order to ensure it's on top
         SetupCanvas();
         
-        // 订阅场景加载事件
+        // Subscribe to scene load event
         SceneManager.sceneLoaded += OnSceneLoaded;
         
-        // 检查当前场景
+        // Check current scene
         CheckCurrentScene();
+    }
+    
+    private void SetupCanvas()
+    {
+        // If Canvas not manually assigned, try to get it automatically
+        if (settingsCanvas == null)
+        {
+            settingsCanvas = GetComponentInChildren<Canvas>();
+        }
+        
+        if (settingsCanvas != null)
+        {
+            // Set to highest Sort Order
+            settingsCanvas.sortingOrder = topSortOrder;
+            
+            // Ensure using correct Render Mode
+            if (settingsCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
+            {
+                // Overlay mode is automatically on top
+                settingsCanvas.overrideSorting = true;
+                settingsCanvas.sortingOrder = topSortOrder;
+            }
+        }
     }
     
     private void SetupVolumeSliders()
@@ -84,7 +107,7 @@ public class SettingsManager : MonoBehaviour
             return;
         }
         
-        // 设置滑块初始值（将0-1转换为0-100）
+        // Set slider initial values (convert 0-1 to 0-100)
         if (masterVolumeSlider != null)
         {
             masterVolumeSlider.value = AudioManager.Instance.masterVolume * 100f;
@@ -107,7 +130,7 @@ public class SettingsManager : MonoBehaviour
         }
     }
     
-    // 更新音量显示文本
+    // Update volume display text
     private void UpdateVolumeText(TextMeshProUGUI volumeText, float value)
     {
         if (volumeText != null)
@@ -116,7 +139,7 @@ public class SettingsManager : MonoBehaviour
         }
     }
     
-    // 音量滑块回调函数（将0-100转换回0-1）
+    // Volume slider callback functions (convert 0-100 back to 0-1)
     private void OnMasterVolumeChanged(float value)
     {
         if (AudioManager.Instance != null)
@@ -144,32 +167,9 @@ public class SettingsManager : MonoBehaviour
         }
     }
     
-    private void SetupCanvas()
-    {
-        // 如果没有手动分配Canvas，尝试自动获取
-        if (settingsCanvas == null)
-        {
-            settingsCanvas = GetComponentInChildren<Canvas>();
-        }
-        
-        if (settingsCanvas != null)
-        {
-            // 设置为最高的Sort Order
-            settingsCanvas.sortingOrder = topSortOrder;
-            
-            // 确保使用正确的Render Mode
-            if (settingsCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
-            {
-                // Overlay模式自动在最上层
-                settingsCanvas.overrideSorting = true;
-                settingsCanvas.sortingOrder = topSortOrder;
-            }
-        }
-    }
-    
     void Update()
     {
-        // 只有在允许的场景中才能按ESC键切换设置面板
+        // Only allow ESC key to toggle settings panel in enabled scenes
         if (!isEnabledInCurrentScene)
             return;
             
@@ -186,27 +186,27 @@ public class SettingsManager : MonoBehaviour
         }
     }
     
-    // 场景加载时的回调
+    // Callback when scene is loaded
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         CheckCurrentScene();
     }
     
-    // 检查当前场景是否应该启用设置菜单
+    // Check if settings menu should be enabled in current scene
     private void CheckCurrentScene()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         
-        // 检查当前场景是否在禁用列表中
+        // Check if current scene is in disabled list
         isEnabledInCurrentScene = !disabledScenes.Contains(currentSceneName);
         
-        // 如果在禁用的场景中，强制关闭设置面板
+        // If in disabled scene, force close settings panel
         if (!isEnabledInCurrentScene && isSettingsOpen)
         {
             CloseSettings();
         }
         
-        // 隐藏或显示整个UI（可选）
+        // Hide or show entire UI (optional)
         if (settingsPanel != null && settingsPanel.transform.parent != null)
         {
             settingsPanel.transform.parent.gameObject.SetActive(isEnabledInCurrentScene);
@@ -220,25 +220,25 @@ public class SettingsManager : MonoBehaviour
             settingsPanel.SetActive(true);
             isSettingsOpen = true;
             
-            // 确保Canvas在最上层
+            // Ensure Canvas is on top
             EnsureOnTop();
             
-            // 暂停游戏时间，但不影响音频
+            // Pause game time, but don't affect audio
             Time.timeScale = 0f;
             
-            // 禁用玩家输入（如果有PlayerController脚本）
+            // Disable player input (if PlayerController script exists)
             DisablePlayerInput();
         }
     }
     
-    // 确保Canvas始终在最上层
+    // Ensure Canvas is always on top
     private void EnsureOnTop()
     {
         if (settingsCanvas != null)
         {
             settingsCanvas.sortingOrder = topSortOrder;
             
-            // 如果有其他Canvas，确保我们的在最上面
+            // If there are other Canvases, ensure ours is on top
             Canvas[] allCanvases = FindObjectsOfType<Canvas>();
             int maxOrder = topSortOrder;
             foreach (Canvas c in allCanvases)
@@ -251,7 +251,7 @@ public class SettingsManager : MonoBehaviour
             settingsCanvas.sortingOrder = maxOrder;
         }
         
-        // 确保SettingsPanel是Canvas的最后一个子对象（在Hierarchy中最下面 = 渲染在最上面）
+        // Ensure SettingsPanel is last child in Canvas (bottom in Hierarchy = renders on top)
         if (settingsPanel != null)
         {
             settingsPanel.transform.SetAsLastSibling();
@@ -265,21 +265,21 @@ public class SettingsManager : MonoBehaviour
             settingsPanel.SetActive(false);
             isSettingsOpen = false;
             
-            // 恢复游戏时间
+            // Resume game time
             Time.timeScale = 1f;
             
-            // 启用玩家输入
+            // Enable player input
             EnablePlayerInput();
         }
     }
     
     private void DisablePlayerInput()
     {
-        // 查找并禁用玩家控制器
+        // Find and disable player controller
         var player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-            // 禁用所有MonoBehaviour脚本（除了这个管理器）
+            // Disable all MonoBehaviour scripts (except this manager)
             var scripts = player.GetComponents<MonoBehaviour>();
             foreach (var script in scripts)
             {
@@ -293,7 +293,7 @@ public class SettingsManager : MonoBehaviour
     
     private void EnablePlayerInput()
     {
-        // 查找并启用玩家控制器
+        // Find and enable player controller
         var player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
@@ -310,13 +310,13 @@ public class SettingsManager : MonoBehaviour
     
     void OnDestroy()
     {
-        // 清理事件监听
+        // Clean up event listeners
         if (backButton != null)
         {
             backButton.onClick.RemoveListener(CloseSettings);
         }
         
-        // 清理音量滑块事件
+        // Clean up volume slider events
         if (masterVolumeSlider != null)
         {
             masterVolumeSlider.onValueChanged.RemoveListener(OnMasterVolumeChanged);
@@ -330,10 +330,10 @@ public class SettingsManager : MonoBehaviour
             sfxVolumeSlider.onValueChanged.RemoveListener(OnSFXVolumeChanged);
         }
         
-        // 取消订阅场景加载事件
+        // Unsubscribe from scene load event
         SceneManager.sceneLoaded -= OnSceneLoaded;
         
-        // 确保退出时恢复时间缩放
+        // Ensure time scale is restored on exit
         Time.timeScale = 1f;
     }
 }
