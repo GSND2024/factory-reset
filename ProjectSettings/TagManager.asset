@@ -8,6 +8,8 @@ TagManager:
   - Lazer
   - Box
   - Laser
+  - Music
+  - SFX
   layers:
   - Default
   - TransparentFX
