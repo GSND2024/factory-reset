@@ -17,4 +17,10 @@ public static class GlobalGameState
     public static bool isLevel4 = false;
     public static GameObject spaceUIRobot = null;
     public static bool[] stateSaver = new bool[5];
+    
+    // data
+    public static bool isRobotTalked = false;
+    public static bool isRobotTalked2 = false;
+    public static int talkCount = 0;
+    public static int hackCount = 0;
 }

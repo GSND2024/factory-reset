@@ -92,26 +92,33 @@ public class Actions : MonoBehaviour
         panel?.ClosePanel("[Actions] Close after Talk");
         if (GlobalGameState.isLevel1) { _hiddenActivated = true; }
         if (GlobalGameState.isLevel2 || GlobalGameState.isLevel3) { _goToPressurePlate = true; }
+
+        if (gameObject.name == "Robot" & GlobalGameState.isRobotTalked == false)
+        {
+            GlobalGameState.isRobotTalked = true;
+            GlobalGameState.talkCount += 1;
+        }
+        if (gameObject.name == "Robot (1)" & GlobalGameState.isRobotTalked2 == false)
+        {
+            GlobalGameState.isRobotTalked2 = true;
+            GlobalGameState.talkCount += 1;
+        }
+        
+        Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}");
     }
 
     private void OnHack()
     {
         dialogue.hacked = true;
-        if (GlobalGameState.isLevel1 || GlobalGameState.isLevel2) {GlobalGameState.isRobotHacked = true;}
-        if (GlobalGameState.isLevel3) { GlobalGameState.isRobotHacked2 = true; }
-
-        if (GlobalGameState.isLevel4)
+        if (gameObject.name == "Robot" & GlobalGameState.isRobotHacked == false)
         {
-            Debug.Log(gameObject.name);
-            
-            if (hackButton.transform.root.gameObject.name == "Robot")
-            {
-                GlobalGameState.isRobotHacked = true;
-            }
-            else
-            {
-                GlobalGameState.isRobotHacked2 = true;
-            }
+            GlobalGameState.isRobotHacked = true;
+            GlobalGameState.hackCount += 1;
+        }
+        if (gameObject.name == "Robot (1)" & GlobalGameState.isRobotHacked2 == false)
+        {
+            GlobalGameState.isRobotHacked2 = true;
+            GlobalGameState.hackCount += 1;
         }
 
         if (!HackManager.Instance) { Debug.LogWarning("[Actions] HackManager missing."); return; }
@@ -119,6 +126,8 @@ public class Actions : MonoBehaviour
 
         panel?.ClosePanel("[Actions] Close before Hack");
         HackManager.Instance.BeginHack(npcMovement);
+        
+        Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}");
     }
 
     // === Space bar submit support ===
