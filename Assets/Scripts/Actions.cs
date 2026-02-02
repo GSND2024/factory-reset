@@ -102,7 +102,8 @@ public class Actions : MonoBehaviour
 
         if (GlobalGameState.isLevel4)
         {
-            Debug.Log(hackButton.transform.root.gameObject.name);
+            Debug.Log(gameObject.name);
+            
             if (hackButton.transform.root.gameObject.name == "Robot")
             {
                 GlobalGameState.isRobotHacked = true;

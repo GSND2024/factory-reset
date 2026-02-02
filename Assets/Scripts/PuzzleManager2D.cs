@@ -22,6 +22,15 @@ public class PuzzleManager2D : MonoBehaviour
 
     // Public property to access the correct order from other scripts
     public List<int> CorrectOrder => correctOrder;
+    
+    private Dictionary<int, string> plateColorNames = new Dictionary<int, string>
+    {
+        { 0, "red" },
+        { 1, "yellow" },
+        { 2, "blue" },
+        { 3, "orange" },
+        { 4, "pink" }
+    };
 
     private void Awake()
     {
@@ -36,6 +45,34 @@ public class PuzzleManager2D : MonoBehaviour
             plates = FindObjectsOfType<PressurePlateLevel4>();
         }
     }
+    
+    private void UpdateHint()
+    {
+        DialogueHolder dialogueHolder1 = GameObject.Find("Robot").GetComponent<DialogueHolder>();
+        DialogueHolder dialogueHolder2 = GameObject.Find("Robot (1)").GetComponent<DialogueHolder>();
+        
+        for (int plateID = 0; plateID <= 4; plateID++)
+        {
+            if (GetPlatePosition(plateID) == 0)
+            {
+                string colorName = plateColorNames[plateID];
+                dialogueHolder1.dialogue.sentences[1] = $"step on the {colorName} pressure plate first!";
+                break;
+            }
+            
+        }
+        
+        for (int plateID = 0; plateID <= 4; plateID++)
+        {
+            
+            if (GetPlatePosition(plateID) == 1)
+            {
+                string colorName = plateColorNames[plateID];
+                dialogueHolder2.dialogue.sentences[1] = $"step on the {colorName} pressure plate second!";
+                break;
+            }
+        }
+    }
 
     /// <summary>
     /// Generates a random order for the puzzle (e.g., 0,2,1,3 or 1,2,3,0)
@@ -43,7 +80,7 @@ public class PuzzleManager2D : MonoBehaviour
     private void GenerateRandomOrder()
     {
         // Create a list with IDs 0, 1, 2, 3
-        List<int> availableIDs = new List<int> { 0, 1, 2, 3 };
+        List<int> availableIDs = new List<int> { 0, 1, 2, 3, 4 };
         
         // Shuffle the list using Fisher-Yates algorithm
         for (int i = availableIDs.Count - 1; i > 0; i--)
@@ -55,6 +92,11 @@ public class PuzzleManager2D : MonoBehaviour
         }
 
         correctOrder = availableIDs;
+
+       UpdateHint();
+
+
+        Debug.Log(GameObject.Find("Robot").GetComponent<DialogueHolder>().dialogue.sentences[1]);
         
         Debug.Log($"🔢 Random puzzle order generated: {string.Join(", ", correctOrder)}");
     }
