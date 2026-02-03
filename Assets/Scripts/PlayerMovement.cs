@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,19 @@ public class GridMovement : MonoBehaviour
     public bool IsPaused { get; private set; } = false;
 
     public void SetPaused(bool paused) => IsPaused = paused;
+
+    public event Action<Vector2> OnMoveAcceptedLevel6;
+    public event Action<Vector2> OnMoveFinishedLevel6;
+
+    public void TryMoveFromScript_Level6(Vector2 dir)
+    {
+        if (!GlobalGameState.isLevel6) return;
+        if (IsPaused || _isMoving) return;
+
+        // Intentionally ignores HasControl in Level 6 so the robot can be moved by scripts
+        TryMove(dir);
+    }
+
 
     private void Update()
     {
@@ -140,6 +154,11 @@ public class GridMovement : MonoBehaviour
             pushableInFront.Push(direction);
         }
 
+        if (GlobalGameState.isLevel6 && CompareTag("Player"))
+        {
+            OnMoveAcceptedLevel6?.Invoke(direction);
+        }
+
         StartCoroutine(Move(targetPos));
     }
 
@@ -172,5 +191,11 @@ public class GridMovement : MonoBehaviour
 
         transform.position = targetPos;
         _isMoving = false;
+
+        if (GlobalGameState.isLevel6)
+        {
+            OnMoveFinishedLevel6?.Invoke(targetPos);
+        }
+
     }
 }

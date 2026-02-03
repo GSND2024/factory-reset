@@ -695,7 +695,7 @@ MonoBehaviour:
   dialogue:
     name: Blue Bot
     sentences:
-    - i can let you in on a secret since you saved me
+    - i can let you in on a secret since you saved me 111
     - step on the blue pressure plate second!
     hackedSentences:
     - you hacked me!
@@ -743,7 +743,7 @@ MonoBehaviour:
   dialogue:
     name: Blue Bot
     sentences:
-    - i can let you in on a secret since you saved me
+    - i can let you in on a secret since you saved me 222
     - step on the blue pressure plate second!
     hackedSentences:
     - you hacked me!
@@ -2959,7 +2959,7 @@ MonoBehaviour:
   dialogue:
     name: Red Bot
     sentences:
-    - you treated me fairly, i'll assist!
+    - you treated me fairly, i'll assist! 2222
     - step on the red pressure plate first!
     hackedSentences:
     - i'm not helping you!
@@ -3384,7 +3384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: 'dialogue.sentences.Array.data[0]'
-      value: you treated me fairly, i'll assist!
+      value: you treated me fairly, i'll assist! 11111
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: 'dialogue.sentences.Array.data[1]'
