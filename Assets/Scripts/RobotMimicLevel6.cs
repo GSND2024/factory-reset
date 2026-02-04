@@ -87,7 +87,7 @@ public class RobotMimicLevel6 : MonoBehaviour
 
     private bool PlayerIsOnCopyZone()
     {
-        int count = playerCollider.OverlapCollider(_copyFilter, _overlap);
+        int count = playerCollider.Overlap(_copyFilter, _overlap);
         return count > 0;
     }
 
