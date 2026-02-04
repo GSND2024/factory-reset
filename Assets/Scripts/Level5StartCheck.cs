@@ -7,6 +7,7 @@ public class Level5StartCheck : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        /*
         if (GlobalGameState.isLowBranching)
         {
             if (GlobalGameState.isRobotHacked)
@@ -69,7 +70,11 @@ public class Level5StartCheck : MonoBehaviour
             {
                 endingText.text = "The door opens and the remaining robot falls in behind you. The space feels emptier without the other unit, its loss noticeable only in the still air as you step through";
             }
-        }
+            
+
+            
+        }*/
+        endingText.text = "On to the next level!";
     }
     
 }
