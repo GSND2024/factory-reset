@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/PrototypeLevel2.unity
-    guid: 6d1b7131ace3a4905b19236287092d7e
+    guid: c1df8e172d1714e838f82ecaae53d4f8
   - enabled: 1
     path: Assets/Scenes/PrototypeLevel3.unity
     guid: b776f84657df5de4ebc0ef5bd8d1acd4
@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PrototypeLevel5.unity
     guid: 91f0aa5ea33a04c158253e9778b44079
+  - enabled: 1
+    path: Assets/Scenes/PrototypeLevel6.unity
+    guid: f6d155405f07d8942ba53549f6645281
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
