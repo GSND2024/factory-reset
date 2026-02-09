@@ -78,14 +78,20 @@ public class DoorLatchController : MonoBehaviour
             if (isOpen) return;
             if (RequirementMet())
             {
-                audioSource.Play();
+                if (audioSource != null)
+                {
+                    audioSource.Play();
+                }
                 isOpen = true;
                 doorToDisable.SetActive(false); // permanently open
             }
         }
         else
         {
-            audioSource.Play();
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
             bool openNow = RequirementMet();
             isOpen = openNow;
             doorToDisable.SetActive(!openNow); // toggle with plate states
