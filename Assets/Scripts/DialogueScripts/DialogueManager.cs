@@ -24,8 +24,6 @@ namespace DialogueScripts
         {
             GlobalGameState.dialogueActive = true;
             
-            GlobalGameState.swallowNextSpace = true;
-            
             Time.timeScale = 0f;
             
             if (dialogueBox)
@@ -63,6 +61,7 @@ namespace DialogueScripts
         {
             if (_sentences.Count == 0)
             {
+                //GlobalGameState.swallowNextSpace = true;
                 EndDialogue();
                 return;
             }
@@ -86,11 +85,6 @@ namespace DialogueScripts
         {
             if (Input.GetKeyDown(KeyCode.Space) && GlobalGameState.dialogueActive)
             {
-                if (GlobalGameState.swallowNextSpace)
-                {
-                    GlobalGameState.swallowNextSpace = false; 
-                    return;
-                }
                 DisplayNextSentence();
             }
         }
@@ -102,10 +96,11 @@ namespace DialogueScripts
             Time.timeScale = 1f;
             
             if (dialogueBox) dialogueBox.SetActive(false);
-            
-            
+            Input.ResetInputAxes();
             Debug.Log("Ending dialogue");
         }
 
     }
+
+    
 }

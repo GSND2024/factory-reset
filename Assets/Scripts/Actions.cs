@@ -73,7 +73,7 @@ public class Actions : MonoBehaviour
         {
             if (!GlobalGameState.isRobotHacked2 && !GlobalGameState.dialogueActive && _goToPressurePlate)
             {
-                transform.position = new Vector3(5.5f, 3.5f, 0f);
+                transform.position = new Vector3(4.584f, 0f, 0f);
             }
         }
         
