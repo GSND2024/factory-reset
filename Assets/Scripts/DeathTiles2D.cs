@@ -8,6 +8,13 @@ public class DeathTile2D : MonoBehaviour
     public string playerTag = "Player";
     public string robotTag = "Robot";
 
+    [Header("Platform Safety Check")]
+    [Tooltip("If the actor is overlapping this layer, they are considered 'on a platform' and will NOT die.")]
+    public LayerMask platformLayerMask;
+
+    [Tooltip("How far around the actor to check for a platform under them.")]
+    public float platformCheckRadius = 0.20f;
+
     [Header("Player Death")]
     public float restartDelay = 0f;
     public bool disablePlayerOnDeath = true;
@@ -26,8 +33,13 @@ public class DeathTile2D : MonoBehaviour
         if (c) c.isTrigger = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    // Use Stay so moving platforms can "save" you even after you enter the death zone.
+    private void OnTriggerStay2D(Collider2D other)
     {
+        // If standing on a platform, do nothing.
+        if (IsOnPlatform(other.transform.position))
+            return;
+
         // PLAYER: die + restart level
         if (!_playerTriggered && other.CompareTag(playerTag))
         {
@@ -51,21 +63,29 @@ public class DeathTile2D : MonoBehaviour
         }
     }
 
+    private bool IsOnPlatform(Vector2 actorWorldPos)
+    {
+        // If no platform layer mask set, treat as "not on platform"
+        if (platformLayerMask.value == 0) return false;
+
+        // OverlapCircle works well for grid games. Keep radius < half tile.
+        Collider2D hit = Physics2D.OverlapCircle(actorWorldPos, platformCheckRadius, platformLayerMask);
+        return hit != null;
+    }
+
     private void HandleRobotDeath(GameObject robot)
     {
-        // Destroy robot
         Destroy(robot);
-        
+
         GlobalGameState.destroyCount += 1;
-        
-        Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}, , destroyCount: {GlobalGameState.destroyCount}");
-        // Return control to the player
+
+        Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}, destroyCount: {GlobalGameState.destroyCount}");
+
         RestorePlayerControl();
     }
 
     private void RestorePlayerControl()
     {
-        // Find player GridMovement and give control back
         GameObject player = GameObject.FindGameObjectWithTag(playerTag);
         if (player == null) return;
 
