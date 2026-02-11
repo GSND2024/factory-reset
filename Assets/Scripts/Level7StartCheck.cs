@@ -1,11 +1,10 @@
-using DialogueScripts;
 using UnityEngine;
 
-public class Level6StartCheck : MonoBehaviour
+public class Level7StartCheck : MonoBehaviour
 {
     private void Start()
     {
-        GlobalGameState.isLevel6 = true;
+        GlobalGameState.isLevel7 = true;
         GlobalGameState.isEachLevelTalked = false;
         GlobalGameState.isEachLevelHacked = false;
     }

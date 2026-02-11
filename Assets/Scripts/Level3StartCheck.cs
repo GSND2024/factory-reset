@@ -8,5 +8,7 @@ public class Level3StartCheck : MonoBehaviour
     private void Start()
     {
         GlobalGameState.isLevel3 = true;
+        GlobalGameState.isEachLevelTalked = false;
+        GlobalGameState.isEachLevelHacked = false;
     }
 }

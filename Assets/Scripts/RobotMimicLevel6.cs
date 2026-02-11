@@ -78,6 +78,8 @@ public class RobotMimicLevel6 : MonoBehaviour
         if (!IsOnSafeZone(robotNewPos))
         {
             Destroy(gameObject);
+            GlobalGameState.destroyCount += 1;
+            Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}, , destroyCount: {GlobalGameState.destroyCount}");
             if (playerMovement != null)
             {
                 playerMovement.HasControl = true;

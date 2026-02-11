@@ -15,6 +15,8 @@ public class Level4StartCheck : MonoBehaviour
         GlobalGameState.lazerHitRobot2 = GlobalGameState.stateSaver[2];
         GlobalGameState.isRobotHacked2 = GlobalGameState.stateSaver[3];
         GlobalGameState.isRobotSaved = GlobalGameState.stateSaver[4];
+        GlobalGameState.isEachLevelTalked = false;
+        GlobalGameState.isEachLevelHacked = false;
         
         if (GlobalGameState.lazerHitRobot)
         {

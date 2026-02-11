@@ -7,5 +7,7 @@ public class Level1StartCheck : MonoBehaviour
         GlobalGameState.isLevel1 = true;
         GlobalGameState.lazerHitRobot = false;
         GlobalGameState.isRobotHacked = false;
+        GlobalGameState.isEachLevelTalked = false;
+        GlobalGameState.isEachLevelHacked = false;
     }
 }

@@ -3,6 +3,7 @@ using DialogueScripts;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Actions : MonoBehaviour
 {
@@ -99,36 +100,72 @@ public class Actions : MonoBehaviour
         dialogueManager.StartDialogue(dialogue);
         Debug.Log("[Actions] Talk");
         panel?.ClosePanel("[Actions] Close after Talk");
+        if (GlobalGameState.isFinalLevel)
+        {
+            SceneManager.LoadScene("PrototypeLevel5");
+        }
+
         if (GlobalGameState.isLevel0) { _moveRobot = true; }
         if (GlobalGameState.isLevel1) { _hiddenActivated = true; }
         if (GlobalGameState.isLevel2 || GlobalGameState.isLevel3) { _goToPressurePlate = true; }
+        DialogueHolder DH = gameObject.GetComponent<DialogueHolder>();
 
-        if (gameObject.name == "Robot" & GlobalGameState.isRobotTalked == false)
+        if (GlobalGameState.isEachLevelTalked == false & GlobalGameState.isLevel4 == false & DH.dialogue.hacked == false)
         {
-            GlobalGameState.isRobotTalked = true;
+                GlobalGameState.isEachLevelTalked = true;
+                GlobalGameState.talkCount += 1;
+        }
+        
+        if (gameObject.name == "Robot" & GlobalGameState.isEachLevelTalked == false & GlobalGameState.isLevel4 & DH.dialogue.hacked == false)
+        {
+            GlobalGameState.isEachLevelTalked = true;
             GlobalGameState.talkCount += 1;
         }
-        if (gameObject.name == "Robot (1)" & GlobalGameState.isRobotTalked2 == false)
+        if (gameObject.name == "Robot (1)" & GlobalGameState.isEachLevelTalked2 == false & GlobalGameState.isLevel4 & DH.dialogue.hacked == false)
         {
-            GlobalGameState.isRobotTalked2 = true;
+            GlobalGameState.isEachLevelTalked2 = true;
             GlobalGameState.talkCount += 1;
         }
         
-        Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}");
+        
+        
+        
+        Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}, , destroyCount: {GlobalGameState.destroyCount}");
     }
 
     private void OnHack()
     {
         dialogue.hacked = true;
+        if (GlobalGameState.isFinalLevel)
+        {
+            GlobalGameState.HackAI = true;
+            SceneManager.LoadScene("PrototypeLevel5");
+        }
+        
+        if (GlobalGameState.isEachLevelHacked == false & GlobalGameState.isLevel4 == false)
+        {
+            GlobalGameState.isEachLevelHacked = true;
+            GlobalGameState.hackCount += 1;
+        }
+        
+        if (gameObject.name == "Robot" & GlobalGameState.isEachLevelHacked == false & GlobalGameState.isLevel4)
+        {
+            GlobalGameState.isEachLevelHacked = true;
+            GlobalGameState.hackCount += 1;
+        }
+        if (gameObject.name == "Robot (1)" & GlobalGameState.isEachLevelHacked2 == false & GlobalGameState.isLevel4) 
+        {
+            GlobalGameState.isEachLevelHacked2 = true;
+            GlobalGameState.hackCount += 1;
+        }
+        
         if (gameObject.name == "Robot" & GlobalGameState.isRobotHacked == false)
         {
             GlobalGameState.isRobotHacked = true;
-            GlobalGameState.hackCount += 1;
         }
-        if (gameObject.name == "Robot (1)" & GlobalGameState.isRobotHacked2 == false)
+        if (gameObject.name == "Robot (1)" & GlobalGameState.isRobotHacked2 == false) 
         {
             GlobalGameState.isRobotHacked2 = true;
-            GlobalGameState.hackCount += 1;
         }
 
         if (!HackManager.Instance) { Debug.LogWarning("[Actions] HackManager missing."); return; }
@@ -137,7 +174,7 @@ public class Actions : MonoBehaviour
         panel?.ClosePanel("[Actions] Close before Hack");
         HackManager.Instance.BeginHack(npcMovement);
         
-        Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}");
+        Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}, , destroyCount: {GlobalGameState.destroyCount}");
     }
 
     // === Space bar submit support ===

@@ -55,7 +55,10 @@ public class DeathTile2D : MonoBehaviour
     {
         // Destroy robot
         Destroy(robot);
-
+        
+        GlobalGameState.destroyCount += 1;
+        
+        Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}, , destroyCount: {GlobalGameState.destroyCount}");
         // Return control to the player
         RestorePlayerControl();
     }

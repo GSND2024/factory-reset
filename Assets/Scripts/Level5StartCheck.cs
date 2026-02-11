@@ -74,7 +74,42 @@ public class Level5StartCheck : MonoBehaviour
 
             
         }*/
-        endingText.text = "On to the next level!";
+
+        if (GlobalGameState.HackAI)
+        {
+            endingText.text = "Control End";
+        }
+        else
+        {
+            if (GlobalGameState.talkCount == 7 & GlobalGameState.hackCount == 0 & GlobalGameState.destroyCount == 0)
+            {
+                endingText.text = "Talk End";
+            
+            }
+        
+            else if (GlobalGameState.hackCount == 7)
+            {
+                endingText.text = "Hack End";
+            }
+        
+            else if (GlobalGameState.destroyCount == 4)
+            {
+                endingText.text = "Destroy End";
+            }
+        
+            else if (GlobalGameState.talkCount == 0 & GlobalGameState.hackCount == 0 & GlobalGameState.destroyCount == 0)
+            {
+                endingText.text = "Escape End";
+            }
+
+            else
+            {
+                endingText.text = "Normal End";
+            }
+        }
+        
+
+
     }
     
 }
