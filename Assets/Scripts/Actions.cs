@@ -92,6 +92,14 @@ public class Actions : MonoBehaviour
                 transform.position = new Vector3(3.85f, -0.684f, 0f);
             }
         }
+
+        else if (GlobalGameState.isLevel7)
+        {
+            if (!GlobalGameState.isRobotHacked && !GlobalGameState.dialogueActive && _goToPressurePlate)
+            {
+                transform.position = new Vector3(-6.5f, 1.5f, 0f);
+            }
+        }
     }
 
     private void OnTalk()
@@ -107,7 +115,7 @@ public class Actions : MonoBehaviour
 
         if (GlobalGameState.isLevel0) { _moveRobot = true; }
         if (GlobalGameState.isLevel1) { _hiddenActivated = true; }
-        if (GlobalGameState.isLevel2 || GlobalGameState.isLevel3) { _goToPressurePlate = true; }
+        if (GlobalGameState.isLevel2 || GlobalGameState.isLevel3 || GlobalGameState.isLevel7) { _goToPressurePlate = true; }
         DialogueHolder DH = gameObject.GetComponent<DialogueHolder>();
 
         if (GlobalGameState.isEachLevelTalked == false & GlobalGameState.isLevel4 == false & DH.dialogue.hacked == false)

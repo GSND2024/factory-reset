@@ -35,24 +35,50 @@ public class GridMovement : MonoBehaviour
     {
         if (IsPaused || !HasControl || _isMoving) return;
 
+        if (GlobalGameState.isLevel7 && HasControl && Input.GetKeyDown(KeyCode.X))
+        {
+            TurnSystem.ResolveTurn(this, Vector2.zero, true);
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             direction = Vector2.up;
+            if (GlobalGameState.isLevel7)
+            {
+                TurnSystem.ResolveTurn(this, direction, false);
+                return;
+            }
             TryMove(direction);
         }
         else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             direction = Vector2.down;
+            if (GlobalGameState.isLevel7)
+            {
+                TurnSystem.ResolveTurn(this, direction, false);
+                return;
+            }
             TryMove(direction);
         }
         else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             direction = Vector2.left;
+            if (GlobalGameState.isLevel7)
+            {
+                TurnSystem.ResolveTurn(this, direction, false);
+                return;
+            }
             TryMove(direction);
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             direction = Vector2.right;
+            if (GlobalGameState.isLevel7)
+            {
+                TurnSystem.ResolveTurn(this, direction, false);
+                return;
+            }
             TryMove(direction);
         }
         else if (Input.GetKeyDown(KeyCode.R) )
@@ -198,4 +224,15 @@ public class GridMovement : MonoBehaviour
         }
 
     }
+
+    public void TryMoveFromLevel7(Vector2 dir)
+    {
+        if (!GlobalGameState.isLevel7) return;
+        if (IsPaused) return;
+        if (_isMoving) return;
+
+        // Ignore HasControl here so TurnSystem can apply the move after platform carry.
+        TryMove(dir);
+    }
+
 }

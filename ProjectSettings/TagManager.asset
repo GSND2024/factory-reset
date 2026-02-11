@@ -21,9 +21,9 @@ TagManager:
   - 
   - CopyZone
   - SafeZone
-  - 
-  - 
-  - 
+  - Player
+  - Robot
+  - Platform
   - 
   - 
   - 
