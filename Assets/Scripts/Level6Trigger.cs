@@ -8,7 +8,7 @@ public class Level6Trigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GlobalGameState.isLevel4 = false;
-            SceneManager.LoadScene("PrototypeLevel7");
+            SceneManager.LoadScene("PrototypeLevel6");
         }
     }
 }
