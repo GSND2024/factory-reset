@@ -3231,7 +3231,6 @@ GameObject:
   - component: {fileID: 1703441942}
   - component: {fileID: 1703441941}
   - component: {fileID: 1703441944}
-  - component: {fileID: 1703441945}
   - component: {fileID: 1703441946}
   m_Layer: 0
   m_Name: End
@@ -3359,18 +3358,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1703441945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703441940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610d806a2df6a4e759219e816ed752a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Level3Trigger
 --- !u!114 &1703441946
 MonoBehaviour:
   m_ObjectHideFlags: 0
