@@ -69,7 +69,15 @@ public class Actions : MonoBehaviour
         if (hiddenButton && !GlobalGameState.dialogueActive && _hiddenActivated && !GlobalGameState.isRobotHacked)
             hiddenButton.SetActive(true);
 
-        if (GlobalGameState.isLevel3)
+        if (GlobalGameState.isLevel7)
+        {
+            if (!GlobalGameState.isPurpleHacked && !GlobalGameState.dialogueActive && _goToPressurePlate)
+            {
+                Debug.Log("here");
+                transform.position = new Vector3(-4.56f, 2.1f, 0f);
+            }
+        }
+        else if (GlobalGameState.isLevel3)
         {
             if (!GlobalGameState.isRobotHacked2 && !GlobalGameState.dialogueActive && _goToPressurePlate)
             {
@@ -90,14 +98,6 @@ public class Actions : MonoBehaviour
             if (!GlobalGameState.isRobotHacked && !GlobalGameState.dialogueActive && _moveRobot)
             {
                 transform.position = new Vector3(3.85f, -0.684f, 0f);
-            }
-        }
-
-        else if (GlobalGameState.isLevel7)
-        {
-            if (!GlobalGameState.isRobotHacked && !GlobalGameState.dialogueActive && _goToPressurePlate)
-            {
-                transform.position = new Vector3(-6.5f, 1.5f, 0f);
             }
         }
     }
@@ -174,6 +174,18 @@ public class Actions : MonoBehaviour
         if (gameObject.name == "Robot (1)" & GlobalGameState.isRobotHacked2 == false) 
         {
             GlobalGameState.isRobotHacked2 = true;
+        }
+        if (gameObject.name == "Purple" & GlobalGameState.isPurpleHacked == false) 
+        {
+            GlobalGameState.isPurpleHacked = true;
+        }
+        if (gameObject.name == "Yellow" & GlobalGameState.isYellowHacked == false) 
+        {
+            GlobalGameState.isYellowHacked = true;
+        }
+        if (gameObject.name == "White" & GlobalGameState.isWhiteHacked == false) 
+        {
+            GlobalGameState.isWhiteHacked = true;
         }
 
         if (!HackManager.Instance) { Debug.LogWarning("[Actions] HackManager missing."); return; }

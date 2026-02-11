@@ -21,7 +21,7 @@ public class MovingPlatformTurnBased2D : MonoBehaviour
     public int pauseTurnsAtEnds = 1;
 
     [Header("Grid")]
-    public float gridSize = 1f;
+    public float gridSize = .704f;
 
     [Header("Z Lock")]
     public float lockedZ = -2f;
@@ -144,13 +144,20 @@ public class MovingPlatformTurnBased2D : MonoBehaviour
 
     private void AutoScalePassengerRadius()
     {
-        Vector3 scale = transform.lossyScale;
+        BoxCollider2D box = GetComponent<BoxCollider2D>();
+        if (box == null)
+        {
+            Debug.LogWarning("MovingPlatformTurnBased2D: No BoxCollider2D found.");
+            return;
+        }
 
-        // Use the smaller dimension so we only grab riders
-        // that are clearly centered on THIS platform
-        float minDimension = Mathf.Min(scale.x, scale.y);
+        // Get the platform's real size in world units
+        Vector2 worldSize = Vector2.Scale(box.size, transform.lossyScale);
 
-        // Quarter-tile radius + small padding
-        passengerCheckRadius = (minDimension * gridSize) * 0.25f + passengerRadiusPadding;
+        // Use the smaller dimension so we don't overlap neighboring platforms
+        float minWorldDimension = Mathf.Min(worldSize.x, worldSize.y);
+
+        // Quarter of the platform width + small padding
+        passengerCheckRadius = (minWorldDimension * 0.25f) + passengerRadiusPadding;
     }
 }

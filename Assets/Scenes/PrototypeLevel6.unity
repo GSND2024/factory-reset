@@ -4182,7 +4182,7 @@ GameObject:
   - component: {fileID: 1969039967}
   - component: {fileID: 1969039968}
   m_Layer: 0
-  m_Name: Robot
+  m_Name: Yellow
   m_TagString: Robot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

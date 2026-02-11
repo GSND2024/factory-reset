@@ -8,8 +8,11 @@ public static class GlobalGameState
     public static bool lazerHitRobot2 = false;
     public static bool dialogueActive = false;
     public static bool swallowNextSpace =  false;
-    public static bool isRobotHacked =  false;
-    public static bool isRobotHacked2 =  false;
+    public static bool isRobotHacked =  false; //levels 1+2
+    public static bool isRobotHacked2 =  false; //level 3
+    public static bool isYellowHacked =  false; //level 5
+    public static bool isPurpleHacked =  false; //level 6
+    public static bool isWhiteHacked =  false; //level 0
     public static bool isRobotSaved = false;
     public static bool isLevel0 = false;
     public static bool isLevel1 = false;

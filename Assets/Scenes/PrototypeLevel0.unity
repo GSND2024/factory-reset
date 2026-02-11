@@ -480,6 +480,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DeathTile2D
   playerTag: Player
   robotTag: Robot
+  platformLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  platformCheckRadius: 0.2
   restartDelay: 0
   disablePlayerOnDeath: 1
 --- !u!61 &217667226
@@ -3569,7 +3573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_Name
-      value: Robot
+      value: White
       objectReference: {fileID: 0}
     - target: {fileID: 3141195901561466992, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_IsActive
