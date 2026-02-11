@@ -81,7 +81,7 @@ public class Actions : MonoBehaviour
         {
             if (!GlobalGameState.isRobotHacked && !GlobalGameState.dialogueActive && _goToPressurePlate)
             {
-                transform.position = new Vector3(5.5f, 3.5f, 0f);
+                transform.position = new Vector3(3.9f, 0f, 0f);
             }
         }
 
@@ -89,7 +89,7 @@ public class Actions : MonoBehaviour
         {
             if (!GlobalGameState.isRobotHacked && !GlobalGameState.dialogueActive && _moveRobot)
             {
-                transform.position = new Vector3(6.5f, -1.5f, 0f);
+                transform.position = new Vector3(3.85f, -0.684f, 0f);
             }
         }
     }
