@@ -35,4 +35,5 @@ public static class GlobalGameState
     public static int talkCount = 0;
     public static int hackCount = 0;
     public static int destroyCount = 0;
+    public static int[] dataCountSaver = {0, 0, 0};
 }

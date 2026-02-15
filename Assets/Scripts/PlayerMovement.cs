@@ -83,8 +83,13 @@ public class GridMovement : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.R) )
         {
-            if(!GlobalGameState.dialogueActive)
+            if (!GlobalGameState.dialogueActive)
+            {
+                GlobalGameState.talkCount = GlobalGameState.dataCountSaver[0];
+                GlobalGameState.hackCount = GlobalGameState.dataCountSaver[1];
+                GlobalGameState.destroyCount = GlobalGameState.dataCountSaver[2];
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 

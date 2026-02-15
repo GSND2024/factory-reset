@@ -49,7 +49,12 @@ public class DeathTile2D : MonoBehaviour
                 other.gameObject.SetActive(false);
 
             if (restartDelay <= 0f)
+            {
+                GlobalGameState.talkCount = GlobalGameState.dataCountSaver[0];
+                GlobalGameState.hackCount = GlobalGameState.dataCountSaver[1];
+                GlobalGameState.destroyCount = GlobalGameState.dataCountSaver[2];
                 RestartScene();
+            }
             else
                 Invoke(nameof(RestartScene), restartDelay);
 

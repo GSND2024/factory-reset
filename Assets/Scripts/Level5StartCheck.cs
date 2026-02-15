@@ -81,18 +81,18 @@ public class Level5StartCheck : MonoBehaviour
         }
         else
         {
-            if (GlobalGameState.talkCount == 7 & GlobalGameState.hackCount == 0 & GlobalGameState.destroyCount == 0)
+            if (GlobalGameState.talkCount == 8 & GlobalGameState.hackCount == 0 & GlobalGameState.destroyCount == 0)
             {
                 endingText.text = "Talk End";
             
             }
         
-            else if (GlobalGameState.hackCount == 7)
+            else if (GlobalGameState.hackCount == 8)
             {
                 endingText.text = "Hack End";
             }
         
-            else if (GlobalGameState.destroyCount == 4)
+            else if (GlobalGameState.destroyCount == 5)
             {
                 endingText.text = "Destroy End";
             }

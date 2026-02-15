@@ -6,6 +6,12 @@ public class Level4StartCheck : MonoBehaviour
     public GameObject robot;
     public GameObject robot2;
 
+    private void Awake()
+    {
+        GlobalGameState.dataCountSaver[0] = GlobalGameState.talkCount;
+        GlobalGameState.dataCountSaver[1] = GlobalGameState.hackCount;
+        GlobalGameState.dataCountSaver[2] = GlobalGameState.destroyCount;
+    }
     private void Start()
     {
         GlobalGameState.isLevel3 = false;
