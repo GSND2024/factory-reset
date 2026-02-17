@@ -3621,6 +3621,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
+      propertyPath: enableLatching
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.55184

@@ -97,7 +97,7 @@ public class Actions : MonoBehaviour
         {
             if (!GlobalGameState.isWhiteHacked && !GlobalGameState.dialogueActive && _moveRobot)
             {
-                transform.position = new Vector3(3.85f, -0.684f, 0f);
+                transform.position = new Vector3(3.15f, -0.684f, 0f);
             }
         }
     }

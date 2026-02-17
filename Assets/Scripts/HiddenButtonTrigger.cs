@@ -9,10 +9,11 @@ public class HiddenButtonTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            audioSource.Play();
 
-            if (lazer)
+            if (lazer) {
                 lazer.SetActive(false);
+                audioSource.Play();
+            }
             
             gameObject.SetActive(false);
         }

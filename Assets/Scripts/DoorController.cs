@@ -18,7 +18,7 @@ public class DoorLatchController : MonoBehaviour
     [Tooltip("If true, once opened it stays open even if plates are released.")]
     public bool permanentOnceOpened = true;
 
-    [SerializeField] private bool isOpen;
+    [SerializeField] public bool isOpen;
     
     [SerializeField] private AudioSource audioSource;
 
@@ -88,13 +88,22 @@ public class DoorLatchController : MonoBehaviour
         }
         else
         {
-            if (audioSource != null)
-            {
-                audioSource.Play();
-            }
             bool openNow = RequirementMet();
-            isOpen = openNow;
-            doorToDisable.SetActive(!openNow); // toggle with plate states
+
+            // Only react if the state actually changes
+            if (!isOpen && openNow)
+            {
+                if (audioSource != null)
+                {
+                    audioSource.Play();
+                }
+            }
+
+            if (openNow != isOpen)
+            {
+                isOpen = openNow;
+                doorToDisable.SetActive(!openNow);
+            }
         }
     }
 }

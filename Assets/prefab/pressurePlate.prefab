@@ -154,6 +154,9 @@ MonoBehaviour:
   - Player
   - Robot
   - Box
+  enableLatching: 1
+  latchDoor: {fileID: 0}
   indicator: {fileID: 3747080454403527188}
   idleColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   pressedColor: {r: 0.24759701, g: 0.49056602, b: 0.24759701, a: 1}
+  lockedColor: {r: 0.249644, g: 0.3207547, b: 0.249644, a: 1}

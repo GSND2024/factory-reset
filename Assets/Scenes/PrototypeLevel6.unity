@@ -3842,6 +3842,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
+      propertyPath: enableLatching
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.57
@@ -4372,6 +4376,8 @@ MonoBehaviour:
   blockingLayer:
     serializedVersion: 2
     m_Bits: 64
+  gridOrigin: {x: -0.342, y: -0.01}
+  autoComputeGridOriginFromStart: 1
   HasControl: 0
 --- !u!114 &1969039967
 MonoBehaviour:
