@@ -95,7 +95,7 @@ public class Actions : MonoBehaviour
 
         else if (GlobalGameState.isLevel0)
         {
-            if (!GlobalGameState.isRobotHacked && !GlobalGameState.dialogueActive && _moveRobot)
+            if (!GlobalGameState.isWhiteHacked && !GlobalGameState.dialogueActive && _moveRobot)
             {
                 transform.position = new Vector3(3.85f, -0.684f, 0f);
             }
