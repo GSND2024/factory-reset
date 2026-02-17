@@ -10,6 +10,7 @@ TagManager:
   - Laser
   - Music
   - SFX
+  - Sign
   layers:
   - Default
   - TransparentFX
