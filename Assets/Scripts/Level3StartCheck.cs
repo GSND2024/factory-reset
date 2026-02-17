@@ -16,5 +16,6 @@ public class Level3StartCheck : MonoBehaviour
         GlobalGameState.isLevel3 = true;
         GlobalGameState.isEachLevelTalked = false;
         GlobalGameState.isEachLevelHacked = false;
+        GlobalGameState.isRobotHacked2 = false;
     }
 }

@@ -17,6 +17,7 @@ public class Level0StartCheck : MonoBehaviour
         GlobalGameState.isRobotHacked = false;
         GlobalGameState.isEachLevelTalked = false;
         GlobalGameState.isEachLevelHacked = false;
+        GlobalGameState.isWhiteHacked = false;
     }
 
 }

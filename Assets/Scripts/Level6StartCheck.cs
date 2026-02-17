@@ -14,5 +14,6 @@ public class Level6StartCheck : MonoBehaviour
         GlobalGameState.isLevel6 = true;
         GlobalGameState.isEachLevelTalked = false;
         GlobalGameState.isEachLevelHacked = false;
+        GlobalGameState.isYellowHacked = false;
     }
 }
