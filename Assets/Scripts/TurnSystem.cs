@@ -3,38 +3,38 @@ using UnityEngine;
 
 public static class TurnSystem
 {
-    // Platforms listen to this. When fired, they move one step and carry riders.
     public static event Action OnPlatformStep;
 
-    // True while TurnSystem is resolving a turn (prevents re-entrancy)
-    public static bool IsResolving { get; private set; }
-
-    // Stores what the actor intended for THIS turn
-    private static Vector2 _pendingDir;
-    private static bool _pendingWasWait;
-    private static GridMovement _pendingActor;
+    // Set these from a scene initializer (TurnSystemInit) in Level 7
+    public static LayerMask platformLayerMask;
+    public static float platformDetectRadius = 0.05f;
 
     public static void ResolveTurn(GridMovement actor, Vector2 intendedDir, bool wasWait)
     {
-        if (IsResolving) return;
+        if (!GlobalGameState.isLevel7) return;
         if (actor == null) return;
 
-        IsResolving = true;
+        // Preview carry delta from the platform currently under the actor
+        Vector2 carryDelta = Vector2.zero;
+        MovingPlatformTurnBased2D platform = FindPlatformUnder(actor.transform.position);
+        if (platform != null)
+            carryDelta = platform.PreviewDeltaWorldThisTurn();
 
-        _pendingActor = actor;
-        _pendingDir = intendedDir;
-        _pendingWasWait = wasWait;
-
-        // 1) Platforms move and carry first
+        // Start platforms moving immediately (they animate themselves)
         OnPlatformStep?.Invoke();
 
-        // 2) Then actor performs intended action
-        if (!_pendingWasWait)
-        {
-            _pendingActor.TryMoveFromLevel7(_pendingDir);
-        }
+        // Start actor animation immediately (carry then intended move) over the same duration as platforms
+        float platformDuration = (platform != null) ? platform.moveDuration : 0.1f;
+        actor.BeginLevel7CompositeMove(carryDelta, intendedDir, wasWait, platformDuration);
+    }
 
-        _pendingActor = null;
-        IsResolving = false;
+    private static MovingPlatformTurnBased2D FindPlatformUnder(Vector2 actorPos)
+    {
+        if (platformLayerMask.value == 0) return null;
+
+        Collider2D hit = Physics2D.OverlapCircle(actorPos, platformDetectRadius, platformLayerMask);
+        if (hit == null) return null;
+
+        return hit.GetComponentInParent<MovingPlatformTurnBased2D>();
     }
 }

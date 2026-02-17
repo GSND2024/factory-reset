@@ -8,6 +8,10 @@ public class GridMovement : MonoBehaviour
     [SerializeField] private float moveDuration = 0.1f;
     [SerializeField] private float gridSize = 1f;
     [SerializeField] private LayerMask blockingLayer;
+    [SerializeField] private Vector2 gridOrigin = new Vector2(-0.342f, -0.01f);
+    [SerializeField] private bool autoComputeGridOriginFromStart = true;
+
+
 
     private bool _isMoving = false;
 
@@ -30,6 +34,16 @@ public class GridMovement : MonoBehaviour
         TryMove(dir);
     }
 
+    private void Awake()
+    {
+        if (GlobalGameState.isLevel7 && autoComputeGridOriginFromStart)
+        {
+            Vector3 p = transform.position;
+            float ox = p.x - Mathf.Round(p.x / gridSize) * gridSize;
+            float oy = p.y - Mathf.Round(p.y / gridSize) * gridSize;
+            gridOrigin = new Vector2(ox, oy);
+        }
+    }
 
     private void Update()
     {
@@ -81,7 +95,7 @@ public class GridMovement : MonoBehaviour
             }
             TryMove(direction);
         }
-        else if (Input.GetKeyDown(KeyCode.R) )
+        else if (Input.GetKeyDown(KeyCode.R))
         {
             if (!GlobalGameState.dialogueActive)
             {
@@ -97,25 +111,20 @@ public class GridMovement : MonoBehaviour
     {
         Vector2 targetPos = (Vector2)transform.position + direction * gridSize;
 
-        // ---- NEW: Block if a Player/Robot is already in the target cell (no layer dependence) ----
-        // Small radius to sample the grid cell center; tweak if your cells/colliders are larger.
         const float cellCheckRadius = 0.15f;
         var charHits = Physics2D.OverlapCircleAll(targetPos, cellCheckRadius);
         foreach (var ch in charHits)
         {
             if (!ch) continue;
-            if (ch.isTrigger) continue; // ignore trigger-only sensors
-            if (IsSelfOrChild(ch.transform, transform)) continue; // don't block on our own collider
+            if (ch.isTrigger) continue;
+            if (IsSelfOrChild(ch.transform, transform)) continue;
 
             if (ch.CompareTag("Player") || ch.CompareTag("Robot"))
             {
-                // Someone's standing there—no entry.
                 return;
             }
         }
-        // --------------------------------------------------------------------
 
-        // Existing blocking logic (walls/solids/lasers/pushables)
         var hits = Physics2D.OverlapCircleAll(targetPos, 0.1f, blockingLayer);
 
         bool blockedBySolid = false;
@@ -128,7 +137,6 @@ public class GridMovement : MonoBehaviour
             bool isLaser = h.CompareTag("Laser");
             bool iAmRobot = CompareTag("Robot");
 
-            // LASER RULES: robots can enter lasers; others cannot.
             if (isLaser)
             {
                 if (!iAmRobot)
@@ -136,7 +144,6 @@ public class GridMovement : MonoBehaviour
                     blockedBySolid = true;
                     break;
                 }
-                // if robot, allow and continue
                 continue;
             }
 
@@ -155,12 +162,10 @@ public class GridMovement : MonoBehaviour
 
         if (blockedBySolid) return;
 
-        // Handle pushing a box (still respects characters in the box's target cell)
         if (pushableInFront != null)
         {
             Vector2 boxTarget = (Vector2)pushableInFront.transform.position + direction * gridSize;
 
-            // Don't push into a Player/Robot either.
             var charAtBoxTarget = Physics2D.OverlapCircleAll(boxTarget, cellCheckRadius);
             foreach (var ch in charAtBoxTarget)
             {
@@ -175,7 +180,7 @@ public class GridMovement : MonoBehaviour
             foreach (var h in boxHits)
             {
                 if (!h) continue;
-                if (h.CompareTag("Laser")) continue; // allow if that's intended
+                if (h.CompareTag("Laser")) continue;
                 if (h.isTrigger) continue;
                 boxBlocked = true;
                 break;
@@ -227,7 +232,6 @@ public class GridMovement : MonoBehaviour
         {
             OnMoveFinishedLevel6?.Invoke(targetPos);
         }
-
     }
 
     public void TryMoveFromLevel7(Vector2 dir)
@@ -236,8 +240,171 @@ public class GridMovement : MonoBehaviour
         if (IsPaused) return;
         if (_isMoving) return;
 
-        // Ignore HasControl here so TurnSystem can apply the move after platform carry.
         TryMove(dir);
     }
+
+    // -------------------------
+    // LEVEL 7: composite movement (platform carry + intended move) with no input lag
+    // -------------------------
+
+    public void BeginLevel7CompositeMove(Vector2 carryDeltaWorld, Vector2 intendedDir, bool wasWait, float platformDuration)
+    {
+        if (!GlobalGameState.isLevel7) return;
+        if (IsPaused) return;
+        if (_isMoving) return;
+
+        StartCoroutine(Level7CompositeMoveCoroutine(carryDeltaWorld, intendedDir, wasWait, platformDuration));
+    }
+
+    private IEnumerator Level7CompositeMoveCoroutine(Vector2 carryDeltaWorld, Vector2 intendedDir, bool wasWait, float platformDuration)
+    {
+        _isMoving = true;
+
+        float half = platformDuration * 0.5f;
+        if (half < 0f) half = 0f;
+
+        Vector2 start = transform.position;
+        Vector2 carried = start + carryDeltaWorld;
+
+        // Phase A: immediately start moving with the platform (matches platform animation start)
+        yield return StartCoroutine(LerpTo(start, carried, half));
+
+        // Phase B: intended move (or wait)
+        Vector2 final = carried;
+
+        if (!wasWait && intendedDir != Vector2.zero)
+        {
+            // Evaluate move from the carried position using the SAME rules as TryMove,
+            // but without instantly teleporting or starting a second coroutine.
+            Vector2 computed;
+            if (EvaluateMoveFromPosition(carried, intendedDir, out computed))
+            {
+                final = computed;
+            }
+            else
+            {
+                final = carried; // blocked, so stay
+            }
+        }
+
+        yield return StartCoroutine(LerpTo(carried, final, half));
+
+        transform.position = SnapToGrid(final);
+        _isMoving = false;
+    }
+
+    private IEnumerator LerpTo(Vector2 from, Vector2 to, float duration)
+    {
+        if (duration <= 0f)
+        {
+            transform.position = to;
+            yield break;
+        }
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            transform.position = Vector2.Lerp(from, to, t);
+            yield return null;
+        }
+
+        transform.position = SnapToGrid(to);
+    }
+
+    private bool EvaluateMoveFromPosition(Vector2 fromPos, Vector2 dir, out Vector2 targetPos)
+    {
+        targetPos = fromPos + dir * gridSize;
+
+        const float cellCheckRadius = 0.15f;
+
+        // Block if Player/Robot occupies the target cell
+        var charHits = Physics2D.OverlapCircleAll(targetPos, cellCheckRadius);
+        foreach (var ch in charHits)
+        {
+            if (!ch) continue;
+            if (ch.isTrigger) continue;
+            if (IsSelfOrChild(ch.transform, transform)) continue;
+
+            if (ch.CompareTag("Player") || ch.CompareTag("Robot"))
+                return false;
+        }
+
+        // Existing blocking logic
+        var hits = Physics2D.OverlapCircleAll(targetPos, 0.1f, blockingLayer);
+
+        bool blockedBySolid = false;
+        Pushable pushableInFront = null;
+
+        foreach (var h in hits)
+        {
+            if (!h) continue;
+
+            bool isLaser = h.CompareTag("Laser");
+            bool iAmRobot = CompareTag("Robot");
+
+            if (isLaser)
+            {
+                if (!iAmRobot) return false;
+                continue;
+            }
+
+            if (h.isTrigger) continue;
+
+            var p = h.GetComponentInParent<Pushable>();
+            if (p != null)
+            {
+                pushableInFront = p;
+                continue;
+            }
+
+            blockedBySolid = true;
+            break;
+        }
+
+        if (blockedBySolid) return false;
+
+        // Handle pushing
+        if (pushableInFront != null)
+        {
+            Vector2 boxTarget = (Vector2)pushableInFront.transform.position + dir * gridSize;
+
+            var charAtBoxTarget = Physics2D.OverlapCircleAll(boxTarget, cellCheckRadius);
+            foreach (var ch in charAtBoxTarget)
+            {
+                if (!ch) continue;
+                if (ch.isTrigger) continue;
+                if (ch.CompareTag("Player") || ch.CompareTag("Robot"))
+                    return false;
+            }
+
+            var boxHits = Physics2D.OverlapCircleAll(boxTarget, 0.1f, blockingLayer);
+            bool boxBlocked = false;
+            foreach (var h in boxHits)
+            {
+                if (!h) continue;
+                if (h.CompareTag("Laser")) continue;
+                if (h.isTrigger) continue;
+                boxBlocked = true;
+                break;
+            }
+            if (boxBlocked) return false;
+
+            pushableInFront.Push(dir);
+        }
+
+        return true;
+    }
+
+    private Vector3 SnapToGrid(Vector3 pos)
+    {
+        if (!GlobalGameState.isLevel7) return pos;
+
+        float x = Mathf.Round((pos.x - gridOrigin.x) / gridSize) * gridSize + gridOrigin.x;
+        float y = Mathf.Round((pos.y - gridOrigin.y) / gridSize) * gridSize + gridOrigin.y;
+        return new Vector3(x, y, pos.z);
+    }
+
 
 }

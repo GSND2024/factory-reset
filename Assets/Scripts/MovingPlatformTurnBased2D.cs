@@ -1,27 +1,21 @@
 using UnityEngine;
+using System.Collections;
 
 public class MovingPlatformTurnBased2D : MonoBehaviour
 {
-    public enum MoveAxis
-    {
-        Horizontal,
-        Vertical
-    }
+    public enum MoveAxis { Horizontal, Vertical }
 
     [Header("Movement Pattern")]
     public MoveAxis moveAxis = MoveAxis.Horizontal;
-
-    [Tooltip("How many tiles to move in one direction before reversing.")]
     public int stepsOneWay = 5;
-
-    [Tooltip("If true, starts moving Right (Horizontal) or Up (Vertical). If false, starts Left/Down.")]
     public bool startPositiveDirection = true;
-
-    [Tooltip("Pause this many turns when reaching either end (before reversing).")]
     public int pauseTurnsAtEnds = 1;
 
     [Header("Grid")]
-    public float gridSize = .704f;
+    public float gridSize = 1f;
+
+    [Header("Movement Timing")]
+    public float moveDuration = 0.1f;
 
     [Header("Z Lock")]
     public float lockedZ = -2f;
@@ -30,16 +24,18 @@ public class MovingPlatformTurnBased2D : MonoBehaviour
     public LayerMask blockingLayer;
     public float blockCheckRadius = 0.10f;
 
-    [Header("Passenger Carry")]
-    public float passengerCheckRadius = 0.20f;
+    [Header("Passenger Detection")]
+    public float passengerCheckRadius = 0.2f;
     public LayerMask passengerLayerMask;
-
-    [Tooltip("Small padding added to auto radius.")]
-    public float passengerRadiusPadding = 0.05f;
+    public float passengerRadiusPadding = 0.02f;
 
     private int _progress;
     private int _dirSign;
     private int _pauseRemaining;
+    private bool _isMoving;
+
+    private BoxCollider2D _box;
+    private Vector2 _riderCheckCenter;
 
     private void Awake()
     {
@@ -49,7 +45,7 @@ public class MovingPlatformTurnBased2D : MonoBehaviour
 
         _dirSign = startPositiveDirection ? 1 : -1;
 
-        AutoScalePassengerRadius();
+        CacheColliderAndComputeRiderRadius();
     }
 
     private void OnEnable()
@@ -62,24 +58,38 @@ public class MovingPlatformTurnBased2D : MonoBehaviour
         TurnSystem.OnPlatformStep -= StepPlatform;
     }
 
+    public Vector2 PreviewDeltaWorldThisTurn()
+    {
+        if (_isMoving) return Vector2.zero;
+
+        if (_pauseRemaining > 0) return Vector2.zero;
+
+        Vector2Int stepDir = GetStepDir();
+        Vector2 deltaXY = (Vector2)stepDir * gridSize;
+
+        Vector2 targetXY = (Vector2)transform.position + deltaXY;
+        if (!CanMoveTo(targetXY)) return Vector2.zero;
+
+        return deltaXY;
+    }
+
     private void StepPlatform()
     {
+        if (_isMoving) return;
+
         if (_pauseRemaining > 0)
         {
             _pauseRemaining--;
             return;
         }
 
+        CacheColliderAndComputeRiderRadius();
+
         Vector2Int stepDir = GetStepDir();
+        Vector2 deltaXY = (Vector2)stepDir * gridSize;
 
-        // Snapshot riders BEFORE moving
-        Collider2D[] riders = Physics2D.OverlapCircleAll(
-            (Vector2)transform.position,
-            passengerCheckRadius,
-            passengerLayerMask
-        );
-
-        Vector2 targetXY = (Vector2)transform.position + (Vector2)stepDir * gridSize;
+        Vector2 startXY = transform.position;
+        Vector2 targetXY = startXY + deltaXY;
 
         if (!CanMoveTo(targetXY))
         {
@@ -87,18 +97,89 @@ public class MovingPlatformTurnBased2D : MonoBehaviour
             return;
         }
 
-        // Move platform (Z locked)
-        transform.position = new Vector3(targetXY.x, targetXY.y, lockedZ);
+        // Snapshot riders BEFORE moving
+        Collider2D[] riders = Physics2D.OverlapCircleAll(_riderCheckCenter, passengerCheckRadius, passengerLayerMask);
 
-        // Carry riders AFTER moving (compute delta from stepDir here)
-        CarryRiders(riders, stepDir);
+        StartCoroutine(MovePlatformSmooth(startXY, targetXY, riders));
 
         _progress++;
-
         if (_progress >= stepsOneWay)
         {
             ReverseDirectionAndPause();
         }
+    }
+
+    private IEnumerator MovePlatformSmooth(Vector2 startXY, Vector2 targetXY, Collider2D[] riders)
+    {
+        _isMoving = true;
+
+        Vector3 platformStart = new Vector3(startXY.x, startXY.y, lockedZ);
+        Vector3 platformEnd = new Vector3(targetXY.x, targetXY.y, lockedZ);
+        Vector3 delta = platformEnd - platformStart;
+
+        // Cache rider start/end positions
+        Transform[] riderTransforms = null;
+        Vector3[] riderStarts = null;
+        Vector3[] riderEnds = null;
+
+        if (riders != null && riders.Length > 0)
+        {
+            riderTransforms = new Transform[riders.Length];
+            riderStarts = new Vector3[riders.Length];
+            riderEnds = new Vector3[riders.Length];
+
+            for (int i = 0; i < riders.Length; i++)
+            {
+                Collider2D c = riders[i];
+                if (!c)
+                {
+                    riderTransforms[i] = null;
+                    continue;
+                }
+
+                Transform t = c.transform;
+                riderTransforms[i] = t;
+
+                riderStarts[i] = t.position;
+                riderEnds[i] = t.position + delta;
+            }
+        }
+
+        float tElapsed = 0f;
+
+        while (tElapsed < moveDuration)
+        {
+            tElapsed += Time.deltaTime;
+            float lerp = (moveDuration <= 0f) ? 1f : (tElapsed / moveDuration);
+
+            transform.position = Vector3.Lerp(platformStart, platformEnd, lerp);
+
+            if (riderTransforms != null)
+            {
+                for (int i = 0; i < riderTransforms.Length; i++)
+                {
+                    Transform rt = riderTransforms[i];
+                    if (!rt) continue;
+                    rt.position = Vector3.Lerp(riderStarts[i], riderEnds[i], lerp);
+                }
+            }
+
+            yield return null;
+        }
+
+        transform.position = platformEnd;
+
+        if (riderTransforms != null)
+        {
+            for (int i = 0; i < riderTransforms.Length; i++)
+            {
+                Transform rt = riderTransforms[i];
+                if (!rt) continue;
+                rt.position = riderEnds[i];
+            }
+        }
+
+        _isMoving = false;
     }
 
     private Vector2Int GetStepDir()
@@ -116,48 +197,27 @@ public class MovingPlatformTurnBased2D : MonoBehaviour
         _pauseRemaining = Mathf.Max(0, pauseTurnsAtEnds);
     }
 
-    private void CarryRiders(Collider2D[] riders, Vector2Int stepDir)
-    {
-        if (riders == null || riders.Length == 0) return;
-
-        Vector2 deltaXY = (Vector2)stepDir * gridSize;
-
-        for (int i = 0; i < riders.Length; i++)
-        {
-            Collider2D c = riders[i];
-            if (!c) continue;
-
-            Transform t = c.transform;
-
-            Vector3 newPos = t.position;
-            newPos.x += deltaXY.x;
-            newPos.y += deltaXY.y;
-            t.position = newPos;
-        }
-    }
-
     private bool CanMoveTo(Vector2 targetPos)
     {
         Collider2D hit = Physics2D.OverlapCircle(targetPos, blockCheckRadius, blockingLayer);
         return hit == null;
     }
 
-    private void AutoScalePassengerRadius()
+    private void CacheColliderAndComputeRiderRadius()
     {
-        BoxCollider2D box = GetComponent<BoxCollider2D>();
-        if (box == null)
+        if (_box == null)
+            _box = GetComponentInChildren<BoxCollider2D>();
+
+        if (_box == null)
         {
-            Debug.LogWarning("MovingPlatformTurnBased2D: No BoxCollider2D found.");
+            _riderCheckCenter = transform.position;
             return;
         }
 
-        // Get the platform's real size in world units
-        Vector2 worldSize = Vector2.Scale(box.size, transform.lossyScale);
+        Bounds b = _box.bounds;
+        _riderCheckCenter = b.center;
 
-        // Use the smaller dimension so we don't overlap neighboring platforms
-        float minWorldDimension = Mathf.Min(worldSize.x, worldSize.y);
-
-        // Quarter of the platform width + small padding
-        passengerCheckRadius = (minWorldDimension * 0.25f) + passengerRadiusPadding;
+        float minWorldDim = Mathf.Min(b.size.x, b.size.y);
+        passengerCheckRadius = (minWorldDim * 0.25f) + passengerRadiusPadding;
     }
 }
