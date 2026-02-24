@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a5142dc27a6a05640aac32ca87a1c0eb
+guid: 12b052359ff8b0a418d109b109ab96d7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7932346902572483472
-    second: PressurePlatePressedx64_0
+      213: 1094504213532947548
+    second: WallSE_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PressurePlatePressedx64_0
+      name: WallSE_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
-        width: 62
-        height: 62
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 093c0030b7b551e60800000000000000
-      internalID: 7932346902572483472
+      spriteID: c54bcc488c5703f00800000000000000
+      internalID: 1094504213532947548
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PressurePlatePressedx64_0: 7932346902572483472
+      WallSE_0: 1094504213532947548
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

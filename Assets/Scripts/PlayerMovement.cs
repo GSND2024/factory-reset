@@ -11,7 +11,20 @@ public class GridMovement : MonoBehaviour
     [SerializeField] private Vector2 gridOrigin = new Vector2(-0.342f, -0.01f);
     [SerializeField] private bool autoComputeGridOriginFromStart = true;
 
+    // -------------------------
+    // Sprite cycling (Player only)
+    // -------------------------
+    [Header("Player Sprite Cycling (optional)")]
+    [Tooltip("Sprites cycled in order on each accepted input press (Player tag only).")]
+    [SerializeField] private Sprite s0;
+    [SerializeField] private Sprite s1;
+    [SerializeField] private Sprite s2;
+    [SerializeField] private Sprite s3;
 
+    private Sprite[] _cycleSprites;
+    private int _cycleIndex = 0;
+    private SpriteRenderer _sr;
+    private bool _facingRight = true;
 
     private bool _isMoving = false;
 
@@ -36,6 +49,17 @@ public class GridMovement : MonoBehaviour
 
     private void Awake()
     {
+        // Cache sprite renderer + build sprite array (Player-only usage, but harmless to cache always)
+        _sr = GetComponentInChildren<SpriteRenderer>();
+        _cycleSprites = new Sprite[4] { s0, s1, s2, s3 };
+
+        // If you want to initialize _cycleIndex based on current sprite, uncomment:
+        // if (CompareTag("Player") && _sr != null && _sr.sprite != null)
+        // {
+        //     for (int i = 0; i < _cycleSprites.Length; i++)
+        //         if (_cycleSprites[i] == _sr.sprite) { _cycleIndex = i; break; }
+        // }
+
         if (GlobalGameState.isLevel7 && autoComputeGridOriginFromStart)
         {
             Vector3 p = transform.position;
@@ -49,8 +73,12 @@ public class GridMovement : MonoBehaviour
     {
         if (IsPaused || !HasControl || _isMoving) return;
 
+        // LEVEL 7: wait
         if (GlobalGameState.isLevel7 && HasControl && Input.GetKeyDown(KeyCode.X))
         {
+            // Sprite advance on "X" press too (Player only)
+            AdvanceSpriteAndFacing(Vector2.zero, wasWait:true);
+
             TurnSystem.ResolveTurn(this, Vector2.zero, true);
             return;
         }
@@ -58,6 +86,9 @@ public class GridMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             direction = Vector2.up;
+
+            AdvanceSpriteAndFacing(direction, wasWait:false);
+
             if (GlobalGameState.isLevel7)
             {
                 TurnSystem.ResolveTurn(this, direction, false);
@@ -68,6 +99,9 @@ public class GridMovement : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             direction = Vector2.down;
+
+            AdvanceSpriteAndFacing(direction, wasWait:false);
+
             if (GlobalGameState.isLevel7)
             {
                 TurnSystem.ResolveTurn(this, direction, false);
@@ -78,6 +112,9 @@ public class GridMovement : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             direction = Vector2.left;
+
+            AdvanceSpriteAndFacing(direction, wasWait:false);
+
             if (GlobalGameState.isLevel7)
             {
                 TurnSystem.ResolveTurn(this, direction, false);
@@ -88,6 +125,9 @@ public class GridMovement : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             direction = Vector2.right;
+
+            AdvanceSpriteAndFacing(direction, wasWait:false);
+
             if (GlobalGameState.isLevel7)
             {
                 TurnSystem.ResolveTurn(this, direction, false);
@@ -105,6 +145,34 @@ public class GridMovement : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
+    }
+
+    /// <summary>
+    /// Player-only: advances sprite cycle once per input press, and updates facing when pressing left/right.
+    /// W/S/X keep current facing. A/D flip facing.
+    /// </summary>
+    private void AdvanceSpriteAndFacing(Vector2 dir, bool wasWait)
+    {
+        if (!CompareTag("Player")) return;
+        if (_sr == null) return;
+
+        // Handle facing (only on left/right)
+        if (dir == Vector2.right)
+            _facingRight = true;
+        else if (dir == Vector2.left)
+            _facingRight = false;
+
+        // Mirror along X axis when facing left (Unity SpriteRenderer flipX is easiest)
+        _sr.flipX = _facingRight;
+
+        // Advance cycle on any accepted input press (including wait X)
+        // If you *don't* want wait to animate, remove the "wasWait" usage and early-return here.
+        _cycleIndex = (_cycleIndex + 1) % _cycleSprites.Length;
+
+        Sprite next = _cycleSprites[_cycleIndex];
+        if (next != null)
+            _sr.sprite = next;
+        // If some slots are left null, we just keep the current sprite.
     }
 
     private void TryMove(Vector2 direction)
@@ -274,8 +342,6 @@ public class GridMovement : MonoBehaviour
 
         if (!wasWait && intendedDir != Vector2.zero)
         {
-            // Evaluate move from the carried position using the SAME rules as TryMove,
-            // but without instantly teleporting or starting a second coroutine.
             Vector2 computed;
             if (EvaluateMoveFromPosition(carried, intendedDir, out computed))
             {
@@ -319,7 +385,6 @@ public class GridMovement : MonoBehaviour
 
         const float cellCheckRadius = 0.15f;
 
-        // Block if Player/Robot occupies the target cell
         var charHits = Physics2D.OverlapCircleAll(targetPos, cellCheckRadius);
         foreach (var ch in charHits)
         {
@@ -331,7 +396,6 @@ public class GridMovement : MonoBehaviour
                 return false;
         }
 
-        // Existing blocking logic
         var hits = Physics2D.OverlapCircleAll(targetPos, 0.1f, blockingLayer);
 
         bool blockedBySolid = false;
@@ -365,7 +429,6 @@ public class GridMovement : MonoBehaviour
 
         if (blockedBySolid) return false;
 
-        // Handle pushing
         if (pushableInFront != null)
         {
             Vector2 boxTarget = (Vector2)pushableInFront.transform.position + dir * gridSize;
@@ -405,6 +468,4 @@ public class GridMovement : MonoBehaviour
         float y = Mathf.Round((pos.y - gridOrigin.y) / gridSize) * gridSize + gridOrigin.y;
         return new Vector3(x, y, pos.z);
     }
-
-
 }

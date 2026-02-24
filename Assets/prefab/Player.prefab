@@ -110,6 +110,12 @@ MonoBehaviour:
   blockingLayer:
     serializedVersion: 2
     m_Bits: 64
+  gridOrigin: {x: -0.342, y: -0.01}
+  autoComputeGridOriginFromStart: 1
+  s0: {fileID: 999261605760883358, guid: 8c5f1a20e4233394bb11c13420f9fd86, type: 3}
+  s1: {fileID: -6456519671810372655, guid: 3c1d784da172dea4e8ce97aa687da2ac, type: 3}
+  s2: {fileID: 999261605760883358, guid: 8c5f1a20e4233394bb11c13420f9fd86, type: 3}
+  s3: {fileID: -830147100865223565, guid: 1aad784419a14ba44bfe7b68e5dcb6dd, type: 3}
   HasControl: 1
 --- !u!58 &8982334519796234203
 CircleCollider2D:

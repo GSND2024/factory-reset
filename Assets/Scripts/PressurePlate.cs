@@ -15,11 +15,18 @@ public class PressurePlate2D : MonoBehaviour
     [Tooltip("DoorController that has isOpen flag")]
     public DoorLatchController latchDoor;
 
-    [Header("Optional feedback")]
-    public SpriteRenderer indicator;     // change color when pressed (optional)
-    public Color idleColor = Color.gray;
-    public Color pressedColor = Color.green;
-    public Color lockedColor = Color.cyan;
+    [Header("Optional feedback (Sprites)")]
+    [Tooltip("SpriteRenderer to swap sprites on. (Usually the plate's own SpriteRenderer.)")]
+    public SpriteRenderer indicator;
+
+    [Tooltip("Sprite shown when not pressed.")]
+    public Sprite idleSprite;
+
+    [Tooltip("Sprite shown when pressed (but not locked).")]
+    public Sprite pressedSprite;
+
+    [Tooltip("Sprite shown when locked.")]
+    public Sprite lockedSprite;
 
     // Public read-only state
     public bool IsPressed { get; private set; }
@@ -38,36 +45,45 @@ public class PressurePlate2D : MonoBehaviour
         // Make sure the collider is a trigger
         var c = GetComponent<Collider2D>();
         c.isTrigger = true;
+
+        // Convenience: auto-fill indicator if it's on the same GameObject
+        if (indicator == null) indicator = GetComponent<SpriteRenderer>();
     }
 
     private void Awake()
     {
         _coll = GetComponent<Collider2D>();
         if (_coll != null) _coll.isTrigger = true;
+
         ApplyIndicator();
     }
 
     private void OnEnable()
     {
-        // Clean slate
         _pressing.Clear();
+        _isLocked = false;
         SetPressed(false);
+        ApplyIndicator();
     }
 
     private void OnDisable()
     {
         _pressing.Clear();
+        _isLocked = false;
         SetPressed(false);
+        ApplyIndicator();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (_isLocked) return;
         if (!Counts(other)) return;
+
         if (_pressing.Add(other))
         {
             if (!IsPressed) SetPressed(true);
         }
+
         TryLatch();
     }
 
@@ -75,6 +91,7 @@ public class PressurePlate2D : MonoBehaviour
     {
         if (_isLocked) return;
         if (!Counts(other)) return;
+
         if (_pressing.Remove(other))
         {
             if (_pressing.Count == 0 && IsPressed) SetPressed(false);
@@ -83,7 +100,6 @@ public class PressurePlate2D : MonoBehaviour
 
     private bool Counts(Collider2D col)
     {
-        // Tag filter
         if (allowedTags != null && allowedTags.Count > 0)
         {
             foreach (var t in allowedTags)
@@ -96,20 +112,35 @@ public class PressurePlate2D : MonoBehaviour
     private void SetPressed(bool value)
     {
         if (IsPressed == value) return;
+
         IsPressed = value;
+
+        // Notify listeners (DoorLatchController may set isOpen=true here)
         OnPressChanged?.Invoke(IsPressed);
+
+        // If pressing this plate caused the door to open, latch immediately.
+        if (IsPressed && enableLatching && !_isLocked && latchDoor != null && latchDoor.isOpen)
+        {
+            LockNow();
+            return;
+        }
+
+        ApplyIndicator();
     }
 
     private void ApplyIndicator()
     {
         if (indicator == null) return;
 
-        if (_isLocked)
-            indicator.color = lockedColor;
-        else
-            indicator.color = IsPressed ? pressedColor : idleColor;
-    }
+        Sprite target =
+            _isLocked ? lockedSprite :
+            IsPressed ? pressedSprite :
+            idleSprite;
 
+        // Only set if we actually have a sprite assigned (prevents null overwrites).
+        if (target != null)
+            indicator.sprite = target;
+    }
 
     private void TryLatch()
     {
@@ -121,8 +152,17 @@ public class PressurePlate2D : MonoBehaviour
         {
             _isLocked = true;
             _pressing.Clear();
-            SetPressed(true);
+            SetPressed(true); // will invoke event + ApplyIndicator()
         }
+    }
+
+    private void LockNow()
+    {
+        if (_isLocked) return;
+
+        _isLocked = true;
+        _pressing.Clear();
+        ApplyIndicator();
     }
 
     private void Update()
@@ -131,10 +171,8 @@ public class PressurePlate2D : MonoBehaviour
         if (enableLatching && !_isLocked && IsPressed && latchDoor != null && latchDoor.isOpen)
         {
             _isLocked = true;
-            _pressing.Clear();      // optional: stops caring about occupants
-            // If you want listeners to know it latched (if not already pressed), you could:
-            // SetPressed(true);
+            _pressing.Clear();
+            ApplyIndicator();
         }
-        ApplyIndicator();
     }
 }
