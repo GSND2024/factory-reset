@@ -3018,6 +3018,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7635093015646333308, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -815304717142106085, guid: f051f63f490ba324c81c90513eef1527, type: 3}
+    - target: {fileID: 7635093015646333308, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
       propertyPath: m_Color.b
       value: 0.27058825
       objectReference: {fileID: 0}
@@ -3243,6 +3247,7 @@ MonoBehaviour:
     - I can't leave my enrichment area.
     - I can't leav4e my enr83ic4hmen8t are7a.
     - I 15c5an't leav4e m6y e3nr83ic4hmen8t are7a.7
+    purpleSentences: []
     hacked: 0
   dialogueManager: {fileID: 44627042}
   npcMovement: {fileID: 1969039966}
@@ -3293,6 +3298,7 @@ MonoBehaviour:
     - I can't leave my enrichment area.
     - I can't leav4e my enr83ic4hmen8t are7a.
     - I 15c5an't leav4e m6y e3nr83ic4hmen8t are7a.7
+    purpleSentences: []
     hacked: 0
 --- !u!114 &1969039968
 MonoBehaviour:

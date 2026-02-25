@@ -3515,6 +3515,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7635093015646333308, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -815304717142106085, guid: f051f63f490ba324c81c90513eef1527, type: 3}
+    - target: {fileID: 7635093015646333308, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
@@ -3798,6 +3802,7 @@ MonoBehaviour:
     - I got this pressure plate, you get that one!
     hackedSentences:
     - I'm not talking to you since you hacked me!
+    purpleSentences: []
     hacked: 0
   dialogueManager: {fileID: 1469626433}
   npcMovement: {fileID: 1969039966}
@@ -3846,6 +3851,7 @@ MonoBehaviour:
     - I got this pressure plate, you get that one!
     hackedSentences:
     - I'm not talking to you since you hacked me!
+    purpleSentences: []
     hacked: 0
 --- !u!1001 &2034105145
 PrefabInstance:

@@ -430,6 +430,7 @@ MonoBehaviour:
     hackedSentences:
     - you hacked me!
     - go solve it yourself.
+    purpleSentences: []
     hacked: 0
   dialogueManager: {fileID: 922372548}
   npcMovement: {fileID: 482494372}
@@ -477,6 +478,7 @@ MonoBehaviour:
     hackedSentences:
     - you hacked me!
     - go solve it yourself.
+    purpleSentences: []
     hacked: 0
 --- !u!1 &519420028
 GameObject:
@@ -2355,6 +2357,7 @@ MonoBehaviour:
     hackedSentences:
     - i'm not helping you!
     - stay away from my system!
+    purpleSentences: []
     hacked: 0
 --- !u!114 &1969039975 stripped
 MonoBehaviour:
@@ -2575,6 +2578,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7635093015646333308, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -815304717142106085, guid: f051f63f490ba324c81c90513eef1527, type: 3}
     - target: {fileID: 7671071734999405748, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
       propertyPath: m_fontColor.b
       value: 0.42745098

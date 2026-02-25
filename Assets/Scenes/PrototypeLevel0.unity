@@ -532,7 +532,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8855275003452856436, guid: 3035da42cadcf3f48bf4ca69e5403735, type: 3}
+  m_Sprite: {fileID: -815304717142106085, guid: f051f63f490ba324c81c90513eef1527, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1124,9 +1124,6 @@ GameObject:
   - component: {fileID: 445505532}
   - component: {fileID: 445505537}
   - component: {fileID: 445505536}
-  - component: {fileID: 445505535}
-  - component: {fileID: 445505534}
-  - component: {fileID: 445505533}
   m_Layer: 0
   m_Name: floor (1)
   m_TagString: Untagged
@@ -1149,57 +1146,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1764719245}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &445505533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445505531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cceb9b67b554c84388ed31bdcfc8f9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Level0StartCheck
---- !u!114 &445505534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445505531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e7f570505a5a4b96a2a059d4a069b6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DialogueScripts.DialogueManager
-  nameText: {fileID: 664639174}
-  dialogueText: {fileID: 1491277269}
-  dialogueBox: {fileID: 714849236}
-  portrait: {fileID: 224983312}
---- !u!114 &445505535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445505531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e3fb092b316f4298b7db90aec91ac92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PanelToggleUI
-  toggleKey: 32
-  panelRoot: {fileID: 102109659}
-  actions: {fileID: 1969039966}
-  player: {fileID: 569174712}
-  playerMovement: {fileID: 569174710}
-  npcTag: Robot
-  gridSize: 0.704
-  gridOrigin: {x: 0, y: 0}
-  debug: 0
-  probeRadius: 0.22
-  owner: {fileID: 7380025951509375217}
 --- !u!483693784 &445505536
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -7082,7 +7028,8 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 448399607399777703, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6363781744554875430, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
       insertIndex: 0
