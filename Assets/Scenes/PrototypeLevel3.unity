@@ -2720,7 +2720,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 0f1e2bd354f6eeb4395136d479a1402d, type: 3}
+  m_Resource: {fileID: 8300000, guid: 37dadd5b1f4e1fe4cb4ff85c29fdb5cd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.028
   m_Pitch: 1
@@ -4899,6 +4899,8 @@ MonoBehaviour:
   talkButton: {fileID: 109342838}
   hackButton: {fileID: 1538071957}
   hiddenButton: {fileID: 0}
+  portrait: {fileID: 0}
+  robotColor: 
   dialogue:
     name: Blue Bot
     sentences:

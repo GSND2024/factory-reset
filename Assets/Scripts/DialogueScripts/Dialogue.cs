@@ -10,6 +10,7 @@ namespace DialogueScripts
         public string[] sentences;
         
         public string[] hackedSentences;
+        public string[] purpleSentences;
 
         public bool hacked;
 

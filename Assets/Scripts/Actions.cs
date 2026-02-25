@@ -13,6 +13,7 @@ public class Actions : MonoBehaviour
     public Image portrait;
     public string robotColor;
     public Dialogue dialogue;
+    private Transform player;
     //public Dialogue dialogue;
     [SerializeField] private DialogueManager dialogueManager;
 
@@ -21,11 +22,13 @@ public class Actions : MonoBehaviour
     private bool _moveRobot = false;
     private bool _hiddenActivated = false;
     private bool _goToPressurePlate= false;
+    private bool dieDialogue = false;
 
     void Start()
     {
         if (hackButton) hackButton.onClick.AddListener(OnHack);
         if (talkButton) talkButton.onClick.AddListener(OnTalk);
+        player = GameObject.FindGameObjectWithTag("Player").transform; 
     }
 
     public void SetTarget(GridMovement npc)
@@ -73,10 +76,17 @@ public class Actions : MonoBehaviour
 
         if (GlobalGameState.isLevel7)
         {
-            if (!GlobalGameState.isPurpleHacked && !GlobalGameState.dialogueActive && _goToPressurePlate)
+            if (!dieDialogue && !GlobalGameState.isPurpleHacked && !GlobalGameState.dialogueActive && _goToPressurePlate)
             {
-                Debug.Log("here");
                 transform.position = new Vector3(-4.56f, 2.1f, 0f);
+            }
+            if (!dieDialogue && !GlobalGameState.dialogueActive && GlobalGameState.destroyCount > 2 && positionCheck(transform.position, new Vector3(-4.56f, 2.1f, 0f)) && player.transform.position.x > 0)
+            {
+                dieDialogue = true;
+                transform.position = new Vector3(-3.862f, 2.1f, 0f);
+                dialogue.sentences = dialogue.purpleSentences;
+                dialogue.hackedSentences = dialogue.purpleSentences;
+                dialogueManager.StartDialogue(dialogue);
             }
         }
         else if (GlobalGameState.isLevel3)
@@ -102,6 +112,11 @@ public class Actions : MonoBehaviour
                 transform.position = new Vector3(3.15f, -0.684f, 0f);
             }
         }
+    }
+
+    private bool positionCheck(Vector3 current, Vector3 target, float tolerance = 0.05f)
+    {
+        return Vector3.Distance(current, target) <= tolerance;
     }
 
     private void OnTalk()

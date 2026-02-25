@@ -2096,7 +2096,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 0f1e2bd354f6eeb4395136d479a1402d, type: 3}
+  m_Resource: {fileID: 8300000, guid: 37dadd5b1f4e1fe4cb4ff85c29fdb5cd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.024
   m_Pitch: 1
@@ -3430,6 +3430,7 @@ MonoBehaviour:
     - I can't leave my enrichment area.
     - I can't leav4e my enr83ic4hmen8t are7a.
     - I 15c5an't leav4e m6y e3nr83ic4hmen8t are7a.7
+    purpleSentences: []
     hacked: 0
   dialogueManager: {fileID: 1136522381}
   npcMovement: {fileID: 1969039966}
@@ -3479,6 +3480,10 @@ MonoBehaviour:
     hackedSentences:
     - Now, why would you do that?
     - That was very disrespectful.
+    purpleSentences:
+    - I can see all of my friends you've killed today.
+    - You think I'll just sit here and let you pass?
+    - Die.
     hacked: 0
 --- !u!1 &2086686989
 GameObject:
