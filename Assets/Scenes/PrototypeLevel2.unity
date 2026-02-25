@@ -2362,6 +2362,7 @@ MonoBehaviour:
   nameText: {fileID: 328197290}
   dialogueText: {fileID: 1693535419}
   dialogueBox: {fileID: 1748861676}
+  portrait: {fileID: 1948380441}
 --- !u!114 &1469626434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3385,6 +3386,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -62.8629
       objectReference: {fileID: 0}
+    - target: {fileID: 2348004328398313590, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -529.6594
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348004328398313590, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -377.6192
+      objectReference: {fileID: 0}
     - target: {fileID: 3665932426207469646, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -3505,6 +3514,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7635093015646333308, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635093015646333308, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7671071734999405748, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
       propertyPath: m_fontColor.b
       value: 0.42745098
@@ -3530,6 +3547,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+--- !u!1 &1948380441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 448399607399777703, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+  m_PrefabInstance: {fileID: 1948380440}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1966932488
 PrefabInstance:
   m_ObjectHideFlags: 0

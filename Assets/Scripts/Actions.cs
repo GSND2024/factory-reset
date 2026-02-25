@@ -10,6 +10,8 @@ public class Actions : MonoBehaviour
     public Button talkButton;
     public Button hackButton;
     public GameObject hiddenButton;
+    public Image portrait;
+    public string robotColor;
     public Dialogue dialogue;
     //public Dialogue dialogue;
     [SerializeField] private DialogueManager dialogueManager;
@@ -104,6 +106,10 @@ public class Actions : MonoBehaviour
 
     private void OnTalk()
     {
+        if(portrait){
+            Color newColor;
+            if (ColorUtility.TryParseHtmlString(robotColor, out newColor)){
+                portrait.color = newColor;}}
         Debug.Log($"[Actions] Talk with dialogue: {dialogue.name}");
         dialogueManager.StartDialogue(dialogue);
         Debug.Log("[Actions] Talk");

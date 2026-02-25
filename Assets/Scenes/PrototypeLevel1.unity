@@ -757,6 +757,7 @@ MonoBehaviour:
   nameText: {fileID: 4780774954257252151}
   dialogueText: {fileID: 4780774954257252150}
   dialogueBox: {fileID: 4780774954257252149}
+  portrait: {fileID: 4780774954257252152}
 --- !u!114 &829073259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1801,6 +1802,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -58.0607
       objectReference: {fileID: 0}
+    - target: {fileID: 2348004328398313590, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -535.952
+      objectReference: {fileID: 0}
+    - target: {fileID: 2348004328398313590, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -375.4168
+      objectReference: {fileID: 0}
     - target: {fileID: 3665932426207469646, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -1925,6 +1934,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7635093015646333308, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635093015646333308, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7671071734999405748, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
       propertyPath: m_fontColor.b
       value: 0.42745098
@@ -1981,6 +1998,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &4780774954257252152 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 448399607399777703, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
+  m_PrefabInstance: {fileID: 4780774954257252148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7380025951509375216
 PrefabInstance:
   m_ObjectHideFlags: 0

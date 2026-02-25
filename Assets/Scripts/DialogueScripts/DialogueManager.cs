@@ -12,6 +12,7 @@ namespace DialogueScripts
         public TMP_Text nameText;
         public TMP_Text dialogueText;
         public GameObject dialogueBox;
+        public GameObject portrait;
 
         private Queue<string> _sentences;
 
@@ -29,6 +30,10 @@ namespace DialogueScripts
             if (dialogueBox)
             {
                 dialogueBox.SetActive(true);
+            }
+            if (portrait)
+            {
+                portrait.SetActive(true);
             }
                 
             nameText.text = dialogue.name;
@@ -96,6 +101,7 @@ namespace DialogueScripts
             Time.timeScale = 1f;
             
             if (dialogueBox) dialogueBox.SetActive(false);
+            if (portrait) portrait.SetActive(false);
             Input.ResetInputAxes();
             Debug.Log("Ending dialogue");
         }
