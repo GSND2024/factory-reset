@@ -103,6 +103,8 @@ public class SceneTransition : MonoBehaviour
     // Fade from black (fade in)
     public IEnumerator FadeIn()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.GetComponent<GridMovement>().enabled = false;
         if (isFading || fadeImage == null) yield break;
         
         isFading = true;
@@ -122,6 +124,7 @@ public class SceneTransition : MonoBehaviour
         color.a = 0f;
         fadeImage.color = color;
         isFading = false;
+        player.GetComponent<GridMovement>().enabled = true;
     }
     
     // Restart current scene with fade

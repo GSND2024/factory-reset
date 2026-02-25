@@ -527,6 +527,7 @@ MonoBehaviour:
   nameText: {fileID: 664639174}
   dialogueText: {fileID: 1491277269}
   dialogueBox: {fileID: 714849236}
+  portrait: {fileID: 0}
 --- !u!114 &377110299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,7 +969,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 5b269c541c7de8c4994c20122f8b0039, type: 3}
+  m_Resource: {fileID: 8300000, guid: 37dadd5b1f4e1fe4cb4ff85c29fdb5cd, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.06
   m_Pitch: 1
@@ -1821,6 +1822,7 @@ MonoBehaviour:
     - Please don't hack me!
     hackedSentences:
     - Ugh. I hated that, don't talk to me!
+    purpleSentences: []
     hacked: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
