@@ -11,6 +11,7 @@ public class SettingsManager : MonoBehaviour
     [Header("UI References")]
     public GameObject settingsPanel;
     public Button backButton;
+    public Button quitButton;
     
     [Header("Volume Sliders")]
     public Slider masterVolumeSlider;
@@ -61,6 +62,12 @@ public class SettingsManager : MonoBehaviour
         if (backButton != null)
         {
             backButton.onClick.AddListener(CloseSettings);
+        }
+        
+        // Bind quit button event
+        if (quitButton != null)
+        {
+            quitButton.onClick.AddListener(QuitGame);
         }
         
         // Bind volume slider events
@@ -273,6 +280,20 @@ public class SettingsManager : MonoBehaviour
         }
     }
     
+    public void QuitGame()
+    {
+        // Save any data before quitting (optional)
+        PlayerPrefs.Save();
+        
+        #if UNITY_EDITOR
+            // Stop playing in editor
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            // Quit application in build
+            Application.Quit();
+        #endif
+    }
+    
     private void DisablePlayerInput()
     {
         // Find and disable player controller
@@ -314,6 +335,11 @@ public class SettingsManager : MonoBehaviour
         if (backButton != null)
         {
             backButton.onClick.RemoveListener(CloseSettings);
+        }
+        
+        if (quitButton != null)
+        {
+            quitButton.onClick.RemoveListener(QuitGame);
         }
         
         // Clean up volume slider events

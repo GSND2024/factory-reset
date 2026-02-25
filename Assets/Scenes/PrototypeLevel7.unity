@@ -3429,6 +3429,10 @@ MonoBehaviour:
     m_Bits: 64
   gridOrigin: {x: -0.342, y: -0.01}
   autoComputeGridOriginFromStart: 1
+  s0: {fileID: 0}
+  s1: {fileID: 0}
+  s2: {fileID: 0}
+  s3: {fileID: 0}
   HasControl: 0
 --- !u!114 &1969039967
 MonoBehaviour:

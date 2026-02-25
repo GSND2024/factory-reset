@@ -103,7 +103,6 @@ public class DeathTile2D : MonoBehaviour
 
     private void RestartScene()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.buildIndex);
+        SceneTransition.Instance.RestartSceneWithFade();
     }
 }
