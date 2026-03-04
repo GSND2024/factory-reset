@@ -679,7 +679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4363110335431418101, guid: 4cbe5ec4b1373cb418176617871d9f63, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4363110335431418101, guid: 4cbe5ec4b1373cb418176617871d9f63, type: 3}
       propertyPath: m_LocalRotation.x
@@ -691,7 +691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4363110335431418101, guid: 4cbe5ec4b1373cb418176617871d9f63, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4363110335431418101, guid: 4cbe5ec4b1373cb418176617871d9f63, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -703,8 +703,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4363110335431418101, guid: 4cbe5ec4b1373cb418176617871d9f63, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 6873140259028555812, guid: 4cbe5ec4b1373cb418176617871d9f63, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7387927817111888129, guid: 83a44c3db44f55a44a4b21653b104835, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -893,7 +897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4363110335431418101, guid: d5a6d16974546ac44a1e93d9c8140fa2, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4363110335431418101, guid: d5a6d16974546ac44a1e93d9c8140fa2, type: 3}
       propertyPath: m_LocalRotation.x
@@ -905,7 +909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4363110335431418101, guid: d5a6d16974546ac44a1e93d9c8140fa2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4363110335431418101, guid: d5a6d16974546ac44a1e93d9c8140fa2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -917,8 +921,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4363110335431418101, guid: d5a6d16974546ac44a1e93d9c8140fa2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 6873140259028555812, guid: d5a6d16974546ac44a1e93d9c8140fa2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7387927817111888129, guid: 83a44c3db44f55a44a4b21653b104835, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1500,7 +1508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3747080454403527188, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: m_Color.g
-      value: 0.45143178
+      value: 0.45098042
       objectReference: {fileID: 0}
     - target: {fileID: 3747080454403527188, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: m_Color.r
@@ -1548,6 +1556,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 971462355881315533, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7297422960986319945, guid: 76c7761c31d5cbb419d821506434e6c5, type: 3}
     - target: {fileID: 3528709517252225257, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
       propertyPath: m_LocalPosition.y
       value: -4.231
@@ -1596,6 +1608,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8255331324056260497, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7297422960986319945, guid: 76c7761c31d5cbb419d821506434e6c5, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1806,7 +1822,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.9803922, b: 0.9803922, a: 1}
+  m_Color: {r: 0.1254902, g: 0.15294118, b: 0.21960786, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2105,7 +2121,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 4726796717485490052, guid: 137c432d7d6f61c478d503ccd7f1fd41, type: 3}
+  m_Sprite: {fileID: -6532087710655975924, guid: e3b4d6dec8d5a5a4f909d52bbdfa01cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2202,7 +2218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorSpriteOpener
   targetToCheck: {fileID: 1441511518}
-  disabledSprite: {fileID: -920875788, guid: 137c432d7d6f61c478d503ccd7f1fd41, type: 3}
+  disabledSprite: {fileID: 7817699161482299370, guid: c0ad356f18c105a49b3456be31c0e7bc, type: 3}
 --- !u!1 &1756339237 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7794331746827812918, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
