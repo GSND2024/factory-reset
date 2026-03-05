@@ -184,3 +184,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   laserTag: Laser
+  pushClip: {fileID: 8300000, guid: 01be533ae553d2d40bbbba44b957efa0, type: 3}
+  pushVolume: 1

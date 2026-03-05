@@ -13,6 +13,12 @@ public class PressurePlateLevel4 : MonoBehaviour
     private bool isPressed = false;
     private SpriteRenderer rend;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip plateOn;
+    [SerializeField] private AudioClip plateOff;
+    [SerializeField] private float pushVolume = 1f;
+
+
     private void Start()
     {
         // Get SpriteRenderer for color control
@@ -24,6 +30,7 @@ public class PressurePlateLevel4 : MonoBehaviour
     {
         if (other.CompareTag("Player") && !isPressed && !locked)
         {
+            AudioSource.PlayClipAtPoint(plateOn, transform.position, pushVolume);
             isPressed = true;
             SetPressedColor();
             PuzzleManager2D.instance.PlatePressed(plateID);
@@ -34,6 +41,7 @@ public class PressurePlateLevel4 : MonoBehaviour
     {
         if (other.CompareTag("Player") && !locked)
         {
+            AudioSource.PlayClipAtPoint(plateOff, transform.position, pushVolume);
             isPressed = false;
             // Do not revert color here directly;
             // PuzzleManager2D will handle reset or success lock.

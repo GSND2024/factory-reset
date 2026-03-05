@@ -140,6 +140,9 @@ MonoBehaviour:
   locked: 0
   idleColor: {r: 0, g: 0, b: 1, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
+  plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
+  plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
+  pushVolume: 1
 --- !u!1 &102109659 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4881579763024307082, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
@@ -368,6 +371,9 @@ MonoBehaviour:
   locked: 0
   idleColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
+  plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
+  plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
+  pushVolume: 1
 --- !u!1 &468238718 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7794331746827812918, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
@@ -389,6 +395,9 @@ MonoBehaviour:
   locked: 0
   idleColor: {r: 1, g: 0, b: 0, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
+  plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
+  plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
+  pushVolume: 1
 --- !u!1 &482494370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
@@ -989,6 +998,10 @@ PrefabInstance:
       value: 0.084
       objectReference: {fileID: 0}
     - target: {fileID: 6295266694126192163, guid: 1ac670d509f61423ea6abe86ed516bbd, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ad38748b7ed6f949be34d58d6fcb529, type: 3}
+    - target: {fileID: 6295266694126192163, guid: 1ac670d509f61423ea6abe86ed516bbd, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -1548,6 +1561,9 @@ MonoBehaviour:
   locked: 0
   idleColor: {r: 1, g: 0.2705882, b: 0, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
+  plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
+  plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
+  pushVolume: 1
 --- !u!1001 &1340297249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2240,6 +2256,9 @@ MonoBehaviour:
   locked: 0
   idleColor: {r: 0.7294118, g: 0.3333333, b: 0.8274511, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
+  plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
+  plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
+  pushVolume: 1
 --- !u!1 &1825090028
 GameObject:
   m_ObjectHideFlags: 0

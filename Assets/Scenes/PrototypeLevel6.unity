@@ -3459,6 +3459,10 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.059
       objectReference: {fileID: 0}
+    - target: {fileID: 6295266694126192163, guid: 1ac670d509f61423ea6abe86ed516bbd, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ad38748b7ed6f949be34d58d6fcb529, type: 3}
     - target: {fileID: 7466415957744159133, guid: 1ac670d509f61423ea6abe86ed516bbd, type: 3}
       propertyPath: m_Name
       value: OpenDoor

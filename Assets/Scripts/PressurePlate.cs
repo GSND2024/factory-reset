@@ -39,6 +39,12 @@ public class PressurePlate2D : MonoBehaviour
     private bool _isLocked = false;
 
     private Collider2D _coll;
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip pressClip;
+    [SerializeField] private AudioClip releaseClip;
+    [SerializeField] private AudioClip doorLock;
+    [SerializeField] private float pushVolume = 1f;
 
     private void Reset()
     {
@@ -115,8 +121,16 @@ public class PressurePlate2D : MonoBehaviour
 
         IsPressed = value;
 
+        if (IsPressed && pressClip != null)
+            audioSource.PlayOneShot(pressClip);
+        else if (!IsPressed && releaseClip != null)
+            audioSource.PlayOneShot(releaseClip);
+
         // Notify listeners (DoorLatchController may set isOpen=true here)
         OnPressChanged?.Invoke(IsPressed);
+
+        if (!IsPressed && doorLock != null && enableLatching != true)
+            AudioSource.PlayClipAtPoint(doorLock, transform.position, pushVolume);
 
         // If pressing this plate caused the door to open, latch immediately.
         if (IsPressed && enableLatching && !_isLocked && latchDoor != null && latchDoor.isOpen)

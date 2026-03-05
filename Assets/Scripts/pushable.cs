@@ -7,6 +7,11 @@ public class Pushable : MonoBehaviour
     [SerializeField] private float moveDuration = 0.1f;
     [SerializeField] private LayerMask blockingLayer;   // set to Blocking in Inspector
     [SerializeField] private string laserTag = "Laser"; // must match your Laser tag
+    
+    [Header("Audio")]
+    [SerializeField] private AudioClip pushClip;
+    [SerializeField] private float pushVolume = 1f;
+
 
     public bool Push(Vector2 direction)
     {
@@ -28,7 +33,13 @@ public class Pushable : MonoBehaviour
             return false;
         }
 
+        if (pushClip != null)
+        {
+            AudioSource.PlayClipAtPoint(pushClip, transform.position, pushVolume);
+        }
+
         StartCoroutine(Move(targetPos));
+
         return true;
     }
 
