@@ -138,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PressurePlateLevel4
   plateID: 2
   locked: 0
-  idleColor: {r: 0, g: 0, b: 1, a: 1}
+  idleColor: {r: 0.3529412, g: 0.3529412, b: 1, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
   plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PressurePlateLevel4
   plateID: 1
   locked: 0
-  idleColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  idleColor: {r: 0.9764706, g: 1, b: 0.3647059, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
   plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   plateID: 0
   locked: 0
-  idleColor: {r: 1, g: 0, b: 0, a: 1}
+  idleColor: {r: 1, g: 0.4, b: 0.4, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
   plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
@@ -1559,7 +1559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PressurePlateLevel4
   plateID: 3
   locked: 0
-  idleColor: {r: 1, g: 0.2705882, b: 0, a: 1}
+  idleColor: {r: 1, g: 0.4509804, b: 0, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
   plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}

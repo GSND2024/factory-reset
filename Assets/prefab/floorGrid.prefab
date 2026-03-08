@@ -1616,6 +1616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3028957359604247111}
   - component: {fileID: 2429480145324249225}
+  - component: {fileID: 4669481899955293125}
   m_Layer: 0
   m_Name: floorGrid
   m_TagString: Untagged
@@ -1651,3 +1652,20 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &4669481899955293125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887852972032406979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9848c188443973e4e84acc64b11e6493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RobotAnimation
+  spriteA: {fileID: 8855275003452856436, guid: 3035da42cadcf3f48bf4ca69e5403735, type: 3}
+  spriteB: {fileID: 8752521216174513360, guid: 01a4e659c373f0348b68f654fd78083a, type: 3}
+  delay: 0.3
+  targetTag: Robot
+  excludedName: AI
