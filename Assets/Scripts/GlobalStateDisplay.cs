@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using TMPro;
@@ -9,7 +10,16 @@ public class GlobalStateDisplay : MonoBehaviour
     
     [Header("UI References")]
     public Canvas stateCanvas;
-    public TextMeshProUGUI stateDisplayText;
+    public Image talkImage;
+    public Image hackImage;
+    
+    [Header("Number Sprites (000.png to 008.png)")]
+    public Sprite[] numberSprites = new Sprite[9];
+    
+    [Header("Color Settings")]
+    public Color normalColor = Color.white;
+    public Color talkMaxColor = new Color(0.7f, 0.9f, 1f, 1f); // Light blue
+    public Color hackMaxColor = new Color(1f, 0.7f, 0.7f, 1f); // Light red
     
     [Header("Display Settings")]
     [Tooltip("Hide state display in these scenes")]
@@ -91,14 +101,26 @@ public class GlobalStateDisplay : MonoBehaviour
         }
     }
     
-    // Update all text displays by reading from GlobalGameState
+    // Update image displays by reading from GlobalGameState
     public void UpdateDisplay()
     {
         
-        // Update single text display with both values
-        if (stateDisplayText != null)
+        // Update Talk image
+        int talkCount = Mathf.Clamp(GlobalGameState.talkCount, 0, 8);
+        if (talkImage != null && numberSprites.Length > talkCount && numberSprites[talkCount] != null)
         {
-            stateDisplayText.text = $"Talk: {GlobalGameState.talkCount} Hack: {GlobalGameState.hackCount}";
+            talkImage.sprite = numberSprites[talkCount];
+            // Change color to light blue when count is 8
+            talkImage.color = (talkCount == 8) ? talkMaxColor : normalColor;
+        }
+        
+        // Update Hack image
+        int hackCount = Mathf.Clamp(GlobalGameState.hackCount, 0, 8);
+        if (hackImage != null && numberSprites.Length > hackCount && numberSprites[hackCount] != null)
+        {
+            hackImage.sprite = numberSprites[hackCount];
+            // Change color to light red when count is 8
+            hackImage.color = (hackCount == 8) ? hackMaxColor : normalColor;
         }
     }
     
