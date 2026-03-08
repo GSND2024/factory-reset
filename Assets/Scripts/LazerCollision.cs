@@ -23,6 +23,12 @@ public class LazerCollision : MonoBehaviour
                 GlobalGameState.destroyCount += 1;
                 Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}, , destroyCount: {GlobalGameState.destroyCount}");
             }
+            
+            if (GlobalGameState.isLevel0)
+            {
+                GlobalGameState.destroyCount += 1;
+                Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}, , destroyCount: {GlobalGameState.destroyCount}");
+            }
 
             // NEW: if this robot was hacked, give control back to player
             if (HackManager.Instance)
