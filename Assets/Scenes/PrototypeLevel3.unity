@@ -577,12 +577,16 @@ PrefabInstance:
       value: wallEW (3)
       objectReference: {fileID: 0}
     - target: {fileID: 4363110335431418101, guid: 0c66c5e0d0985ee49bd083492ddc8b02, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1276721
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363110335431418101, guid: 0c66c5e0d0985ee49bd083492ddc8b02, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.168
+      value: -3.174
       objectReference: {fileID: 0}
     - target: {fileID: 4363110335431418101, guid: 0c66c5e0d0985ee49bd083492ddc8b02, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.394
+      value: 1.392
       objectReference: {fileID: 0}
     - target: {fileID: 4363110335431418101, guid: 0c66c5e0d0985ee49bd083492ddc8b02, type: 3}
       propertyPath: m_LocalPosition.z
@@ -943,6 +947,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1260578004139751232, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.527
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883582219318631991, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.554
+      objectReference: {fileID: 0}
     - target: {fileID: 2069925634323971739, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -951,9 +963,21 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7297422960986319945, guid: 76c7761c31d5cbb419d821506434e6c5, type: 3}
+    - target: {fileID: 3528709517252225257, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.14125
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528709517252225257, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.8099
+      objectReference: {fileID: 0}
     - target: {fileID: 3815751987078573409, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
       propertyPath: m_Name
       value: room
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287244711852595158, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.555
       objectReference: {fileID: 0}
     - target: {fileID: 6511906798269152794, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3976,7 +4000,7 @@ Transform:
   m_GameObject: {fileID: 1703441940}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.278, y: -1.426, z: 0}
+  m_LocalPosition: {x: 5.276, y: -1.424, z: 0}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -132,7 +132,7 @@ public class PanelToggleUI : MonoBehaviour
             if (!gm.CompareTag(npcTag)) continue;
 
             float dist = Vector2.Distance(player.position, gm.transform.position);
-            if (dist <= interactRadius && dist < bestDist)
+            if ((dist <= interactRadius && dist < bestDist) || gm.name == "AI")
             {
                 best = gm;
                 bestDist = dist;
