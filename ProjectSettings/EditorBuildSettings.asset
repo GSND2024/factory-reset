@@ -41,6 +41,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Terminal.unity
     guid: 30c8c226664ab40a5879999ca0409046
+  - enabled: 1
+    path: Assets/Scenes/EndNormal.unity
+    guid: a71a10698c6ac4712a4af16c11824cfb
+  - enabled: 1
+    path: Assets/Scenes/EndEscape.unity
+    guid: 6f23f92d01f254ee88b7eecebb5b3f35
+  - enabled: 1
+    path: Assets/Scenes/EndTalk.unity
+    guid: 7476d20c8d2d644059b07f2d0094c0b7
+  - enabled: 1
+    path: Assets/Scenes/EndControl.unity
+    guid: 7c71febd666d44810a12626e87d86a19
+  - enabled: 1
+    path: Assets/Scenes/EndHack.unity
+    guid: 2dddc1d70fd6141a8ac494b46b4b6fd6
+  - enabled: 1
+    path: Assets/Scenes/EndDestroy.unity
+    guid: 5085f1a6379b4495bbea7a964b37aaa2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

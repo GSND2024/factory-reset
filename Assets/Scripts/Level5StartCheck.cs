@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class Level5StartCheck : MonoBehaviour
 {
     public TMP_Text endingText;
@@ -77,17 +78,17 @@ public class Level5StartCheck : MonoBehaviour
 
         if (GlobalGameState.destroyCount == 5)
         {
-            endingText.text = "Destroy End";
+            SceneManager.LoadScene("EndDestroy");
         }
         else if (GlobalGameState.HackAI)
         {
             if (GlobalGameState.hackCount == 8)
             {
-                endingText.text = "Hack End";
+                SceneManager.LoadScene("EndHack");
             }
             else
             {
-                endingText.text = "Control End";
+                SceneManager.LoadScene("EndControl");
             }
             
         }
@@ -95,18 +96,18 @@ public class Level5StartCheck : MonoBehaviour
         {
             if (GlobalGameState.talkCount == 8 & GlobalGameState.hackCount == 0 & GlobalGameState.destroyCount == 0 & GlobalGameState.RootAI)
             {
-                endingText.text = "Talk End";
+                SceneManager.LoadScene("EndTalk");
             
             }
         
             else if (GlobalGameState.talkCount == 0 & GlobalGameState.hackCount == 0 & GlobalGameState.destroyCount == 0)
             {
-                endingText.text = "Escape End";
+                SceneManager.LoadScene("EndEscape");
             }
 
             else
             {
-                endingText.text = "Normal End";
+                SceneManager.LoadScene("EndNormal");
             }
         }
         
