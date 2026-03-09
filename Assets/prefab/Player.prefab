@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 207843273903637582}
   - component: {fileID: 8982334519796234203}
   - component: {fileID: 6025815705337940028}
+  - component: {fileID: 2484417447331924374}
+  - component: {fileID: 8789041572601624328}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -180,3 +182,43 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &2484417447331924374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8882322382070819011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608fdd0763d73dd46b1d7bfede7bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SignReader
+  interactKey: 32
+  player: {fileID: 7149745516437721603}
+  playerMovement: {fileID: 207843273903637582}
+  dialogueManager: {fileID: 0}
+  gridSize: 1
+  robotTag: Robot
+  signTag: Sign
+  signHintChildIndex: -1
+--- !u!114 &8789041572601624328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8882322382070819011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608fdd0763d73dd46b1d7bfede7bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SignReader
+  interactKey: 32
+  player: {fileID: 7149745516437721603}
+  playerMovement: {fileID: 207843273903637582}
+  dialogueManager: {fileID: 0}
+  gridSize: 1
+  robotTag: Robot
+  signTag: Sign
+  signHintChildIndex: -1

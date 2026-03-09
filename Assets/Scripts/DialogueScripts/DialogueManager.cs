@@ -13,6 +13,7 @@ namespace DialogueScripts
         public TMP_Text dialogueText;
         public GameObject dialogueBox;
         public GameObject portrait;
+        private bool portraitOn = true;
 
         private Queue<string> _sentences;
     
@@ -32,7 +33,7 @@ namespace DialogueScripts
             {
                 dialogueBox.SetActive(true);
             }
-            if (portrait)
+            if (portrait && portraitOn)
             {
                 portrait.SetActive(true);
             }
@@ -108,8 +109,9 @@ namespace DialogueScripts
             
             OnDialogueEnd?.Invoke(); 
         }
-
+    public void SetPortraitVisible(bool visible)
+    {
+        portraitOn = visible;
     }
-
-    
+    }
 }

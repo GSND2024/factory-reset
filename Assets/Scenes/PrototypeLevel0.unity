@@ -3937,6 +3937,75 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 6295266694126192163, guid: 1ac670d509f61423ea6abe86ed516bbd, type: 3}
   m_PrefabInstance: {fileID: 1505509021973146473}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &858501966
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3495425906025482605, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_Name
+      value: Sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879512804357560958, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879512804357560958, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: 'dialogue.sentences.Array.data[0]'
+      value: 'Welcome to our factory! '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879512804357560958, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: 'dialogue.sentences.Array.data[1]'
+      value: Please proceed to the door in each room.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.628786
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.59003794
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
 --- !u!224 &882923766 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6325810020571449448, guid: b77966f9b554c4f06b1f190dfba7cf10, type: 3}
@@ -7479,6 +7548,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8789041572601624328, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 6524945782833725191}
     - target: {fileID: 8882322382070819011, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
       propertyPath: m_Name
       value: Player
@@ -7933,3 +8006,4 @@ SceneRoots:
   - {fileID: 1963417625}
   - {fileID: 164298924}
   - {fileID: 1277445761}
+  - {fileID: 858501966}

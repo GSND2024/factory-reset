@@ -20,6 +20,7 @@ public class SignReader : MonoBehaviour
     [Tooltip("If your sign has a 'Press Space' child object, put its index here (like you did for robots). -1 = don't toggle.")]
     [SerializeField] private int signHintChildIndex = -1;
 
+
     private bool _pausedForSignDialogue = false;
     private GameObject _lastHintedSign = null;
 
@@ -89,7 +90,9 @@ public class SignReader : MonoBehaviour
     while (Input.GetKey(interactKey))
         yield return null;
 
+    dialogueManager.SetPortraitVisible(false);
     dialogueManager.StartDialogue(dialogue);
+    dialogueManager.SetPortraitVisible(true);
 }
 
 
