@@ -60,23 +60,32 @@ public class PanelToggleUI : MonoBehaviour
 
         if (Input.GetKeyDown(toggleKey) && !GlobalGameState.dialogueActive)
         {
-            var target = FindAdjacentTaggedNPC();
-            if (target == null) { if (_isOpen) ClosePanel("[PTUI] No NPC nearby."); return; }
-
-            // >>> Only the panel whose owner IS the target handles this press <<<
-            if (target != owner) return;
-
-            if (!_isOpen)
+            if (GlobalGameState.isFinalLevel &&
+                (GlobalGameState.talkCount == 0 & GlobalGameState.hackCount == 0 & GlobalGameState.destroyCount == 0))
             {
-                if (actions == null) { Debug.LogWarning("[PTUI] actions not set."); return; }
-                actions.BindToTarget(target);
-                OpenPanel("[PTUI] OpenPanel (owner matched): " + target.name);
+                Debug.Log("Nothing happened");
             }
             else
             {
-                actions?.SubmitCurrentSelection();
-                return;
+                var target = FindAdjacentTaggedNPC();
+                if (target == null) { if (_isOpen) ClosePanel("[PTUI] No NPC nearby."); return; }
+
+                // >>> Only the panel whose owner IS the target handles this press <<<
+                if (target != owner) return;
+
+                if (!_isOpen)
+                {
+                    if (actions == null) { Debug.LogWarning("[PTUI] actions not set."); return; }
+                    actions.BindToTarget(target);
+                    OpenPanel("[PTUI] OpenPanel (owner matched): " + target.name);
+                }
+                else
+                {
+                    actions?.SubmitCurrentSelection();
+                    return;
+                }
             }
+            
         }
     }
 

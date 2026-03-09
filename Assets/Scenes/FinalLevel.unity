@@ -794,6 +794,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1262943473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6049658412361172548, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
+  m_PrefabInstance: {fileID: 1658300961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1262943475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262943473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe1f05bc93ef4e17a1e550339d16794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  closedSprite: {fileID: -6532087710655975924, guid: e3b4d6dec8d5a5a4f909d52bbdfa01cc, type: 3}
+  openSprite: {fileID: 7817699161482299370, guid: c0ad356f18c105a49b3456be31c0e7bc, type: 3}
+  targetSceneIndex: 10
+  spriteRenderer: {fileID: 1262943477}
+  boxCollider: {fileID: 1262943476}
+  showDebugMessages: 0
+--- !u!61 &1262943476 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 4639584794852145683, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
+  m_PrefabInstance: {fileID: 1658300961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1262943477 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3066595176402497287, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
+  m_PrefabInstance: {fileID: 1658300961}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1491277269 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5385904333727985708, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
@@ -824,6 +857,10 @@ PrefabInstance:
     - target: {fileID: 3815751987078573409, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
       propertyPath: m_Name
       value: room
+      objectReference: {fileID: 0}
+    - target: {fileID: 6049658412361172548, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
+      propertyPath: m_Name
+      value: EscapeDoor
       objectReference: {fileID: 0}
     - target: {fileID: 6511906798269152794, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -879,7 +916,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6511906798269152794, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
       insertIndex: 42
       addedObject: {fileID: 147709703}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6049658412361172548, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1262943475}
   m_SourcePrefab: {fileID: 100100000, guid: 18eaf61e95f1de6489a4e3593167e9d3, type: 3}
 --- !u!1 &1825090028
 GameObject:
