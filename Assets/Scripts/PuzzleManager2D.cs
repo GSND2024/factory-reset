@@ -29,7 +29,7 @@ public class PuzzleManager2D : MonoBehaviour
         { 1, "yellow" },
         { 2, "blue" },
         { 3, "orange" },
-        { 4, "pink" }
+        { 4, "purple" }
     };
 
     private void Awake()
