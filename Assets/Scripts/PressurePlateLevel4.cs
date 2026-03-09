@@ -28,7 +28,8 @@ public class PressurePlateLevel4 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !isPressed && !locked)
+        if ((other.CompareTag("Player") || other.CompareTag("Robot") || other.CompareTag("Robot (1)"))
+                && !isPressed && !locked)
         {
             AudioSource.PlayClipAtPoint(plateOn, transform.position, pushVolume);
             isPressed = true;
@@ -39,7 +40,8 @@ public class PressurePlateLevel4 : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !locked)
+        if ((other.CompareTag("Player") || other.CompareTag("Robot") || other.CompareTag("Robot (1)"))
+            && !locked)
         {
             AudioSource.PlayClipAtPoint(plateOff, transform.position, pushVolume);
             isPressed = false;
