@@ -15,7 +15,8 @@ namespace DialogueScripts
         public GameObject portrait;
 
         private Queue<string> _sentences;
-
+    
+        public event Action OnDialogueEnd;
         // Use this for initialization
         void Start () {
             _sentences = new Queue<string>();
@@ -104,6 +105,8 @@ namespace DialogueScripts
             if (portrait) portrait.SetActive(false);
             Input.ResetInputAxes();
             Debug.Log("Ending dialogue");
+            
+            OnDialogueEnd?.Invoke(); 
         }
 
     }

@@ -75,9 +75,21 @@ public class Level5StartCheck : MonoBehaviour
             
         }*/
 
-        if (GlobalGameState.HackAI)
+        if (GlobalGameState.destroyCount == 5)
         {
-            endingText.text = "Control End";
+            endingText.text = "Destroy End";
+        }
+        else if (GlobalGameState.HackAI)
+        {
+            if (GlobalGameState.hackCount == 8)
+            {
+                endingText.text = "Hack End";
+            }
+            else
+            {
+                endingText.text = "Control End";
+            }
+            
         }
         else
         {
@@ -85,16 +97,6 @@ public class Level5StartCheck : MonoBehaviour
             {
                 endingText.text = "Talk End";
             
-            }
-        
-            else if (GlobalGameState.hackCount == 8)
-            {
-                endingText.text = "Hack End";
-            }
-        
-            else if (GlobalGameState.destroyCount == 5)
-            {
-                endingText.text = "Destroy End";
             }
         
             else if (GlobalGameState.talkCount == 0 & GlobalGameState.hackCount == 0 & GlobalGameState.destroyCount == 0)

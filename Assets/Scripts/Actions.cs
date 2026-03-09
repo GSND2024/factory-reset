@@ -126,12 +126,28 @@ public class Actions : MonoBehaviour
             if (ColorUtility.TryParseHtmlString(robotColor, out newColor)){
                 portrait.color = newColor;}}
         Debug.Log($"[Actions] Talk with dialogue: {dialogue.name}");
-        dialogueManager.StartDialogue(dialogue);
-        Debug.Log("[Actions] Talk");
+
+        if (!GlobalGameState.isFinalLevel)
+        {
+            dialogueManager.StartDialogue(dialogue);
+            Debug.Log("[Actions] Talk");
+        }
+
         panel?.ClosePanel("[Actions] Close after Talk");
+
         if (GlobalGameState.isFinalLevel)
         {
-            SceneManager.LoadScene("PrototypeLevel5");
+            if (GlobalGameState.destroyCount == 5)
+            {
+                dialogueManager.StartDialogue(dialogue);
+                dialogueManager.OnDialogueEnd += FinalLevelTalkLogic;
+            }
+            else
+            {
+                Debug.Log("Term");
+            }
+
+            return;
         }
 
         if (GlobalGameState.isLevel0) { _moveRobot = true; }
@@ -167,8 +183,19 @@ public class Actions : MonoBehaviour
         dialogue.hacked = true;
         if (GlobalGameState.isFinalLevel)
         {
-            GlobalGameState.HackAI = true;
-            SceneManager.LoadScene("PrototypeLevel5");
+            if (GlobalGameState.destroyCount == 5)
+            {
+                dialogueManager.StartDialogue(dialogue);
+                panel?.ClosePanel("[Actions] Close after Talk");
+                dialogueManager.OnDialogueEnd += FinalLevelHackLogic;
+            }
+            else
+            {
+                GlobalGameState.HackAI = true;
+                SceneManager.LoadScene("PrototypeLevel5");
+            }
+
+            return;
         }
         
         if (GlobalGameState.isEachLevelHacked == false & GlobalGameState.isLevel4 == false)
@@ -236,4 +263,18 @@ public class Actions : MonoBehaviour
         if (hackButton) { hackButton.onClick.Invoke(); return; }
         if (talkButton) { talkButton.onClick.Invoke(); return; }
     }
+    
+    void FinalLevelTalkLogic()
+    {
+        dialogueManager.OnDialogueEnd -= FinalLevelTalkLogic;
+        SceneManager.LoadScene("PrototypeLevel5");
+    }
+    
+    void FinalLevelHackLogic()
+    {
+        dialogueManager.OnDialogueEnd -= FinalLevelHackLogic;
+        SceneManager.LoadScene("PrototypeLevel5");
+    }
 }
+
+    
