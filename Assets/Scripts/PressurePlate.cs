@@ -129,8 +129,8 @@ public class PressurePlate2D : MonoBehaviour
         // Notify listeners (DoorLatchController may set isOpen=true here)
         OnPressChanged?.Invoke(IsPressed);
 
-        if (!IsPressed && doorLock != null && enableLatching != true)
-            AudioSource.PlayClipAtPoint(doorLock, transform.position, pushVolume);
+        if (!IsPressed && doorLock != null && !enableLatching && audioSource != null)
+            audioSource.PlayOneShot(doorLock, pushVolume);
 
         // If pressing this plate caused the door to open, latch immediately.
         if (IsPressed && enableLatching && !_isLocked && latchDoor != null && latchDoor.isOpen)
