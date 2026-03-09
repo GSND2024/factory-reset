@@ -124,9 +124,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4881579763024307082, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
   m_PrefabInstance: {fileID: 7380025951509375216}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &102109660 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4835044526294545180, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+  m_PrefabInstance: {fileID: 7380025951509375216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &109342837 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6068219019228109319, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+  m_PrefabInstance: {fileID: 7380025951509375216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &138486541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3141195901561466992, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
   m_PrefabInstance: {fileID: 7380025951509375216}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &141772957
@@ -789,11 +799,16 @@ MonoBehaviour:
   toggleKey: 32
   panelRoot: {fileID: 102109659}
   actions: {fileID: 1969039966}
+  spaceUI: {fileID: 138486541}
   player: {fileID: 569174712}
   playerMovement: {fileID: 569174710}
   npcTag: Robot
   gridSize: 0.704
   gridOrigin: {x: 0, y: 0}
+  panelTransform: {fileID: 102109660}
+  mainCam: {fileID: 519420031}
+  verticalOffsetTiles: 1.5
+  edgePaddingTiles: 0.5
   debug: 0
   probeRadius: 0.22
   owner: {fileID: 7380025951509375217}
@@ -871,6 +886,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6116662219804710542, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 7149745516437721603, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.592
@@ -1801,6 +1820,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4308997168023990585, guid: 726026fca7e1548ecb0d2ddb0a0f611b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5114488591979490018, guid: 726026fca7e1548ecb0d2ddb0a0f611b, type: 3}
       propertyPath: m_Name
       value: ControlCursor
@@ -2106,6 +2129,10 @@ PrefabInstance:
     - target: {fileID: 8141874789286607865, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141874789286607865, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: panel

@@ -148,6 +148,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4881579763024307082, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
   m_PrefabInstance: {fileID: 7380025951509375216}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &102109660 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4835044526294545180, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+  m_PrefabInstance: {fileID: 7380025951509375216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &107455575 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3297674139416530366, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
@@ -252,6 +257,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &198997352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3141195901561466992, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+  m_PrefabInstance: {fileID: 1117325316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &272668362 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
@@ -459,11 +469,16 @@ MonoBehaviour:
   toggleKey: 32
   panelRoot: {fileID: 988973218}
   actions: {fileID: 482494378}
+  spaceUI: {fileID: 198997352}
   player: {fileID: 569174712}
   playerMovement: {fileID: 569174710}
   npcTag: Robot
   gridSize: 0.704
   gridOrigin: {x: 0, y: 0}
+  panelTransform: {fileID: 988973219}
+  mainCam: {fileID: 519420031}
+  verticalOffsetTiles: 1.5
+  edgePaddingTiles: 0.5
   debug: 0
   probeRadius: 0.22
   owner: {fileID: 482494372}
@@ -1107,6 +1122,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4881579763024307082, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
   m_PrefabInstance: {fileID: 1117325316}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &988973219 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4835044526294545180, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+  m_PrefabInstance: {fileID: 1117325316}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1117325316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1170,6 +1190,10 @@ PrefabInstance:
     - target: {fileID: 8141874789286607865, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141874789286607865, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: panel
@@ -1989,6 +2013,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 464267081}
   m_SourcePrefab: {fileID: 100100000, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
+--- !u!1 &1590418766 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3141195901561466992, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+  m_PrefabInstance: {fileID: 7380025951509375216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1630258765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2376,11 +2405,16 @@ MonoBehaviour:
   toggleKey: 32
   panelRoot: {fileID: 102109659}
   actions: {fileID: 1969039966}
+  spaceUI: {fileID: 1590418766}
   player: {fileID: 569174712}
   playerMovement: {fileID: 569174710}
   npcTag: Robot
   gridSize: 0.704
   gridOrigin: {x: 0, y: 0}
+  panelTransform: {fileID: 102109660}
+  mainCam: {fileID: 519420031}
+  verticalOffsetTiles: 1.5
+  edgePaddingTiles: 0.5
   debug: 0
   probeRadius: 0.22
   owner: {fileID: 1969039975}
@@ -2721,6 +2755,10 @@ PrefabInstance:
     - target: {fileID: 8141874789286607865, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8141874789286607865, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: panel
