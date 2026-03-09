@@ -93,7 +93,7 @@ public class Level5StartCheck : MonoBehaviour
         }
         else
         {
-            if (GlobalGameState.talkCount == 8 & GlobalGameState.hackCount == 0 & GlobalGameState.destroyCount == 0)
+            if (GlobalGameState.talkCount == 8 & GlobalGameState.hackCount == 0 & GlobalGameState.destroyCount == 0 & GlobalGameState.RootAI)
             {
                 endingText.text = "Talk End";
             

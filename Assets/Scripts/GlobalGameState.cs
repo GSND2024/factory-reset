@@ -24,6 +24,7 @@ public static class GlobalGameState
     public static bool isLevel7 = false;
     public static bool isFinalLevel = false;
     public static bool HackAI = false;
+    public static bool RootAI = false;
     public static GameObject spaceUIRobot = null;
     public static bool[] stateSaver = new bool[5];
     
