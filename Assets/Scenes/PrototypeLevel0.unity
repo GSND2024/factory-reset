@@ -7505,6 +7505,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 999261605760883358, guid: 8c5f1a20e4233394bb11c13420f9fd86, type: 3}
     - target: {fileID: 6116662219804710542, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6116662219804710542, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
       propertyPath: m_SortingOrder
       value: 9
       objectReference: {fileID: 0}
