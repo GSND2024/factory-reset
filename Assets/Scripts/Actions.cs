@@ -144,6 +144,7 @@ public class Actions : MonoBehaviour
             }
             else
             {
+                SceneManager.LoadScene("Terminal");
                 Debug.Log("Term");
             }
 
