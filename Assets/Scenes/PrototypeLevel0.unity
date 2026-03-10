@@ -7930,6 +7930,7 @@ MonoBehaviour:
     - Go on ahead!
     hackedSentences:
     - Ugh. Please don't hack me again!
+    - No one will like you if you keep hacking us...
     purpleSentences: []
     hacked: 0
 --- !u!1660057539 &9223372036854775807

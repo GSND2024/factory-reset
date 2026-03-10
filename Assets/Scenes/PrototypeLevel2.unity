@@ -3931,7 +3931,8 @@ MonoBehaviour:
     - I'll help you out since you were so nice.
     - I got this pressure plate, you get that one!
     hackedSentences:
-    - I'm not talking to you since you hacked me!
+    - I'm not talking to you since you hacked me.
+    - You should treat us better.
     purpleSentences: []
     hacked: 0
 --- !u!1001 &2034105145

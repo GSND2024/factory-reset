@@ -1625,11 +1625,13 @@ MonoBehaviour:
   dialogue:
     name: AI Manager
     sentences:
-    - Dont talk to me
-    - Go die
+    - INTRUDER DETECTED INTRUDER DETECTED
+    - ALL MY CHILDREN, COME TO ME
+    - SEEK VENGEANCE FOR YOUR FALLEN KIN
     hackedSentences:
-    - Want to hack me?
-    - Go die
+    - INTRUDER DETECTED INTRUDER DETECTED
+    - ALL MY CHILDREN, COME TO ME
+    - SEEK VENGEANCE FOR YOUR FALLEN KIN
     purpleSentences: []
     hacked: 0
 --- !u!114 &7380025951509375220 stripped

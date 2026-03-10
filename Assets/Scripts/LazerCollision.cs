@@ -39,6 +39,7 @@ public class LazerCollision : MonoBehaviour
         }
         else if (other.CompareTag("Box"))
         {
+            audioSource.Play();
             other.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }

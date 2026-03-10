@@ -2257,13 +2257,14 @@ MonoBehaviour:
   dialogue:
     name: Red Bot
     sentences:
-    - Hi! I'm a robot.
-    - Just between you and me, I saw another robot drop their secret keycard!
+    - Hi! Thanks for talking to me.
+    - Just between you and me, there's a secret override button to open the door!
     - From where I'm standing, it was about 5 paces north, 6 steps west, 1 pace south,
       and 2 paces east.
     - Please don't hack me!
     hackedSentences:
-    - Ugh. I hated that, don't talk to me!
+    - Ugh. I hated that, don't talk to me.
+    - I don't force you to do my bidding.
     purpleSentences: []
     hacked: 0
 --- !u!1660057539 &9223372036854775807

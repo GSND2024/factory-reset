@@ -60,7 +60,7 @@ public class Level4StartCheck : MonoBehaviour
         
         if (!GlobalGameState.isRobotSaved)
         {
-            if (!robot2)
+            if (robot2)
             {
                 Destroy(robot2);
             }

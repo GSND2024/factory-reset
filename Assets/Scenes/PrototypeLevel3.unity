@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ad79112eaad4b7995d82eeba66bd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 1736465946}
 --- !u!61 &110202572
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -799,6 +799,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Level3StartCheck
   robot: {fileID: 1969039959}
+--- !u!1001 &233109782
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3495425906025482605, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_Name
+      value: Sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879512804357560958, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879512804357560958, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: 'dialogue.sentences.Array.data[0]'
+      value: This robot is being detained for its inefficiency.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879512804357560958, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: 'dialogue.sentences.Array.data[1]'
+      value: Please proceed ahead!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.5772595
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2005184
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
 --- !u!114 &328197290 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7671071734999405748, guid: 7ab5be037529c4a17a7db3d4e94b17ca, type: 3}
@@ -1383,7 +1452,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 207843273903637582, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
   m_PrefabInstance: {fileID: 1937646986}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1028398421}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81b4cf9d5f3d24460b8fadeb45c6b45d, type: 3}
@@ -2215,6 +2284,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f8a48daf23b884cbcb9055bd700cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PressurePlate
+--- !u!1 &1028398421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8882322382070819011, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
+  m_PrefabInstance: {fileID: 1937646986}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1028398422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028398421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608fdd0763d73dd46b1d7bfede7bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SignReader
+  interactKey: 32
+  player: {fileID: 569174712}
+  playerMovement: {fileID: 569174710}
+  dialogueManager: {fileID: 1751136291}
+  gridSize: 1
+  robotTag: Robot
+  signTag: Sign
+  signHintChildIndex: -1
 --- !u!1001 &1061031929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2768,7 +2862,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 10
   m_Sprite: {fileID: 2331796760446898967, guid: 2289f2cca8048484ea86a26d1c58a1a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2981,9 +3075,10 @@ GameObject:
   - component: {fileID: 1441511521}
   - component: {fileID: 1441511520}
   - component: {fileID: 1441511519}
+  - component: {fileID: 1441511522}
   m_Layer: 6
   m_Name: Lazer
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3018,7 +3113,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -3082,7 +3177,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.11764707, g: 0.15294118, b: 0.21960786, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3107,6 +3202,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1441511522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1441511518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ad79112eaad4b7995d82eeba66bd06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LazerCollision
+  audioSource: {fileID: 1736465946}
 --- !u!1001 &1448880077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3472,7 +3580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ad79112eaad4b7995d82eeba66bd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 1736465946}
 --- !u!61 &1509453819
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4081,6 +4189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60047bfe2b2924a6f9ca30cdf02875de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  laser1: {fileID: 110202570}
+  laser2: {fileID: 1509453816}
 --- !u!114 &1703441946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4099,6 +4209,11 @@ MonoBehaviour:
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6295266694126192163, guid: 1ac670d509f61423ea6abe86ed516bbd, type: 3}
   m_PrefabInstance: {fileID: 791808212}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1736465946 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4181635124895369558, guid: dfd9f582b5ddb413db748f6046aeb758, type: 3}
+  m_PrefabInstance: {fileID: 371401420}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1748861676 stripped
 GameObject:
@@ -4762,7 +4877,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8882322382070819011, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1028398422}
   m_SourcePrefab: {fileID: 100100000, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
 --- !u!1001 &1948380440
 PrefabInstance:
@@ -5188,10 +5306,11 @@ MonoBehaviour:
     name: Blue Bot
     sentences:
     - Thanks for rescuing me!!!
-    - Please don't hack me
+    - I was getting bored of doing the same tasks over and over and over again.
     - I'll make sure to repay you this favor.
     hackedSentences:
     - Why did you hack me??
+    - Now I wish you left me back in my jail cell.
     purpleSentences: []
     hacked: 0
 --- !u!1001 &1975662191
@@ -5559,3 +5678,4 @@ SceneRoots:
   - {fileID: 548487393}
   - {fileID: 129202607}
   - {fileID: 953092975}
+  - {fileID: 233109782}

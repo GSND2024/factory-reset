@@ -444,11 +444,11 @@ MonoBehaviour:
   dialogue:
     name: Blue Bot
     sentences:
-    - i can let you in on a secret since you saved me 111
-    - step on the blue pressure plate second!
+    - I can let you in on a secret since you saved me!
+    - Step on the blue pressure plate second, my hero!
     hackedSentences:
-    - you hacked me!
-    - go solve it yourself.
+    - I remember you, you hacked me.
+    - Go solve this puzzle yourself.
     purpleSentences: []
     hacked: 0
   dialogueManager: {fileID: 922372548}
@@ -497,11 +497,11 @@ MonoBehaviour:
   dialogue:
     name: Blue Bot
     sentences:
-    - i can let you in on a secret since you saved me
-    - step on the blue pressure plate second!
+    - I can let you in on a secret since you saved me!
+    - Step on the blue pressure plate second, my hero!
     hackedSentences:
-    - you hacked me!
-    - go solve it yourself.
+    - I won't forgive you for hacking me.
+    - I won't forgive you for hacking me. Go solve it yourself!
     purpleSentences: []
     hacked: 0
 --- !u!1 &519420028
@@ -1157,7 +1157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 447788424591386961, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 962351782160720260, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_SortingOrder
@@ -1197,7 +1197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141874789286607865, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_SortingOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: panel
@@ -1331,6 +1331,7 @@ MonoBehaviour:
   - {fileID: 1272236761}
   - {fileID: 1756339238}
   audioSource: {fileID: 1573554907}
+  dialogue2: {fileID: 482494384}
 --- !u!4 &1139233407
 Transform:
   m_ObjectHideFlags: 0
@@ -2437,11 +2438,11 @@ MonoBehaviour:
   dialogue:
     name: Red Bot
     sentences:
-    - you treated me fairly, i'll assist!
-    - step on the red pressure plate first!
+    - Since you treated me fairly, I'll assist you!
+    - Step on the red pressure plate first!
     hackedSentences:
-    - i'm not helping you!
-    - stay away from my system!
+    - I'll never forgive you for hacking me.
+    - Stay away from our system!
     purpleSentences: []
     hacked: 0
 --- !u!114 &1969039975 stripped
@@ -2734,7 +2735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 447788424591386961, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_SortingOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 962351782160720260, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_SortingOrder
@@ -2762,7 +2763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8141874789286607865, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: m_SortingOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: panel
@@ -2794,11 +2795,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: 'dialogue.sentences.Array.data[0]'
-      value: you treated me fairly, i'll assist! 11111
+      value: Since you treated me fairly, I'll assist you!
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: 'dialogue.sentences.Array.data[1]'
-      value: step on the red pressure plate first!
+      value: Step on the red pressure plate first!
       objectReference: {fileID: 0}
     - target: {fileID: 8245694740018402213, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
       propertyPath: 'dialogue.sentences.Array.data[2]'

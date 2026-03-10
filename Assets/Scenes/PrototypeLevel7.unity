@@ -2416,7 +2416,6 @@ MonoBehaviour:
   robotTag: Robot
   signTag: Sign
   signHintChildIndex: -1
-  portraitObject: {fileID: 0}
 --- !u!1 &1645543979
 GameObject:
   m_ObjectHideFlags: 0
@@ -3451,7 +3450,7 @@ MonoBehaviour:
   portrait: {fileID: 0}
   robotColor: 
   dialogue:
-    name: Yellow Bot
+    name: Mr. Purple
     sentences:
     - I'm having so much fun in my enrichment area!
     - Thank you manageme- manageme- manageme-
@@ -3502,16 +3501,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueHolder
   dialogue:
-    name: Yellow Bot
+    name: Mr. Purple
     sentences:
     - I'm the manager of this factory.
     - Congratulations on making it this far.
     - Let me help you turn on the lights.
+    - Watch your step!
     hackedSentences:
     - Now, why would you do that?
     - That was very disrespectful.
     purpleSentences:
-    - I can see all of my friends you've killed today.
+    - I've seen all of my subordinates you've killed today.
     - You think I'll just sit here and let you pass?
     - Die.
     hacked: 0

@@ -22,6 +22,8 @@ public class PuzzleManager2D : MonoBehaviour
 
     // Public property to access the correct order from other scripts
     public List<int> CorrectOrder => correctOrder;
+
+    [SerializeField] private DialogueHolder dialogue2;
     
     private Dictionary<int, string> plateColorNames = new Dictionary<int, string>
     {
@@ -49,14 +51,14 @@ public class PuzzleManager2D : MonoBehaviour
     private void UpdateHint()
     {
         DialogueHolder dialogueHolder1 = GameObject.Find("Robot").GetComponent<DialogueHolder>();
-        DialogueHolder dialogueHolder2 = GameObject.Find("Robot (1)").GetComponent<DialogueHolder>();
+        DialogueHolder dialogueHolder2 = dialogue2;
         
         for (int plateID = 0; plateID <= 4; plateID++)
         {
             if (GetPlatePosition(plateID) == 0)
             {
                 string colorName = plateColorNames[plateID];
-                dialogueHolder1.dialogue.sentences[1] = $"step on the {colorName} pressure plate first!";
+                dialogueHolder1.dialogue.sentences[1] = $"Step on the {colorName} pressure plate first!";
                 break;
             }
             
@@ -68,7 +70,7 @@ public class PuzzleManager2D : MonoBehaviour
             if (GetPlatePosition(plateID) == 1)
             {
                 string colorName = plateColorNames[plateID];
-                dialogueHolder2.dialogue.sentences[1] = $"step on the {colorName} pressure plate second!";
+                dialogueHolder2.dialogue.sentences[1] = $"Thanks for rescuing me!!! Step on the {colorName} pressure plate second, my hero!";
                 break;
             }
         }
