@@ -179,7 +179,7 @@ public class SettingsManager : MonoBehaviour
         // Only allow ESC key to toggle settings panel in enabled scenes
         if (!isEnabledInCurrentScene)
             return;
-            
+          /*  
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isSettingsOpen)
@@ -190,7 +190,7 @@ public class SettingsManager : MonoBehaviour
             {
                 OpenSettings();
             }
-        }
+        }*/
     }
     
     // Callback when scene is loaded

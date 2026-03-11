@@ -36,7 +36,7 @@ public class MainMenuManager : MonoBehaviour
         
         if (settingsButton != null)
         {
-            settingsButton.onClick.AddListener(OpenSettings);
+            //settingsButton.onClick.AddListener(OpenSettings);
         }
         
         if (achievementButton != null)
