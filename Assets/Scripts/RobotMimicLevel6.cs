@@ -2,6 +2,10 @@
 
 public class RobotMimicLevel6 : MonoBehaviour
 {
+    [SerializeField] private GameObject debrisObject;
+    [SerializeField] private AudioClip destroyClip;
+    [SerializeField] private float destroyVolume = 1f;
+
     [Header("References")]
     [SerializeField] private GridMovement playerMovement;
     [SerializeField] private GridMovement robotMovement;
@@ -79,6 +83,11 @@ public class RobotMimicLevel6 : MonoBehaviour
         {
             Destroy(gameObject);
             GlobalGameState.destroyCount += 1;
+            if (destroyClip != null)
+            {
+                AudioSource.PlayClipAtPoint(destroyClip, transform.position, destroyVolume);
+            }
+            Instantiate(debrisObject, transform.position, transform.rotation);
             Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}, , destroyCount: {GlobalGameState.destroyCount}");
             if (playerMovement != null)
             {
