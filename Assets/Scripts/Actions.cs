@@ -152,7 +152,6 @@ public class Actions : MonoBehaviour
         }
 
         if (GlobalGameState.isLevel0) { _moveRobot = true; }
-        if (GlobalGameState.isLevel1) { _hiddenActivated = true; }
         if (GlobalGameState.isLevel2 || GlobalGameState.isLevel3 || GlobalGameState.isLevel7) { _goToPressurePlate = true; }
         DialogueHolder DH = gameObject.GetComponent<DialogueHolder>();
 
