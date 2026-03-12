@@ -17,27 +17,35 @@ public class GlobalStateDisplay : MonoBehaviour
     public Sprite[] numberSprites = new Sprite[9];
     
     [Header("Color Settings")]
-    public Color normalColor = Color.white;
-    public Color talkMaxColor = new Color(0.7f, 0.9f, 1f, 1f); // Light blue
-    public Color hackMaxColor = new Color(1f, 0.7f, 0.7f, 1f); // Light red
+    public Color talkNormalColor = new Color(0.7f, 0.9f, 1f, 1f);   // 浅蓝色
+    public Color talkMaxColor = new Color(0.2f, 0.5f, 0.9f, 1f);    // 深蓝色
+    public Color hackNormalColor = new Color(1f, 0.7f, 0.7f, 1f);   // 浅红色
+    public Color hackMaxColor = new Color(0.9f, 0.2f, 0.2f, 1f);    // 深红色
     
     [Header("Display Settings")]
     [Tooltip("Hide state display in these scenes")]
     public List<string> hiddenScenes = new List<string>();
-    public int canvasSortOrder = 998; // Below settings menu (999)
+    public int canvasSortOrder = 998;
+    
+    [Header("Sound Settings")]
+    public AudioClip maxCountSound;
+    [Range(0f, 1f)]
+    public float soundVolume = 1f;
     
     [Header("Update Settings")]
     [Tooltip("Update display every frame (recommended for real-time updates)")]
     public bool updateEveryFrame = true;
     
     private bool isVisibleInCurrentScene = true;
+    private int lastTalkCount = -1;
+    private int lastHackCount = -1;
     
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(transform.root.gameObject); // Keep entire root object
+            DontDestroyOnLoad(transform.root.gameObject);
         }
         else
         {
@@ -48,13 +56,8 @@ public class GlobalStateDisplay : MonoBehaviour
     
     void Start()
     {
-        // Setup canvas sort order
         SetupCanvas();
-        
-        // Subscribe to scene load event
         SceneManager.sceneLoaded += OnSceneLoaded;
-        
-        // Initial update
         UpdateDisplay();
         CheckCurrentScene();
     }
@@ -75,7 +78,6 @@ public class GlobalStateDisplay : MonoBehaviour
     
     void Update()
     {
-        // Update display every frame for real-time changes
         if (updateEveryFrame)
         {
             UpdateDisplay();
@@ -88,43 +90,48 @@ public class GlobalStateDisplay : MonoBehaviour
         UpdateDisplay();
     }
     
-    // Check if state display should be visible in current scene
     private void CheckCurrentScene()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         isVisibleInCurrentScene = !hiddenScenes.Contains(currentSceneName);
         
-        // Show or hide the canvas
         if (stateCanvas != null)
         {
             stateCanvas.gameObject.SetActive(isVisibleInCurrentScene);
         }
     }
     
-    // Update image displays by reading from GlobalGameState
     public void UpdateDisplay()
     {
-        
-        // Update Talk image
+        // Update Talk image：正常浅蓝，满8深蓝
         int talkCount = Mathf.Clamp(GlobalGameState.talkCount, 0, 8);
         if (talkImage != null && numberSprites.Length > talkCount && numberSprites[talkCount] != null)
         {
             talkImage.sprite = numberSprites[talkCount];
-            // Change color to light blue when count is 8
-            talkImage.color = (talkCount == 8) ? talkMaxColor : normalColor;
+            talkImage.color = (talkCount == 8) ? talkMaxColor : talkNormalColor;
         }
+        if (talkCount == 8 && lastTalkCount != 8)
+            PlayMaxSound();
+        lastTalkCount = talkCount;
         
-        // Update Hack image
+        // Update Hack image：正常浅红，满8深红
         int hackCount = Mathf.Clamp(GlobalGameState.hackCount, 0, 8);
         if (hackImage != null && numberSprites.Length > hackCount && numberSprites[hackCount] != null)
         {
             hackImage.sprite = numberSprites[hackCount];
-            // Change color to light red when count is 8
-            hackImage.color = (hackCount == 8) ? hackMaxColor : normalColor;
+            hackImage.color = (hackCount == 8) ? hackMaxColor : hackNormalColor;
         }
+        if (hackCount == 8 && lastHackCount != 8)
+            PlayMaxSound();
+        lastHackCount = hackCount;
     }
     
-    // Manual refresh (call this if updateEveryFrame is false)
+    private void PlayMaxSound()
+    {
+        if (maxCountSound != null)
+            AudioSource.PlayClipAtPoint(maxCountSound, Camera.main.transform.position, soundVolume);
+    }
+    
     public void RefreshDisplay()
     {
         UpdateDisplay();
