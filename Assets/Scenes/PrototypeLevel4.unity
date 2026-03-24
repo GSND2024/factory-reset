@@ -666,7 +666,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 207843273903637582, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
   m_PrefabInstance: {fileID: 603951068}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1765544448}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81b4cf9d5f3d24460b8fadeb45c6b45d, type: 3}
@@ -794,10 +794,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8789041572601624328, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
+    - {fileID: 2484417447331924374, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8882322382070819011, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1765544454}
   m_SourcePrefab: {fileID: 100100000, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
 --- !u!1 &619394800
 GameObject:
@@ -960,6 +965,83 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5a6d16974546ac44a1e93d9c8140fa2, type: 3}
+--- !u!1001 &852343888
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3495425906025482605, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_Name
+      value: Sign
+      objectReference: {fileID: 0}
+    - target: {fileID: 3602051928498088919, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_Size.x
+      value: 0.77889097
+      objectReference: {fileID: 0}
+    - target: {fileID: 3602051928498088919, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_Size.y
+      value: 0.8747685
+      objectReference: {fileID: 0}
+    - target: {fileID: 3602051928498088919, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.14745408
+      objectReference: {fileID: 0}
+    - target: {fileID: 3602051928498088919, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.24156523
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879512804357560958, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: 'dialogue.sentences.Array.data[0]'
+      value: To proceed, you have to step on the 5 pressure plates in the right order.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200670353818444512, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
 --- !u!1001 &886046964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2305,6 +2387,31 @@ MonoBehaviour:
   plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
   plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
   pushVolume: 1
+--- !u!1 &1765544448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8882322382070819011, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
+  m_PrefabInstance: {fileID: 603951068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1765544454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765544448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608fdd0763d73dd46b1d7bfede7bf9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SignReader
+  interactKey: 32
+  player: {fileID: 569174712}
+  playerMovement: {fileID: 569174710}
+  dialogueManager: {fileID: 922372548}
+  gridSize: 1
+  robotTag: Robot
+  signTag: Sign
+  signHintChildIndex: -1
 --- !u!1 &1825090028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2899,3 +3006,4 @@ SceneRoots:
   - {fileID: 1340297249}
   - {fileID: 764841664}
   - {fileID: 592440703}
+  - {fileID: 852343888}
