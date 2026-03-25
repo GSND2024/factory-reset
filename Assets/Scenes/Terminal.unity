@@ -286,8 +286,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 263179275}
   - {fileID: 1158164652}
+  - {fileID: 263179275}
   m_Father: {fileID: 1073857918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -446,17 +446,17 @@ MonoBehaviour:
   noButton: {fileID: 1617960749}
   yesButtonText: {fileID: 263179276}
   noButtonText: {fileID: 1457770224}
-  yesButtonOutline: {fileID: 0}
-  noButtonOutline: {fileID: 0}
-  yesButtonBorderImage: {fileID: 0}
-  noButtonBorderImage: {fileID: 0}
+  yesButtonOutline: {fileID: 1158164653}
+  noButtonOutline: {fileID: 1912558887}
+  yesButtonBorderImage: {fileID: 1158164654}
+  noButtonBorderImage: {fileID: 1912558888}
   normalColor: {r: 0.09019608, g: 0.8509804, b: 0.42745098, a: 1}
   greyedOutColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
   typeSpeed: 30
   delayBetweenLines: 0.3
   requiredTalkCount: 8
-  nextSceneIndex: 6
+  nextSceneName: PrototypeLevel5
 --- !u!1 &263179274
 GameObject:
   m_ObjectHideFlags: 0
@@ -2026,8 +2026,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -10, y: 6}
+  m_AnchoredPosition: {x: 2.5, y: 0}
+  m_SizeDelta: {x: -11, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1912558887
 MonoBehaviour:
