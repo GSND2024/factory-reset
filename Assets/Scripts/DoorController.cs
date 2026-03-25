@@ -30,7 +30,7 @@ public class DoorLatchController : MonoBehaviour
 
     private void OnDisable()
     {
-        Subscribe(false);
+        //Subscribe(false);
     }
 
     private void Subscribe(bool add)

@@ -11,6 +11,7 @@ TagManager:
   - Music
   - SFX
   - Sign
+  - Door
   layers:
   - Default
   - TransparentFX

@@ -595,11 +595,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorController
   plates:
-  - {fileID: 817416130}
   - {fileID: 769438971}
   requiredPressedCount: 2
   doorToDisable: {fileID: 1441511518}
-  permanentOnceOpened: 1
+  permanentOnceOpened: 0
   isOpen: 0
   audioSource: {fileID: 103810814}
 --- !u!114 &328197290 stripped
@@ -1388,17 +1387,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98c42eec4ebc0e6449227a71e4b73a8e, type: 3}
---- !u!114 &817416130 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-  m_PrefabInstance: {fileID: 5514088012063112279}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7f8a48daf23b884cbcb9055bd700cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PressurePlate
 --- !u!1001 &900689731
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2586,6 +2574,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 229991190}
     - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
+      propertyPath: enableLatching
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: pressedColor.b
       value: 0.24705882
       objectReference: {fileID: 0}
@@ -2957,9 +2949,9 @@ GameObject:
   - component: {fileID: 1703441944}
   - component: {fileID: 1703441946}
   - component: {fileID: 1703441945}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: End
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3880,7 +3872,7 @@ MonoBehaviour:
     sentences:
     - Thanks for not running me into the laser back there!
     - I'll help you out since you were so nice.
-    - I got this pressure plate, you get that one!
+    - I got the pressure plate, go on ahead!
     hackedSentences:
     - I'm not talking to you since you hacked me!
     purpleSentences: []
@@ -4061,79 +4053,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 774fe9f5f539648498a31ac057e6cabb, type: 3}
---- !u!1001 &5514088012063112279
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: latchDoor
-      value: 
-      objectReference: {fileID: 229991190}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1076878
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.1030221
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.8873
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.111
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3747080454403527188, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7794331746827812918, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_Name
-      value: pressurePlate
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
 --- !u!1001 &5782379866331912455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4214,7 +4133,6 @@ SceneRoots:
   - {fileID: 229991189}
   - {fileID: 1645543980}
   - {fileID: 1948380440}
-  - {fileID: 5514088012063112279}
   - {fileID: 1501735470}
   - {fileID: 1395895221}
   - {fileID: 1077724142}

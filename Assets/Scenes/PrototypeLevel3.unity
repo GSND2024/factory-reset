@@ -557,11 +557,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorLatchController
   plates:
-  - {fileID: 1010389452}
   - {fileID: 1896656391}
   requiredPressedCount: 2
   doorToDisable: {fileID: 110202570}
-  permanentOnceOpened: 1
+  permanentOnceOpened: 0
   isOpen: 0
   audioSource: {fileID: 1004138887}
 --- !u!1001 &129202607
@@ -780,10 +779,9 @@ MonoBehaviour:
   - {fileID: 817416130}
   - {fileID: 769438971}
   - {fileID: 351687572}
-  - {fileID: 691803936}
   requiredPressedCount: 4
   doorToDisable: {fileID: 1441511518}
-  permanentOnceOpened: 1
+  permanentOnceOpened: 0
   isOpen: 0
   audioSource: {fileID: 1723245214}
 --- !u!114 &229991191
@@ -1121,6 +1119,10 @@ PrefabInstance:
       propertyPath: latchDoor
       value: 
       objectReference: {fileID: 110202575}
+    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
+      propertyPath: enableLatching
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0949779
@@ -1674,17 +1676,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4363110335431418101, guid: 4cbe5ec4b1373cb418176617871d9f63, type: 3}
   m_PrefabInstance: {fileID: 644715989}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &691803936 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-  m_PrefabInstance: {fileID: 1893600115}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7f8a48daf23b884cbcb9055bd700cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PressurePlate
 --- !u!114 &769438971 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
@@ -1903,6 +1894,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 229991190}
     - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
+      propertyPath: enableLatching
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: pressedColor.b
       value: 0.24705882
       objectReference: {fileID: 0}
@@ -1924,11 +1919,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.173
+      value: 2.466
       objectReference: {fileID: 0}
     - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.413
+      value: -2.137
       objectReference: {fileID: 0}
     - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2273,17 +2268,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 774fe9f5f539648498a31ac057e6cabb, type: 3}
---- !u!114 &1010389452 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-  m_PrefabInstance: {fileID: 1448880077}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7f8a48daf23b884cbcb9055bd700cf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PressurePlate
 --- !u!1 &1028398421 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8882322382070819011, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
@@ -3215,83 +3199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LazerCollision
   audioSource: {fileID: 1736465946}
---- !u!1001 &1448880077
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -1435804468864540192, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_Volume
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: doorLock
-      value: 
-      objectReference: {fileID: 8300000, guid: a98dec8f2c13efe49882718a44ccd8f6, type: 3}
-    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: latchDoor
-      value: 
-      objectReference: {fileID: 110202575}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1025715
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.0933868
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3.884
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.703
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7794331746827812918, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_Name
-      value: pressurePlate (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
 --- !u!1001 &1465675499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3561,11 +3468,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorLatchController
   plates:
-  - {fileID: 1010389452}
   - {fileID: 1896656391}
   requiredPressedCount: 2
   doorToDisable: {fileID: 1509453816}
-  permanentOnceOpened: 1
+  permanentOnceOpened: 0
   isOpen: 0
   audioSource: {fileID: 1004138887}
 --- !u!114 &1509453818
@@ -4051,9 +3957,9 @@ GameObject:
   - component: {fileID: 1703441944}
   - component: {fileID: 1703441946}
   - component: {fileID: 1703441945}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: End
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4344,6 +4250,10 @@ PrefabInstance:
       propertyPath: latchDoor
       value: 
       objectReference: {fileID: 229991190}
+    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
+      propertyPath: enableLatching
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.1
@@ -4673,75 +4583,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98c42eec4ebc0e6449227a71e4b73a8e, type: 3}
---- !u!1001 &1893600115
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: latchDoor
-      value: 
-      objectReference: {fileID: 229991190}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.466
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.131
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7794331746827812918, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
-      propertyPath: m_Name
-      value: pressurePlate (5)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
 --- !u!114 &1896656391 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
@@ -5504,6 +5345,10 @@ PrefabInstance:
       propertyPath: latchDoor
       value: 
       objectReference: {fileID: 229991190}
+    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
+      propertyPath: enableLatching
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1445888941933998788, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.1
@@ -5652,10 +5497,8 @@ SceneRoots:
   - {fileID: 5514088012063112279}
   - {fileID: 896889038}
   - {fileID: 1395895221}
-  - {fileID: 1448880077}
   - {fileID: 424382511}
   - {fileID: 1767313072}
-  - {fileID: 1893600115}
   - {fileID: 462584243}
   - {fileID: 371401420}
   - {fileID: 791808212}

@@ -204,6 +204,7 @@ public class GridMovement : MonoBehaviour
 
             bool isLaser = h.CompareTag("Laser");
             bool iAmRobot = CompareTag("Robot");
+            bool isDoor = h.CompareTag("Door");
 
             if (isLaser)
             {
@@ -213,6 +214,15 @@ public class GridMovement : MonoBehaviour
                     break;
                 }
                 continue;
+            }
+
+            if (isDoor)
+            {
+                if(iAmRobot)
+                {
+                    blockedBySolid = true;
+                    break;
+                }
             }
 
             if (h.isTrigger) continue;
