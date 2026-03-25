@@ -17,6 +17,15 @@ public class DialogueChoiceScene : MonoBehaviour
     public TextMeshProUGUI yesButtonText;
     public TextMeshProUGUI noButtonText;
     
+    [Header("Button Outlines (Optional - will auto-find if empty)")]
+    [Tooltip("Outline component for selection border")]
+    public Outline yesButtonOutline;
+    public Outline noButtonOutline;
+    
+    [Tooltip("Or use Image component as border (if no Outline)")]
+    public Image yesButtonBorderImage;
+    public Image noButtonBorderImage;
+    
     [Header("Button Colors")]
     public Color normalColor = new Color(23f/255f, 217f/255f, 109f/255f); // Green
     public Color greyedOutColor = Color.grey;
@@ -28,6 +37,14 @@ public class DialogueChoiceScene : MonoBehaviour
     
     [Tooltip("Delay between lines")]
     public float delayBetweenLines = 0.3f;
+    
+    [Header("Condition")]
+    [Tooltip("Required talkCount to enable Yes button")]
+    public int requiredTalkCount = 8;
+    
+    [Header("Next Scene")]
+    [Tooltip("Name of the next scene to load")]
+    public string nextSceneName = "PrototypeLevel5";
     
     private bool canSelectYes = false;
     private bool canMakeChoice = false;
@@ -51,15 +68,63 @@ public class DialogueChoiceScene : MonoBehaviour
             }
         }
         
+        // Auto-find Outline or Image components if not assigned
+        if (yesButtonOutline == null && yesButtonBorderImage == null && yesButton != null)
+        {
+            // Try to find Outline component first
+            yesButtonOutline = yesButton.GetComponent<Outline>();
+            // If no Outline, try to find an Image child named "Outline"
+            if (yesButtonOutline == null)
+            {
+                Transform outlineTransform = yesButton.transform.Find("Outline");
+                if (outlineTransform != null)
+                {
+                    yesButtonBorderImage = outlineTransform.GetComponent<Image>();
+                }
+            }
+        }
+        
+        if (noButtonOutline == null && noButtonBorderImage == null && noButton != null)
+        {
+            noButtonOutline = noButton.GetComponent<Outline>();
+            if (noButtonOutline == null)
+            {
+                Transform outlineTransform = noButton.transform.Find("Outline");
+                if (outlineTransform != null)
+                {
+                    noButtonBorderImage = outlineTransform.GetComponent<Image>();
+                }
+            }
+        }
+        
         // Hide buttons initially
         if (yesButton != null) yesButton.gameObject.SetActive(false);
         if (noButton != null) noButton.gameObject.SetActive(false);
+        
+        // Hide outlines/borders initially
+        SetOutlineEnabled(yesButtonOutline, yesButtonBorderImage, false);
+        SetOutlineEnabled(noButtonOutline, noButtonBorderImage, false);
         
         // Check if player can select Yes
         CheckYesButtonAvailability();
         
         // Start dialogue sequence
         StartCoroutine(PlayDialogueSequence());
+    }
+    
+    // Helper method to enable/disable outline or border image
+    private void SetOutlineEnabled(Outline outline, Image borderImage, bool enabled)
+    {
+        if (borderImage != null)
+        {
+            // Use Image border (preferred method)
+            borderImage.gameObject.SetActive(enabled);
+        }
+        else if (outline != null)
+        {
+            // Use Outline component (fallback)
+            outline.enabled = enabled;
+        }
     }
     
     void Update()
@@ -88,14 +153,7 @@ public class DialogueChoiceScene : MonoBehaviour
     
     private void CheckYesButtonAvailability()
     {
-        if (GlobalGameState.talkCount == 8 & GlobalGameState.hackCount == 0 & GlobalGameState.destroyCount == 0)
-        {
-            canSelectYes = true;
-        }
-        else
-        {
-            canSelectYes = false;
-        }
+        canSelectYes = GlobalGameState.talkCount >= requiredTalkCount;
         
         // If can't select Yes, default to No
         if (!canSelectYes)
@@ -161,6 +219,13 @@ public class DialogueChoiceScene : MonoBehaviour
         if (yesButton != null) yesButton.onClick.AddListener(() => SelectOption(0));
         if (noButton != null) noButton.onClick.AddListener(() => SelectOption(1));
         
+        // Debug: Check if outlines were found
+        Debug.Log($"Yes Outline found: {yesButtonOutline != null}, Yes Border Image found: {yesButtonBorderImage != null}");
+        Debug.Log($"No Outline found: {noButtonOutline != null}, No Border Image found: {noButtonBorderImage != null}");
+        
+        // Don't enable outlines here - let UpdateButtonSelection handle it
+        // This prevents Yes outline from showing when greyed out
+        
         // Update initial selection
         UpdateButtonSelection();
         
@@ -170,21 +235,42 @@ public class DialogueChoiceScene : MonoBehaviour
     
     private void UpdateButtonSelection()
     {
+        Debug.Log($"UpdateButtonSelection called - currentSelection: {currentSelection}, canSelectYes: {canSelectYes}");
+        
+        // Update text colors and outlines
         if (currentSelection == 0 && canSelectYes)
         {
-            // Yes selected
+            // Yes selected (and available)
             if (yesButtonText != null) yesButtonText.color = selectedColor;
             if (noButtonText != null) noButtonText.color = normalColor;
+            
+            // Show Yes outline, hide No outline
+            SetOutlineEnabled(yesButtonOutline, yesButtonBorderImage, true);
+            SetOutlineEnabled(noButtonOutline, noButtonBorderImage, false);
+            Debug.Log("Yes selected - Yes outline ON, No outline OFF");
         }
         else
         {
             // No selected (or Yes not available)
             if (canSelectYes && yesButtonText != null)
             {
+                // Yes is available but not selected
                 yesButtonText.color = normalColor;
             }
+            else if (!canSelectYes && yesButtonText != null)
+            {
+                // Yes is greyed out
+                yesButtonText.color = greyedOutColor;
+            }
+            
             if (noButtonText != null) noButtonText.color = selectedColor;
             currentSelection = 1;
+            
+            // Always hide Yes outline when not selected
+            SetOutlineEnabled(yesButtonOutline, yesButtonBorderImage, false);
+            // Always show No outline when No is selected
+            SetOutlineEnabled(noButtonOutline, noButtonBorderImage, true);
+            Debug.Log("No selected - Yes outline OFF, No outline ON");
         }
     }
     
@@ -205,9 +291,8 @@ public class DialogueChoiceScene : MonoBehaviour
         // If Yes is selected, set RootAI to true
         if (currentSelection == 0 && canSelectYes)
         {
-                GlobalGameState.RootAI = true;
-                Debug.Log("RootAI set to true");
-
+            GlobalGameState.RootAI = true;
+            Debug.Log("RootAI set to true");
         }
         
         // Both options lead to same scene
@@ -219,11 +304,11 @@ public class DialogueChoiceScene : MonoBehaviour
         // Use scene transition if available
         if (SceneTransition.Instance != null)
         {
-            SceneTransition.Instance.LoadSceneWithFade("PrototypeLevel5");
+            SceneTransition.Instance.LoadSceneWithFade(nextSceneName);
         }
         else
         {
-            SceneManager.LoadScene("PrototypeLevel5");
+            SceneManager.LoadScene(nextSceneName);
         }
     }
     
