@@ -31,7 +31,7 @@ public class PressurePlateLevel4 : MonoBehaviour
         if ((other.CompareTag("Player") || other.CompareTag("Robot") || other.CompareTag("Robot (1)"))
                 && !isPressed && !locked)
         {
-            AudioSource.PlayClipAtPoint(plateOn, transform.position, pushVolume);
+           AudioManager.PlaySFXAtPoint(plateOn, transform.position, pushVolume);
             isPressed = true;
             SetPressedColor();
             PuzzleManager2D.instance.PlatePressed(plateID);
@@ -43,7 +43,7 @@ public class PressurePlateLevel4 : MonoBehaviour
         if ((other.CompareTag("Player") || other.CompareTag("Robot") || other.CompareTag("Robot (1)"))
             && !locked)
         {
-            AudioSource.PlayClipAtPoint(plateOff, transform.position, pushVolume);
+           AudioManager.PlaySFXAtPoint(plateOff, transform.position, pushVolume);
             isPressed = false;
             // Do not revert color here directly;
             // PuzzleManager2D will handle reset or success lock.

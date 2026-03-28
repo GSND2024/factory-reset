@@ -35,7 +35,7 @@ public class Pushable : MonoBehaviour
 
         if (pushClip != null)
         {
-            AudioSource.PlayClipAtPoint(pushClip, transform.position, pushVolume);
+           AudioManager.PlaySFXAtPoint(pushClip, transform.position, pushVolume);
         }
 
         StartCoroutine(Move(targetPos));

@@ -129,7 +129,7 @@ public class GlobalStateDisplay : MonoBehaviour
     private void PlayMaxSound()
     {
         if (maxCountSound != null)
-            AudioSource.PlayClipAtPoint(maxCountSound, Camera.main.transform.position, soundVolume);
+            AudioManager.PlaySFXAtPoint(maxCountSound, Camera.main.transform.position, soundVolume);
     }
     
     public void RefreshDisplay()

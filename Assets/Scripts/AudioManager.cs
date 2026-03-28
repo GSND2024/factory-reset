@@ -79,30 +79,45 @@ public class AudioManager : MonoBehaviour
         
         foreach (AudioSource audioSource in allAudioSources)
         {
-            // Record original volume (if not recorded yet)
-            if (!originalVolumes.ContainsKey(audioSource))
-            {
-                originalVolumes[audioSource] = audioSource.volume;
-            }
-            
-            // Apply different volumes based on Tag
-            if (audioSource.CompareTag(MUSIC_TAG))
-            {
-                audioSource.volume = originalVolumes[audioSource] * musicVolume * masterVolume;
-            }
-            else if (audioSource.CompareTag(SFX_TAG))
-            {
-                audioSource.volume = originalVolumes[audioSource] * sfxVolume * masterVolume;
-            }
-            else
-            {
-                // If no tag, treat as SFX by default
-                audioSource.volume = originalVolumes[audioSource] * sfxVolume * masterVolume;
-            }
+            ApplyVolumeToSource(audioSource);
         }
     }
     
-    // Apply volume for newly created AudioSource
+    // Apply volume to a single AudioSource
+    private void ApplyVolumeToSource(AudioSource audioSource)
+    {
+        if (audioSource == null) return;
+        
+        // Record original volume (if not recorded yet)
+        if (!originalVolumes.ContainsKey(audioSource))
+        {
+            originalVolumes[audioSource] = audioSource.volume;
+        }
+        
+        // Apply different volumes based on Tag or loop status
+        if (audioSource.CompareTag(MUSIC_TAG))
+        {
+            // Has Music tag
+            audioSource.volume = originalVolumes[audioSource] * musicVolume * masterVolume;
+        }
+        else if (audioSource.CompareTag(SFX_TAG))
+        {
+            // Has SFX tag
+            audioSource.volume = originalVolumes[audioSource] * sfxVolume * masterVolume;
+        }
+        else if (audioSource.loop)
+        {
+            // No tag but is looping - assume it's music
+            audioSource.volume = originalVolumes[audioSource] * musicVolume * masterVolume;
+        }
+        else
+        {
+            // No tag, not looping - assume it's SFX
+            audioSource.volume = originalVolumes[audioSource] * sfxVolume * masterVolume;
+        }
+    }
+    
+    // For dynamically created AudioSources - call this when creating new audio
     public void RegisterAudioSource(AudioSource audioSource, bool isMusic = false)
     {
         if (audioSource == null) return;
@@ -122,6 +137,38 @@ public class AudioManager : MonoBehaviour
         {
             audioSource.volume = originalVolumes[audioSource] * sfxVolume * masterVolume;
         }
+    }
+    
+    // Play one-shot audio with proper volume (forAudioManager.PlaySFXAtPoint replacement)
+    public static void PlaySFXAtPoint(AudioClip clip, Vector3 position, float volumeScale = 1.0f)
+    {
+        if (Instance == null || clip == null) return;
+        
+        GameObject tempGO = new GameObject("TempAudio");
+        tempGO.transform.position = position;
+        
+        AudioSource audioSource = tempGO.AddComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.volume = volumeScale * Instance.sfxVolume * Instance.masterVolume;
+        audioSource.Play();
+        
+        Destroy(tempGO, clip.length);
+    }
+    
+    // Play one-shot music with proper volume
+    public static void PlayMusicAtPoint(AudioClip clip, Vector3 position, float volumeScale = 1.0f)
+    {
+        if (Instance == null || clip == null) return;
+        
+        GameObject tempGO = new GameObject("TempMusic");
+        tempGO.transform.position = position;
+        
+        AudioSource audioSource = tempGO.AddComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.volume = volumeScale * Instance.musicVolume * Instance.masterVolume;
+        audioSource.Play();
+        
+        Destroy(tempGO, clip.length);
     }
     
     // Save volume settings to PlayerPrefs

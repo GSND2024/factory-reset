@@ -85,7 +85,7 @@ public class RobotMimicLevel6 : MonoBehaviour
             GlobalGameState.destroyCount += 1;
             if (destroyClip != null)
             {
-                AudioSource.PlayClipAtPoint(destroyClip, transform.position, destroyVolume);
+               AudioManager.PlaySFXAtPoint(destroyClip, transform.position, destroyVolume);
             }
             Instantiate(debrisObject, transform.position, transform.rotation);
             Debug.Log($"TalkCount: {GlobalGameState.talkCount}, HackCount: {GlobalGameState.hackCount}, , destroyCount: {GlobalGameState.destroyCount}");
