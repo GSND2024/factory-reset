@@ -35,13 +35,15 @@ public class EndingDisplayUI : MonoBehaviour
     
     void Update()
     {
-        // Press Q to reset all endings
+        #if UNITY_EDITOR
+        // Press Q to reset all endings (only in Unity Editor)
         if (Input.GetKeyDown(KeyCode.Q))
         {
             EndingTracker.ResetAllEndings();
             UpdateEndingDisplay();
             Debug.Log("All endings have been reset!");
         }
+        #endif
     }
     
     // Public method to refresh display (can be called from other scripts)

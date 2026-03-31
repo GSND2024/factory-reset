@@ -27,12 +27,17 @@ public class OpeningSceneManager : MonoBehaviour
     [Tooltip("Blinking speed for continue prompt")]
     public float blinkSpeed = 0.5f;
     
+    [Header("Skip Settings")]
+    [Tooltip("Allow skipping fade-in effect with Space")]
+    public bool allowSkip = true;
+    
     [Header("Next Scene")]
     [Tooltip("Index of the next scene to load")]
     public int nextSceneIndex = 2; // PrototypeLevel0
     
     private bool canContinue = false;
     private bool isBlinking = false;
+    private bool isFading = false;
     
     void Start()
     {
@@ -62,15 +67,55 @@ public class OpeningSceneManager : MonoBehaviour
     
     void Update()
     {
-        // Check for space key press
+        // Allow skipping all remaining fade-ins with Space
+        if (allowSkip && isFading && Input.GetKeyDown(KeyCode.Space))
+        {
+            SkipAllFadeIns();
+            return;
+        }
+        
+        // Check for space key press to continue
         if (canContinue && Input.GetKeyDown(KeyCode.Space))
         {
             LoadNextScene();
         }
     }
     
+    // Skip all remaining fade-ins and show continue prompt immediately
+    private void SkipAllFadeIns()
+    {
+        // Stop all fade coroutines
+        StopAllCoroutines();
+        
+        // Show all text lines immediately
+        foreach (var textLine in textLines)
+        {
+            if (textLine != null)
+            {
+                Color color = textLine.color;
+                color.a = 1f;
+                textLine.color = color;
+            }
+        }
+        
+        isFading = false;
+        
+        // Show continue prompt immediately
+        if (continueText != null)
+        {
+            canContinue = true;
+            StartCoroutine(BlinkContinueText());
+        }
+        else
+        {
+            canContinue = true;
+        }
+    }
+    
     private IEnumerator PlayOpeningSequence()
     {
+        isFading = true;
+        
         // Fade in each text line one by one
         foreach (var textLine in textLines)
         {
@@ -80,6 +125,8 @@ public class OpeningSceneManager : MonoBehaviour
                 yield return new WaitForSeconds(delayBetweenLines);
             }
         }
+        
+        isFading = false;
         
         // Wait before showing continue prompt
         yield return new WaitForSeconds(delayBeforeContinue);

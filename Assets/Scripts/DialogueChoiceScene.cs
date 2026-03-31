@@ -38,6 +38,10 @@ public class DialogueChoiceScene : MonoBehaviour
     [Tooltip("Delay between lines")]
     public float delayBetweenLines = 0.3f;
     
+    [Header("Skip Settings")]
+    [Tooltip("Allow skipping typewriter effect with Space")]
+    public bool allowSkip = true;
+    
     [Header("Condition")]
     [Tooltip("Required talkCount to enable Yes button")]
     public int requiredTalkCount = 8;
@@ -49,6 +53,8 @@ public class DialogueChoiceScene : MonoBehaviour
     private bool canSelectYes = false;
     private bool canMakeChoice = false;
     private int currentSelection = 1; // 0 = Yes, 1 = No (default to No)
+    private bool isTyping = false;
+    private bool skipTyping = false;
     
     [System.Serializable]
     public class DialogueLine
@@ -129,6 +135,14 @@ public class DialogueChoiceScene : MonoBehaviour
     
     void Update()
     {
+        // Allow skipping all remaining dialogue with Space
+        if (allowSkip && isTyping && Input.GetKeyDown(KeyCode.Space))
+        {
+            SkipAllDialogue();
+            return;
+        }
+        
+        // Only allow button selection when choices are available
         if (!canMakeChoice) return;
         
         // Handle input
@@ -151,6 +165,27 @@ public class DialogueChoiceScene : MonoBehaviour
         }
     }
     
+    // Skip all remaining dialogue and show buttons immediately
+    private void SkipAllDialogue()
+    {
+        // Stop all typewriter coroutines
+        StopAllCoroutines();
+        
+        // Show all dialogue lines immediately
+        foreach (var line in dialogueLines)
+        {
+            if (line.textComponent != null && !string.IsNullOrEmpty(line.content))
+            {
+                line.textComponent.text = line.content;
+            }
+        }
+        
+        isTyping = false;
+        
+        // Show buttons immediately
+        ShowButtons();
+    }
+    
     private void CheckYesButtonAvailability()
     {
         canSelectYes = GlobalGameState.talkCount >= requiredTalkCount;
@@ -169,8 +204,14 @@ public class DialogueChoiceScene : MonoBehaviour
         {
             if (line.textComponent != null && !string.IsNullOrEmpty(line.content))
             {
+                skipTyping = false; // Reset skip flag for each line
                 yield return StartCoroutine(TypeLine(line.textComponent, line.content));
-                yield return new WaitForSeconds(delayBetweenLines);
+                
+                // Only wait between lines if not skipped
+                if (!skipTyping)
+                {
+                    yield return new WaitForSeconds(delayBetweenLines);
+                }
             }
         }
         
@@ -183,12 +224,23 @@ public class DialogueChoiceScene : MonoBehaviour
         if (textComponent == null) yield break;
         
         textComponent.text = "";
+        isTyping = true;
+        skipTyping = false;
         
-        foreach (char c in content)
+        for (int i = 0; i < content.Length; i++)
         {
-            textComponent.text += c;
+            // If skip is triggered, show all remaining text immediately
+            if (skipTyping)
+            {
+                textComponent.text = content;
+                break;
+            }
+            
+            textComponent.text += content[i];
             yield return new WaitForSeconds(1f / typeSpeed);
         }
+        
+        isTyping = false;
     }
     
     private void ShowButtons()
