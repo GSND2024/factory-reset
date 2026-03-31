@@ -38,6 +38,16 @@ public class DialogueChoiceScene : MonoBehaviour
     [Tooltip("Delay between lines")]
     public float delayBetweenLines = 0.3f;
     
+    [Header("Audio Settings")]
+    [Tooltip("Typewriter sound effect")]
+    public AudioClip typewriterSound;
+    
+    [Tooltip("Volume for typewriter sound")]
+    [Range(0f, 1f)]
+    public float typewriterVolume = 1f;
+    
+    private AudioSource audioSource;
+    
     [Header("Skip Settings")]
     [Tooltip("Allow skipping typewriter effect with Space")]
     public bool allowSkip = true;
@@ -72,6 +82,17 @@ public class DialogueChoiceScene : MonoBehaviour
             {
                 line.textComponent.text = "";
             }
+        }
+        
+        // Setup audio source
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.loop = false;
+        audioSource.playOnAwake = false;
+        
+        // Apply volume control from AudioManager if available
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.RegisterAudioSource(audioSource, false); // false = SFX
         }
         
         // Auto-find Outline or Image components if not assigned
@@ -171,6 +192,12 @@ public class DialogueChoiceScene : MonoBehaviour
         // Stop all typewriter coroutines
         StopAllCoroutines();
         
+        // Stop typewriter sound
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+        
         // Show all dialogue lines immediately
         foreach (var line in dialogueLines)
         {
@@ -199,6 +226,14 @@ public class DialogueChoiceScene : MonoBehaviour
     
     private IEnumerator PlayDialogueSequence()
     {
+        // Play typewriter sound at the start
+        if (typewriterSound != null && audioSource != null)
+        {
+            audioSource.clip = typewriterSound;
+            audioSource.volume = typewriterVolume;
+            audioSource.Play();
+        }
+        
         // Type each line one by one
         foreach (var line in dialogueLines)
         {
@@ -213,6 +248,12 @@ public class DialogueChoiceScene : MonoBehaviour
                     yield return new WaitForSeconds(delayBetweenLines);
                 }
             }
+        }
+        
+        // Stop typewriter sound when done
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
         }
         
         // Show buttons after all lines are typed
