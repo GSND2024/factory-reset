@@ -855,7 +855,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 207843273903637582, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
   m_PrefabInstance: {fileID: 1519354294}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820190319}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81b4cf9d5f3d24460b8fadeb45c6b45d, type: 3}
@@ -1438,31 +1438,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c66c5e0d0985ee49bd083492ddc8b02, type: 3}
---- !u!1 &820190319 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8882322382070819011, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
-  m_PrefabInstance: {fileID: 1519354294}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &820190324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 820190319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 608fdd0763d73dd46b1d7bfede7bf9f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SignReader
-  interactKey: 32
-  player: {fileID: 569174712}
-  playerMovement: {fileID: 569174710}
-  dialogueManager: {fileID: 44627042}
-  gridSize: 1
-  robotTag: Robot
-  signTag: Sign
-  signHintChildIndex: -1
 --- !u!1001 &1000390673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2196,6 +2171,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8789041572601624328, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
+      propertyPath: gridSize
+      value: 0.704
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789041572601624328, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
+      propertyPath: spaceBarHintUI
+      value: 
+      objectReference: {fileID: 1976082761}
     - target: {fileID: 8882322382070819011, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2203,10 +2186,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8882322382070819011, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 820190324}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
 --- !u!1 &1538071955
 GameObject:
@@ -3495,6 +3475,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   zoneCheckRadius: 0.22
+--- !u!1 &1976082761 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7064556771008014051, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+  m_PrefabInstance: {fileID: 1124825979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2034105145
 PrefabInstance:
   m_ObjectHideFlags: 0

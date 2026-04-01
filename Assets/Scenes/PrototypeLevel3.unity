@@ -2084,6 +2084,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0940308986c1b6948850503e0225f7f4, type: 3}
+--- !u!1 &956153732 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7064556771008014051, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+  m_PrefabInstance: {fileID: 233109782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &970511297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2289,10 +2294,10 @@ MonoBehaviour:
   player: {fileID: 569174712}
   playerMovement: {fileID: 569174710}
   dialogueManager: {fileID: 1751136291}
-  gridSize: 1
+  gridSize: 0.704
   robotTag: Robot
   signTag: Sign
-  signHintChildIndex: -1
+  spaceBarHintUI: {fileID: 956153732}
 --- !u!1001 &1061031929
 PrefabInstance:
   m_ObjectHideFlags: 0

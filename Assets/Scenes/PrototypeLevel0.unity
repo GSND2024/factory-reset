@@ -4006,6 +4006,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+--- !u!1 &858501967 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7064556771008014051, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
+  m_PrefabInstance: {fileID: 858501966}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &882923766 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6325810020571449448, guid: b77966f9b554c4f06b1f190dfba7cf10, type: 3}
@@ -7507,6 +7512,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8789041572601624328, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
+      propertyPath: gridSize
+      value: 0.704
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789041572601624328, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
+      propertyPath: spaceBarHintUI
+      value: 
+      objectReference: {fileID: 858501967}
     - target: {fileID: 8789041572601624328, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}
       propertyPath: dialogueManager
       value: 
