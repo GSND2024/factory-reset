@@ -60,8 +60,8 @@ public class DialogueChoiceScene : MonoBehaviour
     [Tooltip("Name of the next scene to load")]
     public string nextSceneName = "PrototypeLevel5";
     
-    private bool canSelectYes = false;
-    private bool canMakeChoice = false;
+    public bool canSelectYes = false;
+    public bool canMakeChoice = false;
     private int currentSelection = 1; // 0 = Yes, 1 = No (default to No)
     private bool isTyping = false;
     private bool skipTyping = false;

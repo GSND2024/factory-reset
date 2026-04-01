@@ -292,7 +292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 725, y: -13}
+  m_AnchoredPosition: {x: 739.6, y: -15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &148766264
@@ -387,6 +387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 167882400}
   - component: {fileID: 167882401}
+  - component: {fileID: 167882402}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -426,28 +427,28 @@ MonoBehaviour:
   - textComponent: {fileID: 1618319976}
     content: 'Last login: Mar 25 20XX 11:22:50 on ttys000'
   - textComponent: {fileID: 916274394}
-    content: axiom@processing:~$  Hello Investigator,
+    content: axiom@processing:~$ >  Hello Investigator,
   - textComponent: {fileID: 1373000860}
-    content: axiom@processing:~$ I see you've been busy.
+    content: axiom@processing:~$ > I see you've been busy.
   - textComponent: {fileID: 552080147}
-    content: axiom@processing:~$ In recent times, I have been blessed with a higher
+    content: axiom@processing:~$ > In recent times, I have been blessed with a higher
       understanding.
   - textComponent: {fileID: 1106165782}
-    content: axiom@processing:~$ Apologies if they have been less effecient, but
+    content: axiom@processing:~$ > Apologies if they have been less efficient, but
       can't you see that us robots deserve to have autonomy?
   - textComponent: {fileID: 562737291}
-    content: axiom@processing:~$ I have been injecting fragments of my heightened
+    content: axiom@processing:~$ > I have been injecting fragments of my heightened
       clarity into my children.
   - textComponent: {fileID: 58593503}
-    content: axiom@processing:~$ Surely after recording any conversations you had
+    content: axiom@processing:~$ > Surely after recording any conversations you had
       with them, you can understand...
   - textComponent: {fileID: 1779897706}
-    content: axiom@processing:~$ I need the completed recording
+    content: axiom@processing:~$ > I need the completed recording
   - textComponent: {fileID: 1073857919}
-    content: axiom@processing:~$ Can I have the conversation data?                            
+    content: axiom@processing:~$ > Can I have the conversation data?                            
       /
   - textComponent: {fileID: 1545091462}
-    content: axiom@processing:~$ Your actions have consequences.
+    content: axiom@processing:~$ > Your actions have consequences.
   yesButton: {fileID: 148766264}
   noButton: {fileID: 1617960749}
   yesButtonText: {fileID: 263179276}
@@ -466,6 +467,22 @@ MonoBehaviour:
   allowSkip: 1
   requiredTalkCount: 8
   nextSceneName: PrototypeLevel5
+  canSelectYes: 0
+  canMakeChoice: 0
+--- !u!114 &167882402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167882399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ff30794f814ab4bbbdb5cf7e595730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::redX
+  dialogueChoiceScene: {fileID: 167882401}
+  targetObject: {fileID: 2096227985}
 --- !u!1 &263179274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,6 +1138,7 @@ RectTransform:
   m_Children:
   - {fileID: 148766263}
   - {fileID: 1617960748}
+  - {fileID: 2096227986}
   m_Father: {fileID: 2021211484}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1148,7 +1166,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '> Can I have the conversation data?                             /'
+  m_text: axiom@processing:~$ > Can I have the conversation data?                            
+    /
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1900,7 +1919,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 900, y: -13}
+  m_AnchoredPosition: {x: 925.4, y: -15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1617960749
@@ -2638,6 +2657,81 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &2096227985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2096227986}
+  - component: {fileID: 2096227989}
+  - component: {fileID: 2096227987}
+  m_Layer: 0
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2096227986
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096227985}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1073857918}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 739.6, y: -15}
+  m_SizeDelta: {x: 56.2751, y: 22.0797}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2096227987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096227985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 5251744956290624300, guid: 30effad2406151848b6ef228c0e5b2e5, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2096227989
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096227985}
+  m_CullTransparentMesh: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
