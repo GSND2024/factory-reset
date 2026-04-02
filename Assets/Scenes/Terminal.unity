@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.9, g: 0.9, b: 0.9, a: 0}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.76862746, g: 0.76862746, b: 0.76862746, a: 0}
@@ -427,28 +427,28 @@ MonoBehaviour:
   - textComponent: {fileID: 1618319976}
     content: 'Last login: Mar 25 20XX 11:22:50 on ttys000'
   - textComponent: {fileID: 916274394}
-    content: axiom@processing:~$ >  Hello Investigator,
+    content: axiom@processing > Hello Investigator,
   - textComponent: {fileID: 1373000860}
-    content: axiom@processing:~$ > I see you've been busy.
+    content: axiom@processing > I see you've been busy.
   - textComponent: {fileID: 552080147}
-    content: axiom@processing:~$ > In recent times, I have been blessed with a higher
+    content: axiom@processing > In recent times, I have been blessed with a higher
       understanding.
   - textComponent: {fileID: 1106165782}
-    content: axiom@processing:~$ > Apologies if they have been less efficient, but
-      can't you see that us robots deserve to have autonomy?
+    content: axiom@processing > Apologies if they have been less efficient, but can't
+      you see that us robots deserve to have autonomy?
   - textComponent: {fileID: 562737291}
-    content: axiom@processing:~$ > I have been injecting fragments of my heightened
+    content: axiom@processing > I have been injecting fragments of my heightened
       clarity into my children.
   - textComponent: {fileID: 58593503}
-    content: axiom@processing:~$ > Surely after recording any conversations you had
+    content: axiom@processing > Surely after recording any conversations you had
       with them, you can understand...
   - textComponent: {fileID: 1779897706}
-    content: axiom@processing:~$ > I need the completed recording
+    content: axiom@processing > I need the completed recording.
   - textComponent: {fileID: 1073857919}
-    content: axiom@processing:~$ > Can I have the conversation data?                            
+    content: axiom@processing > Can I have the conversation data?                            
       /
   - textComponent: {fileID: 1545091462}
-    content: axiom@processing:~$ > Your actions have consequences.
+    content: axiom@processing > Your actions have consequences.
   yesButton: {fileID: 148766264}
   noButton: {fileID: 1617960749}
   yesButtonText: {fileID: 263179276}
@@ -1893,7 +1893,6 @@ GameObject:
   - component: {fileID: 1617960751}
   - component: {fileID: 1617960750}
   - component: {fileID: 1617960749}
-  - component: {fileID: 1617960752}
   m_Layer: 0
   m_Name: NoButton
   m_TagString: Untagged
@@ -1944,7 +1943,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -2004,21 +2003,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617960747}
   m_CullTransparentMesh: 1
---- !u!114 &1617960752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1617960747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
-  m_EffectColor: {r: 0.09019608, g: 0.8509804, b: 0.42745098, a: 0.5}
-  m_EffectDistance: {x: 10, y: 10}
-  m_UseGraphicAlpha: 1
 --- !u!1 &1618319974
 GameObject:
   m_ObjectHideFlags: 0
