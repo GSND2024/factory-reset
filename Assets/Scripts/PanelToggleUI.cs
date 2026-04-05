@@ -32,6 +32,7 @@ public class PanelToggleUI : MonoBehaviour
     [SerializeField] private float probeRadius = 0.22f;
 
     [SerializeField] private GridMovement owner;
+    public static bool IsPanelOpen { get; private set; }
 
     private bool _isOpen;
     private GridMovement _currentTarget;
@@ -122,6 +123,11 @@ public class PanelToggleUI : MonoBehaviour
                 }
             }
         }
+        if (Input.GetKeyDown(KeyCode.Escape) && _isOpen)
+            {
+                ClosePanel("[PTUI] Closed via Escape.");
+                return; // consume the input so SettingsManager doesn't see it
+            }
 
         // Keep panel following current target while open
         if (_isOpen && _currentTarget != null)
@@ -140,6 +146,7 @@ public class PanelToggleUI : MonoBehaviour
 
         if (reasonLog != null) Debug.Log(reasonLog);
 
+        IsPanelOpen = true;
         _isOpen = true;
         panelRoot.SetActive(true);
 
@@ -159,6 +166,7 @@ public class PanelToggleUI : MonoBehaviour
         if (panelRoot == null) return;
         if (reasonLog != null) Debug.Log(reasonLog);
 
+        IsPanelOpen = false;
         _isOpen = false;
         panelRoot.SetActive(false);
         _currentTarget = null;

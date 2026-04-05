@@ -180,7 +180,7 @@ public class SettingsManager : MonoBehaviour
         if (!isEnabledInCurrentScene)
             return;
           
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)  && !PanelToggleUI.IsPanelOpen)
         {
             if (isSettingsOpen)
             {

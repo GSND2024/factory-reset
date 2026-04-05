@@ -4102,6 +4102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   laser1: {fileID: 110202570}
   laser2: {fileID: 1509453816}
+  robot: {fileID: 1969039959}
 --- !u!114 &1703441946
 MonoBehaviour:
   m_ObjectHideFlags: 0
