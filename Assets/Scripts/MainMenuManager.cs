@@ -33,6 +33,9 @@ public class MainMenuManager : MonoBehaviour
     public Button achievementBackButton;
     public Button creditsBackButton;
     
+    [Header("Special Buttons")]
+    public Button cleanButton; // Reset all endings
+    
     [Header("Scene Settings")]
     [Tooltip("Index of the opening scene (OpenScene)")]
     public int openingSceneIndex = 1;
@@ -79,6 +82,11 @@ public class MainMenuManager : MonoBehaviour
         if (creditsBackButton != null)
         {
             creditsBackButton.onClick.AddListener(CloseCredits);
+        }
+        
+        if (cleanButton != null)
+        {
+            cleanButton.onClick.AddListener(CleanAllEndings);
         }
         
         // Setup volume sliders
@@ -238,6 +246,13 @@ public class MainMenuManager : MonoBehaviour
     {
         if (settingsCanvas != null) settingsCanvas.SetActive(false);
         if (mainMenuCanvas != null) mainMenuCanvas.SetActive(true);
+        
+        // Refresh ending display after closing settings
+        EndingDisplayUI endingDisplay = FindObjectOfType<EndingDisplayUI>();
+        if (endingDisplay != null)
+        {
+            endingDisplay.UpdateEndingDisplay();
+        }
     }
     
     public void OpenAchievements()
@@ -275,6 +290,21 @@ public class MainMenuManager : MonoBehaviour
         #endif
     }
     
+    public void CleanAllEndings()
+    {
+        // Reset all endings
+        EndingTracker.ResetAllEndings();
+        
+        // Find and refresh EndingDisplayUI
+        EndingDisplayUI endingDisplay = FindObjectOfType<EndingDisplayUI>();
+        if (endingDisplay != null)
+        {
+            endingDisplay.UpdateEndingDisplay();
+        }
+        
+        Debug.Log("All endings have been reset!");
+    }
+    
     void OnDestroy()
     {
         // Clean up button listeners
@@ -286,6 +316,7 @@ public class MainMenuManager : MonoBehaviour
         if (settingsBackButton != null) settingsBackButton.onClick.RemoveListener(CloseSettings);
         if (achievementBackButton != null) achievementBackButton.onClick.RemoveListener(CloseAchievements);
         if (creditsBackButton != null) creditsBackButton.onClick.RemoveListener(CloseCredits);
+        if (cleanButton != null) cleanButton.onClick.RemoveListener(CleanAllEndings);
         
         // Clean up volume slider listeners
         if (masterVolumeSlider != null) masterVolumeSlider.onValueChanged.RemoveListener(OnMasterVolumeChanged);
