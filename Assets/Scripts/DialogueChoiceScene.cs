@@ -217,7 +217,7 @@ public class DialogueChoiceScene : MonoBehaviour
     
     private void CheckYesButtonAvailability()
     {
-        canSelectYes = GlobalGameState.talkCount >= requiredTalkCount;
+        canSelectYes = (GlobalGameState.talkCount >= requiredTalkCount) && (GlobalGameState.hackCount == 0) && (GlobalGameState.destroyCount == 0);
         
         // If can't select Yes, default to No
         if (!canSelectYes)
