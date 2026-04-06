@@ -90,7 +90,7 @@ public class SignReader : MonoBehaviour
             yield return null;
 
         dialogueManager.SetPortraitVisible(false);
-        dialogueManager.StartDialogue(dialogue);
+        dialogueManager.StartDialogue(dialogue, DialogueTheme.Sign);
         dialogueManager.SetPortraitVisible(true);
     }
 
