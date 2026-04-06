@@ -13,6 +13,10 @@ public class SettingsManager : MonoBehaviour
     public Button backButton;
     public Button quitButton;
     
+    [Header("Quit Button Settings")]
+    [Tooltip("Hide quit button in these scenes (e.g., MainMenu)")]
+    public List<string> hideQuitButtonScenes = new List<string>();
+    
     [Header("Volume Sliders")]
     public Slider masterVolumeSlider;
     public Slider musicVolumeSlider;
@@ -179,8 +183,8 @@ public class SettingsManager : MonoBehaviour
         // Only allow ESC key to toggle settings panel in enabled scenes
         if (!isEnabledInCurrentScene)
             return;
-          
-        if (Input.GetKeyDown(KeyCode.Escape)  && !PanelToggleUI.IsPanelOpen)
+            
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (isSettingsOpen)
             {
@@ -217,6 +221,13 @@ public class SettingsManager : MonoBehaviour
         if (settingsPanel != null && settingsPanel.transform.parent != null)
         {
             settingsPanel.transform.parent.gameObject.SetActive(isEnabledInCurrentScene);
+        }
+        
+        // Check if quit button should be hidden in this scene
+        if (quitButton != null)
+        {
+            bool shouldShowQuit = !hideQuitButtonScenes.Contains(currentSceneName);
+            quitButton.gameObject.SetActive(shouldShowQuit);
         }
     }
     
@@ -279,19 +290,56 @@ public class SettingsManager : MonoBehaviour
             EnablePlayerInput();
         }
     }
-    
+
     public void QuitGame()
     {
-        // Save any data before quitting (optional)
-        PlayerPrefs.Save();
-        
-        #if UNITY_EDITOR
-            // Stop playing in editor
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-            // Quit application in build
-            Application.Quit();
-        #endif
+
+        // Reset all global game states
+        ResetAllGameStates();
+
+        // Destroy this settings manager before returning to main menu
+        // (MainMenu has its own UI and doesn't need the in-game settings)
+        Destroy(transform.root.gameObject);
+
+
+        SceneManager.LoadScene("MainMenu");
+    }
+
+
+    private void ResetAllGameStates()
+    {
+        GlobalGameState.isLowBranching = false;
+        GlobalGameState.lazerHitRobot = false;
+        GlobalGameState.lazerHitRobot2 = false;
+        GlobalGameState.dialogueActive = false;
+        GlobalGameState.swallowNextSpace = false;
+        GlobalGameState.isRobotHacked = false;
+        GlobalGameState.isRobotHacked2 = false;
+        GlobalGameState.isYellowHacked = false;
+        GlobalGameState.isPurpleHacked = false;
+        GlobalGameState.isWhiteHacked = false;
+        GlobalGameState.isRobotSaved = false;
+        GlobalGameState.isLevel0 = false;
+        GlobalGameState.isLevel1 = false;
+        GlobalGameState.isLevel2 = false;
+        GlobalGameState.isLevel3 = false;
+        GlobalGameState.isLevel4 = false;
+        GlobalGameState.isLevel5 = false;
+        GlobalGameState.isLevel6 = false;
+        GlobalGameState.isLevel7 = false;
+        GlobalGameState.isFinalLevel = false;
+        GlobalGameState.HackAI = false;
+        GlobalGameState.RootAI = false;
+        GlobalGameState.spaceUIRobot = null;
+        GlobalGameState.stateSaver = new bool[5];
+        GlobalGameState.isEachLevelTalked = false;
+        GlobalGameState.isEachLevelTalked2 = false;
+        GlobalGameState.isEachLevelHacked = false;
+        GlobalGameState.isEachLevelHacked2 = false;
+        GlobalGameState.talkCount = 0;
+        GlobalGameState.hackCount = 0;
+        GlobalGameState.destroyCount = 0;
+        GlobalGameState.dataCountSaver = new int[] { 0, 0, 0 };
     }
     
     private void DisablePlayerInput()
