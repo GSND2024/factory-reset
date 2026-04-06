@@ -60,8 +60,10 @@ public class DialogueChoiceScene : MonoBehaviour
     [Tooltip("Name of the next scene to load")]
     public string nextSceneName = "PrototypeLevel5";
     
-    public bool canSelectYes = false;
-    public bool canMakeChoice = false;
+    // Public state variables (accessible by other scripts like redX.cs)
+    [HideInInspector] public bool canSelectYes = false;
+    [HideInInspector] public bool canMakeChoice = false;
+    
     private int currentSelection = 1; // 0 = Yes, 1 = No (default to No)
     private bool isTyping = false;
     private bool skipTyping = false;
@@ -86,7 +88,7 @@ public class DialogueChoiceScene : MonoBehaviour
         
         // Setup audio source
         audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.loop = false;
+        audioSource.loop = true; // Loop the typewriter sound
         audioSource.playOnAwake = false;
         
         // Apply volume control from AudioManager if available
