@@ -2926,7 +2926,7 @@ MonoBehaviour:
     labelText: {fileID: 1068000785}
     checkboxImage: {fileID: 2105335229}
   uncheckedSprite: {fileID: 0}
-  checkedSprite: {fileID: 0}
+  checkedSprite: {fileID: -8559759934810800239, guid: 85e9a5d759762479dacc3e1b27fa0101, type: 3}
   unlockedColor: {r: 1, g: 1, b: 1, a: 1}
   lockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &788619680
