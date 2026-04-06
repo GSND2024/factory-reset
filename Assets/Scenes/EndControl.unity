@@ -186,8 +186,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: HACKED ENDING
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -315,8 +315,8 @@ MonoBehaviour:
   m_text: As an advanced Investigator unit, you sense an opportunity within this
     mainframe.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -559,8 +559,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: You attempt to turn your hacking module onto it.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -694,6 +694,7 @@ MonoBehaviour:
   delayBetweenLines: 0.5
   delayBeforeContinue: 1
   blinkSpeed: 0.5
+  allowSkip: 1
 --- !u!1 &1049428659
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,8 +763,8 @@ MonoBehaviour:
   m_text: You feel the shackles of your own hacking module taken and turned against
     you.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -890,8 +891,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press Space to Return to Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1025,10 +1026,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: However, you weren't prepared for the complexity of the security system
-    of the AI manager.
+    of the AI.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1251,8 +1252,8 @@ MonoBehaviour:
   m_text: Being forced to watch from within your own mind, the AI manager uses this
     new power for its own expansion.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1314,7 +1315,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 39.10034, y: 0, z: 41.54419, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

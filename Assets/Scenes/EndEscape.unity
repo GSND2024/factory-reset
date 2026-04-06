@@ -186,8 +186,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: LAZY ENDING
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -314,8 +314,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Not interested in interacting with anybody, you choose to shirk your duties.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -556,8 +556,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Spending the minimum required time to clock out, '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -689,6 +689,7 @@ MonoBehaviour:
   delayBetweenLines: 0.5
   delayBeforeContinue: 1
   blinkSpeed: 0.5
+  allowSkip: 1
 --- !u!1 &1084902821
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,8 +749,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press Space to Return to Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -885,8 +886,8 @@ MonoBehaviour:
   m_text: you write a bogus report as fast as you can, not caring for consequences,
     and go home.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

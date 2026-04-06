@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'The AI manager, after sensing you destroyed a number of its children, '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -314,8 +314,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: you are quickly torn apart.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -557,8 +557,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: summons ALL of its remaining units to enter the terminal room.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -691,6 +691,7 @@ MonoBehaviour:
   delayBetweenLines: 0.5
   delayBeforeContinue: 1
   blinkSpeed: 0.5
+  allowSkip: 1
 --- !u!1 &1084902821
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,8 +751,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Press Space to Return to Main Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -886,8 +887,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: DESTROYED ENDING
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1022,8 +1023,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Unable to fend off the strength of robots designed for heavy labor,
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
+  m_sharedMaterial: {fileID: -4865235019767698255, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
