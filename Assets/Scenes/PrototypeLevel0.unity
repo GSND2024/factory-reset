@@ -6771,10 +6771,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5659550737837406746, guid: b77966f9b554c4f06b1f190dfba7cf10, type: 3}
-<<<<<<< Updated upstream
-      propertyPath: m_text
-      value: Menu
-=======
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: d5b27d72c62902d4fa6cecc2bc2d4f29, type: 2}
@@ -6785,7 +6781,6 @@ PrefabInstance:
     - target: {fileID: 5659550737837406746, guid: b77966f9b554c4f06b1f190dfba7cf10, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 6043265665282905418, guid: b77966f9b554c4f06b1f190dfba7cf10, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6831,11 +6826,6 @@ PrefabInstance:
       propertyPath: fadeDuration
       value: 1
       objectReference: {fileID: 0}
-<<<<<<< Updated upstream
-    - target: {fileID: 8112345603364007379, guid: b77966f9b554c4f06b1f190dfba7cf10, type: 3}
-      propertyPath: m_text
-      value: Resume
-=======
     - target: {fileID: 8022803836150532145, guid: b77966f9b554c4f06b1f190dfba7cf10, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -6871,7 +6861,6 @@ PrefabInstance:
     - target: {fileID: 8542187336316116251, guid: b77966f9b554c4f06b1f190dfba7cf10, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 8560966730491686944, guid: b77966f9b554c4f06b1f190dfba7cf10, type: 3}
       propertyPath: m_AnchorMax.x
