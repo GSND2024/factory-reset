@@ -194,15 +194,14 @@ public class EndSceneManager : MonoBehaviour
         canContinue = false;
         ResetAllState();
         
-        // Load next scene with transition if available
-        if (SceneTransition.Instance != null)
+        // Destroy SettingsManager before loading MainMenu
+        if (SettingsManager.Instance != null)
         {
-            SceneTransition.Instance.LoadSceneWithFade("MainMenu");
+            Destroy(SettingsManager.Instance.transform.root.gameObject);
         }
-        else
-        {
-            SceneManager.LoadScene("MainMenu");
-        }
+        
+        // Load MainMenu directly (without transition since we destroyed it)
+        SceneManager.LoadScene("MainMenu");
     }
     
     private void ResetAllState()
