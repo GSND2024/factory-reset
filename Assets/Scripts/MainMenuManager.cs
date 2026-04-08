@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections.Generic;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -40,8 +41,14 @@ public class MainMenuManager : MonoBehaviour
     [Tooltip("Index of the opening scene (OpenScene)")]
     public int openingSceneIndex = 1;
     
+    // Store original volumes for MainMenu audio sources
+    private Dictionary<AudioSource, float> originalVolumes = new Dictionary<AudioSource, float>();
+    
     void Start()
     {
+        // Clear original volumes to ensure fresh start
+        originalVolumes.Clear();
+        
         // Bind main menu buttons
         if (startGameButton != null)
         {
@@ -91,6 +98,9 @@ public class MainMenuManager : MonoBehaviour
         
         // Setup volume sliders
         SetupVolumeSliders();
+        
+        // Apply volume to MainMenu audio immediately
+        ApplyVolumeToMainMenuAudio();
         
         // Show main menu by default
         ShowMainMenu();
@@ -203,14 +213,24 @@ public class MainMenuManager : MonoBehaviour
         
         foreach (AudioSource audioSource in allAudioSources)
         {
-            // Check if it's music (looping) or SFX
+            // Record original volume (if not recorded yet)
+            if (!originalVolumes.ContainsKey(audioSource))
+            {
+                // Use current volume as original, but ensure it's reasonable
+                float currentVolume = audioSource.volume;
+                originalVolumes[audioSource] = currentVolume > 0.01f ? currentVolume : 1.0f;
+            }
+            
+            // Apply volume based on original volume
             if (audioSource.loop)
             {
-                audioSource.volume = musicVolume * masterVolume;
+                // Music
+                audioSource.volume = originalVolumes[audioSource] * musicVolume * masterVolume;
             }
             else
             {
-                audioSource.volume = sfxVolume * masterVolume;
+                // SFX
+                audioSource.volume = originalVolumes[audioSource] * sfxVolume * masterVolume;
             }
         }
     }

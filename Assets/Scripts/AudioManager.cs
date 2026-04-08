@@ -38,12 +38,19 @@ public class AudioManager : MonoBehaviour
         // Subscribe to scene load event
         SceneManager.sceneLoaded += OnSceneLoaded;
         
+        // Clear original volumes to ensure fresh start
+        originalVolumes.Clear();
+        
         // Apply volume to current scene
         ApplyVolumeToAllAudioSources();
     }
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // Clear original volumes on each new scene
+        // This ensures we record the fresh volume of new AudioSources
+        originalVolumes.Clear();
+        
         // After new scene loads, reapply volume settings
         ApplyVolumeToAllAudioSources();
     }
@@ -139,7 +146,7 @@ public class AudioManager : MonoBehaviour
         }
     }
     
-    // Play one-shot audio with proper volume (forAudioManager.PlaySFXAtPoint replacement)
+    // Play one-shot audio with proper volume (for AudioSource.PlayClipAtPoint replacement)
     public static void PlaySFXAtPoint(AudioClip clip, Vector3 position, float volumeScale = 1.0f)
     {
         if (Instance == null || clip == null) return;
