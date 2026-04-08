@@ -1351,6 +1351,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4308997168023990585, guid: 726026fca7e1548ecb0d2ddb0a0f611b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5114488591979490018, guid: 726026fca7e1548ecb0d2ddb0a0f611b, type: 3}
       propertyPath: m_Name
       value: ControlCursor
