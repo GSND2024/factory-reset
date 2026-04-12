@@ -142,7 +142,7 @@ MonoBehaviour:
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
   plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
-  pushVolume: 1
+  pushVolume: 0.2
 --- !u!1 &102109659 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4881579763024307082, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
@@ -444,7 +444,7 @@ MonoBehaviour:
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
   plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
-  pushVolume: 1
+  pushVolume: 0.2
 --- !u!1 &468238718 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7794331746827812918, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
@@ -468,7 +468,7 @@ MonoBehaviour:
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
   plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
-  pushVolume: 1
+  pushVolume: 0.2
 --- !u!1 &482494370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1644554036241370931, guid: 5022d167538fd4e24893105f67ad5fd7, type: 3}
@@ -1927,7 +1927,7 @@ MonoBehaviour:
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
   plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
-  pushVolume: 1
+  pushVolume: 0.2
 --- !u!1 &1325916229 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7064556771008014051, guid: 540631ccfb49ae54ab0dcff650dade07, type: 3}
@@ -2644,7 +2644,7 @@ MonoBehaviour:
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   plateOn: {fileID: 8300000, guid: 894119c3c2dede547a056a2c414226a0, type: 3}
   plateOff: {fileID: 8300000, guid: e54efc4f832c4264088e1af9c692e42b, type: 3}
-  pushVolume: 1
+  pushVolume: 0.2
 --- !u!1 &1765544448 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8882322382070819011, guid: 3fd448c94d4aa1b4e838aab542027ea3, type: 3}

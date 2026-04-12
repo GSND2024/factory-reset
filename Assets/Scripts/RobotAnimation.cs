@@ -42,7 +42,10 @@ public class RobotAnimation : MonoBehaviour
         {
             foreach (SpriteRenderer sr in targets)
             {
-                sr.sprite = useA ? spriteA : spriteB;
+                if (sr)
+                {   
+                    sr.sprite = useA ? spriteA : spriteB;
+                }
             }
 
             useA = !useA;
