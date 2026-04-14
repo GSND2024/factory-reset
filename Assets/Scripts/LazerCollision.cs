@@ -49,5 +49,21 @@ public class LazerCollision : MonoBehaviour
             other.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
+        else if (other.CompareTag("Player"))
+        {
+            audioSource.Play();
+            other.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+
+            GlobalGameState.talkCount = GlobalGameState.dataCountSaver[0];
+            GlobalGameState.hackCount = GlobalGameState.dataCountSaver[1];
+            GlobalGameState.destroyCount = GlobalGameState.dataCountSaver[2];
+
+            if (SceneTransition.Instance)
+                SceneTransition.Instance.RestartSceneWithFade();
+            else
+                UnityEngine.SceneManagement.SceneManager.LoadScene(
+                    UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        }
     }
 }
