@@ -27,7 +27,8 @@ public class DialogueChoiceScene : MonoBehaviour
     public Image noButtonBorderImage;
     
     [Header("Button Colors")]
-    public Color normalColor = new Color(23f/255f, 217f/255f, 109f/255f); // Green
+    public Color yesNormalColor = new Color(23f/255f, 217f/255f, 109f/255f); // Green
+    public Color noNormalColor = new Color(23f/255f, 217f/255f, 109f/255f); // Green
     public Color greyedOutColor = Color.grey;
     public Color selectedColor = Color.white;
     
@@ -67,6 +68,7 @@ public class DialogueChoiceScene : MonoBehaviour
     private int currentSelection = 1; // 0 = Yes, 1 = No (default to No)
     private bool isTyping = false;
     private bool skipTyping = false;
+    private bool isSceneReady = false;
     
     [System.Serializable]
     public class DialogueLine
@@ -77,6 +79,9 @@ public class DialogueChoiceScene : MonoBehaviour
     
     void Start()
     {
+        // Wait for scene transition to complete before accepting input
+        StartCoroutine(WaitForSceneReady());
+        
         // Initialize all text to empty
         foreach (var line in dialogueLines)
         {
@@ -136,8 +141,21 @@ public class DialogueChoiceScene : MonoBehaviour
         
         // Check if player can select Yes
         CheckYesButtonAvailability();
+    }
+    
+    // Wait for scene transition fade-in to complete
+    private IEnumerator WaitForSceneReady()
+    {
+        // Ensure time scale is normal (in case we came from paused state)
+        Time.timeScale = 1f;
         
-        // Start dialogue sequence
+        // Wait a bit for SceneTransition to finish fade-in
+        // Use WaitForSecondsRealtime to work even if Time.timeScale = 0
+        yield return new WaitForSecondsRealtime(1.0f); // Slightly longer than fade duration
+        
+        isSceneReady = true;
+        
+        // Start dialogue sequence after scene is ready
         StartCoroutine(PlayDialogueSequence());
     }
     
@@ -158,6 +176,9 @@ public class DialogueChoiceScene : MonoBehaviour
     
     void Update()
     {
+        // Don't allow any input until scene is ready (after fade-in)
+        if (!isSceneReady) return;
+        
         // Allow skipping all remaining dialogue with Space
         if (allowSkip && isTyping && Input.GetKeyDown(KeyCode.Space))
         {
@@ -217,7 +238,7 @@ public class DialogueChoiceScene : MonoBehaviour
     
     private void CheckYesButtonAvailability()
     {
-        canSelectYes = (GlobalGameState.talkCount >= requiredTalkCount) && (GlobalGameState.hackCount == 0) && (GlobalGameState.destroyCount == 0);
+        canSelectYes = GlobalGameState.talkCount >= requiredTalkCount;
         
         // If can't select Yes, default to No
         if (!canSelectYes)
@@ -296,7 +317,7 @@ public class DialogueChoiceScene : MonoBehaviour
         if (canSelectYes)
         {
             // Yes button is enabled
-            if (yesButtonText != null) yesButtonText.color = normalColor;
+            if (yesButtonText != null) yesButtonText.color = yesNormalColor;
             if (yesButton != null) yesButton.interactable = true;
         }
         else
@@ -307,7 +328,7 @@ public class DialogueChoiceScene : MonoBehaviour
         }
         
         // No button is always enabled
-        if (noButtonText != null) noButtonText.color = normalColor;
+        if (noButtonText != null) noButtonText.color = noNormalColor;
         if (noButton != null) noButton.interactable = true;
         
         // Setup button click events
@@ -337,7 +358,7 @@ public class DialogueChoiceScene : MonoBehaviour
         {
             // Yes selected (and available)
             if (yesButtonText != null) yesButtonText.color = selectedColor;
-            if (noButtonText != null) noButtonText.color = normalColor;
+            if (noButtonText != null) noButtonText.color = noNormalColor;
             
             // Show Yes outline, hide No outline
             SetOutlineEnabled(yesButtonOutline, yesButtonBorderImage, true);
@@ -350,7 +371,7 @@ public class DialogueChoiceScene : MonoBehaviour
             if (canSelectYes && yesButtonText != null)
             {
                 // Yes is available but not selected
-                yesButtonText.color = normalColor;
+                yesButtonText.color = yesNormalColor;
             }
             else if (!canSelectYes && yesButtonText != null)
             {
