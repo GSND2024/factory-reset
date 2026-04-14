@@ -11,8 +11,8 @@ public class DoorLatchController : MonoBehaviour
     public int requiredPressedCount = 0;
 
     [Header("Target")]
-    [Tooltip("The laser/door root to disable when opened.")]
-    public GameObject doorToDisable;
+    [Tooltip("The laser/door objects to disable when opened.")]
+    public List<GameObject> doorsToDisable = new List<GameObject>();
 
     [Header("Behavior")]
     [Tooltip("If true, once opened it stays open even if plates are released.")]
@@ -69,9 +69,26 @@ public class DoorLatchController : MonoBehaviour
         return PressedCount() >= need;
     }
 
+    // Returns true if ALL lasers have been permakilled
+    private bool AllPermakilled()
+    {
+        if (doorsToDisable == null || doorsToDisable.Count == 0) return false;
+
+        foreach (var door in doorsToDisable)
+        {
+            if (door == null) continue;
+            var lazer = door.GetComponent<LazerCollision>();
+            if (lazer == null || !lazer.isPermakilled) return false;
+        }
+        return true;
+    }
+
     private void Recompute()
     {
-        if (!doorToDisable) return;
+        if (doorsToDisable == null || doorsToDisable.Count == 0) return;
+
+        // If all lasers are already permanently killed, nothing to do
+        if (AllPermakilled()) return;
 
         if (permanentOnceOpened)
         {
@@ -79,30 +96,33 @@ public class DoorLatchController : MonoBehaviour
             if (RequirementMet())
             {
                 if (audioSource != null)
-                {
                     audioSource.Play();
-                }
+
                 isOpen = true;
-                doorToDisable.SetActive(false); // permanently open
+                foreach (var door in doorsToDisable)
+                    if (door) door.SetActive(false);
             }
         }
         else
         {
             bool openNow = RequirementMet();
 
-            // Only react if the state actually changes
             if (!isOpen && openNow)
             {
                 if (audioSource != null)
-                {
                     audioSource.Play();
-                }
             }
 
             if (openNow != isOpen)
             {
                 isOpen = openNow;
-                doorToDisable.SetActive(!openNow);
+                foreach (var door in doorsToDisable)
+                {
+                    if (door == null) continue;
+                    var lazer = door.GetComponent<LazerCollision>();
+                    if (openNow || lazer == null || !lazer.isPermakilled)
+                        door.SetActive(!openNow);
+                }
             }
         }
     }

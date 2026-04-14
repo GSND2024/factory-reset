@@ -45,14 +45,14 @@ public class PressurePlate2D : MonoBehaviour
     [SerializeField] private AudioClip releaseClip;
     [SerializeField] private AudioClip doorLock;
     [SerializeField] private float pushVolume = 1f;
+    [Header("Laser")]
+    [SerializeField] private LazerCollision laser;
 
     private void Reset()
     {
-        // Make sure the collider is a trigger
         var c = GetComponent<Collider2D>();
         c.isTrigger = true;
 
-        // Convenience: auto-fill indicator if it's on the same GameObject
         if (indicator == null) indicator = GetComponent<SpriteRenderer>();
     }
 
@@ -129,8 +129,13 @@ public class PressurePlate2D : MonoBehaviour
         // Notify listeners (DoorLatchController may set isOpen=true here)
         OnPressChanged?.Invoke(IsPressed);
 
-        if (!IsPressed && doorLock != null && !enableLatching && audioSource != null)
+        // Only play door lock sound if the door was actually open AND the laser wasn't permanently killed
+        if (!IsPressed && doorLock != null && !enableLatching && audioSource != null
+            && latchDoor != null && latchDoor.isOpen
+            && (laser == null || !laser.isPermakilled))
+        {
             audioSource.PlayOneShot(doorLock, pushVolume);
+        }
 
         // If pressing this plate caused the door to open, latch immediately.
         if (IsPressed && enableLatching && !_isLocked && latchDoor != null && latchDoor.isOpen)
@@ -151,7 +156,6 @@ public class PressurePlate2D : MonoBehaviour
             IsPressed ? pressedSprite :
             idleSprite;
 
-        // Only set if we actually have a sprite assigned (prevents null overwrites).
         if (target != null)
             indicator.sprite = target;
     }
@@ -166,7 +170,7 @@ public class PressurePlate2D : MonoBehaviour
         {
             _isLocked = true;
             _pressing.Clear();
-            SetPressed(true); // will invoke event + ApplyIndicator()
+            SetPressed(true);
         }
     }
 
@@ -181,7 +185,6 @@ public class PressurePlate2D : MonoBehaviour
 
     private void Update()
     {
-        // If we're currently pressed and the door is open, lock permanently.
         if (enableLatching && !_isLocked && IsPressed && latchDoor != null && latchDoor.isOpen)
         {
             _isLocked = true;

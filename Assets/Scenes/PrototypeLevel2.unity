@@ -596,8 +596,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorController
   plates:
   - {fileID: 769438971}
-  requiredPressedCount: 2
-  doorToDisable: {fileID: 1441511518}
+  requiredPressedCount: 1
+  doorsToDisable:
+  - {fileID: 1441511518}
   permanentOnceOpened: 0
   isOpen: 0
   audioSource: {fileID: 103810814}
@@ -2545,6 +2546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   audioSource: {fileID: 582349967}
+  isPermakilled: 0
 --- !u!1001 &1453576371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2855,6 +2857,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
+      propertyPath: laser
+      value: 
+      objectReference: {fileID: 1441511522}
     - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: latchDoor
       value: 

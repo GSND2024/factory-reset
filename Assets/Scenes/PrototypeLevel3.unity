@@ -425,6 +425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   audioSource: {fileID: 1736465946}
+  isPermakilled: 0
 --- !u!61 &110202572
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -558,8 +559,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorLatchController
   plates:
   - {fileID: 1896656391}
-  requiredPressedCount: 2
-  doorToDisable: {fileID: 110202570}
+  requiredPressedCount: 1
+  doorsToDisable:
+  - {fileID: 110202570}
+  - {fileID: 1509453816}
   permanentOnceOpened: 0
   isOpen: 0
   audioSource: {fileID: 1004138887}
@@ -779,8 +782,9 @@ MonoBehaviour:
   - {fileID: 817416130}
   - {fileID: 769438971}
   - {fileID: 351687572}
-  requiredPressedCount: 4
-  doorToDisable: {fileID: 1441511518}
+  requiredPressedCount: 3
+  doorsToDisable:
+  - {fileID: 1441511518}
   permanentOnceOpened: 0
   isOpen: 0
   audioSource: {fileID: 1723245214}
@@ -2007,6 +2011,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
+      propertyPath: laser
+      value: 
+      objectReference: {fileID: 1441511522}
     - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: latchDoor
       value: 
@@ -3322,6 +3330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LazerCollision
   audioSource: {fileID: 1736465946}
+  isPermakilled: 0
 --- !u!1001 &1465675499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3592,8 +3601,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorLatchController
   plates:
   - {fileID: 1896656391}
-  requiredPressedCount: 2
-  doorToDisable: {fileID: 1509453816}
+  requiredPressedCount: 1
+  doorsToDisable:
+  - {fileID: 110202570}
+  - {fileID: 1509453816}
   permanentOnceOpened: 0
   isOpen: 0
   audioSource: {fileID: 1004138887}
@@ -3610,6 +3621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   audioSource: {fileID: 1736465946}
+  isPermakilled: 0
 --- !u!61 &1509453819
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4371,6 +4383,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
+      propertyPath: laser
+      value: 
+      objectReference: {fileID: 1441511522}
     - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: latchDoor
       value: 
@@ -5539,6 +5555,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
+      propertyPath: laser
+      value: 
+      objectReference: {fileID: 1441511522}
     - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: latchDoor
       value: 

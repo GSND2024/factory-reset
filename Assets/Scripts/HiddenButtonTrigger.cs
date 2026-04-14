@@ -9,12 +9,18 @@ public class HiddenButtonTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (lazer)
+            {
+                var lazerCollision = lazer.GetComponent<LazerCollision>();
+                bool alreadyKilled = lazerCollision != null && lazerCollision.isPermakilled;
 
-            if (lazer) {
-                lazer.SetActive(false);
-                audioSource.Play();
+                if (!alreadyKilled)
+                {
+                    lazer.SetActive(false);
+                    audioSource.Play();
+                }
             }
-            
+
             gameObject.SetActive(false);
         }
     }

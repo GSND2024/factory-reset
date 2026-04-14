@@ -516,7 +516,8 @@ MonoBehaviour:
   plates:
   - {fileID: 1834617451}
   requiredPressedCount: 1
-  doorToDisable: {fileID: 1565125092}
+  doorsToDisable:
+  - {fileID: 1565125092}
   permanentOnceOpened: 0
   isOpen: 0
   audioSource: {fileID: 103810814}

@@ -423,7 +423,7 @@ MonoBehaviour:
   plates:
   - {fileID: 1834617451}
   requiredPressedCount: 1
-  doorToDisable: {fileID: 0}
+  doorsToDisable: []
   permanentOnceOpened: 0
   isOpen: 0
   audioSource: {fileID: 0}
@@ -1453,7 +1453,8 @@ MonoBehaviour:
   plates:
   - {fileID: 1834617451}
   requiredPressedCount: 1
-  doorToDisable: {fileID: 1353945884}
+  doorsToDisable:
+  - {fileID: 1353945884}
   permanentOnceOpened: 0
   isOpen: 0
   audioSource: {fileID: 0}

@@ -76,7 +76,7 @@ public class PanelToggleUI : MonoBehaviour
             {
                 spaceUI.SetActive(false);
             }
-            if (GlobalGameState.spaceUIRobot == owner?.gameObject)
+            if (owner != null && GlobalGameState.spaceUIRobot == owner?.gameObject)
             {
                 GlobalGameState.spaceUIRobot = null;
             }

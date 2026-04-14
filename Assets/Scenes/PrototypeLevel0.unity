@@ -5814,6 +5814,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
+      propertyPath: laser
+      value: 
+      objectReference: {fileID: 2131064169}
+    - target: {fileID: 27948998329295325, guid: b7cbb0238f2d65348944f0556fb76c88, type: 3}
       propertyPath: latchDoor
       value: 
       objectReference: {fileID: 2131064166}
@@ -7370,8 +7374,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DoorLatchController
   plates:
   - {fileID: 319008692}
-  requiredPressedCount: 0
-  doorToDisable: {fileID: 2131064164}
+  requiredPressedCount: 1
+  doorsToDisable:
+  - {fileID: 2131064164}
   permanentOnceOpened: 0
   isOpen: 0
   audioSource: {fileID: 825653767}
@@ -7492,6 +7497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LazerCollision
   audioSource: {fileID: 669622771}
+  isPermakilled: 0
 --- !u!1001 &1161048529129986210
 PrefabInstance:
   m_ObjectHideFlags: 0
