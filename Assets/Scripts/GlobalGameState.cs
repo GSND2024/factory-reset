@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 public static class GlobalGameState
@@ -37,4 +38,5 @@ public static class GlobalGameState
     public static int hackCount = 0;
     public static int destroyCount = 0;
     public static int[] dataCountSaver = {0, 0, 0};
+    public static Vector3 teleportTarget = new Vector3(3.884f, -.7f, 0f);
 }

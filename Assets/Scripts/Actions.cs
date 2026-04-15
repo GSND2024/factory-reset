@@ -93,7 +93,22 @@ public class Actions : MonoBehaviour
         {
             if (!GlobalGameState.isRobotHacked2 && !GlobalGameState.dialogueActive && _goToPressurePlate)
             {
-                transform.position = new Vector3(3.884f, -.7f, 0f);
+                if (isDestinationOccupied(GlobalGameState.teleportTarget))
+                {
+                    if (Vector3.Distance(GlobalGameState.teleportTarget, new Vector3(2.465f, -2.137f, 0f)) < 0.01f)
+                    {
+                        GlobalGameState.teleportTarget = new Vector3(3.8725f, -2.126f, 0f);
+                    } else
+                    {
+                        dialogue.sentences = new string[] { "Oh, looks like there's already something on the pressure plates." };
+                        GlobalGameState.teleportTarget = new Vector3(2.465f, -2.137f, 0f);
+                    }
+                } else
+                {
+                    transform.position = GlobalGameState.teleportTarget;
+                    dialogue.sentences = new string[] {"Go ahead!"};
+                    _goToPressurePlate = false;
+                }
             }
         }
         
@@ -101,7 +116,16 @@ public class Actions : MonoBehaviour
         {
             if (!GlobalGameState.isRobotHacked && !GlobalGameState.dialogueActive && _goToPressurePlate)
             {
-                transform.position = new Vector3(3.9f, .7f, 0f);
+                Vector3 target = new Vector3(3.9f, .7f, 0f);
+                if (isDestinationOccupied(target))
+                {
+                    dialogue.sentences = new string[] { "Oh, looks like there's already something on the pressure plate." };
+                } else
+                {
+                    transform.position = target;
+                    dialogue.sentences = new string[] {"Go ahead!"};
+                    _goToPressurePlate = false;
+                }
             }
         }
 
@@ -112,6 +136,34 @@ public class Actions : MonoBehaviour
                 transform.position = new Vector3(3.15f, -0.684f, 0f);
             }
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(new Vector3(2.466f, -2.137f, 0f), .2f);
+    }
+    private bool isDestinationOccupied(Vector3 target)
+    {
+        Debug.Log("Checking");
+        LayerMask blockingLayers = LayerMask.GetMask("Blocking", "Player");
+        bool occupied = false;
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(target, .2f, blockingLayers);
+        if (hits.Length > 0)
+        {
+            foreach (var hit in hits)
+            {
+                if (hit.CompareTag("Robot"))
+                    continue;
+
+                // This is a valid hit
+                Debug.Log("Valid hit: " + hit.name);
+                occupied = true;
+                break;
+            }            
+        }
+        return occupied;
     }
 
     private bool positionCheck(Vector3 current, Vector3 target, float tolerance = 0.05f)
